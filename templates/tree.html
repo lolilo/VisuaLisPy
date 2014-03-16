@@ -8,22 +8,20 @@
 
     {{json_object}}
 
+<p>
+    {{ json_object|safe }}
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+    <script src="/static/convert_json_to_tree_object.js"></script>
 
     <script type="text/javascript">
+        // {{json_object}}
+        tree = createTree();
+        console.log('this is tree', tree);
 
-    </script>
-
-    <script src="/static/convert_json_to_tree_object.js">
-        tree = createTree("(* 9 9)");
-        console.log(tree);
-
-        depthFirstTraversal(tree);
-
+        n = depthFirstTraversal(tree);
+        // console.log(n);
+        
     </script>
 
     {% endblock %}
