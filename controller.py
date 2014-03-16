@@ -10,23 +10,32 @@ def index():
     html = render_template("index.html")
     return html
 
-@app.route("/", methods=["POST"])
+@app.route("/get_json", methods=["POST"])
 def code_submitted():
     user_input = request.form.get("user_input")
+    print request.form.get("user_input")
 
     if not user_input:
-        return render_template("tree.html", json_object='Please type in valid code.')
-
+        print 'NO USER INPUT'
+        # return render_template("tree.html", json_object='Please type in valid code.')
+        return 'Please type in valid code.'
 
     print user_input
     if user_input:
+        print 'USER INPUT'
         json_object = lis.return_json(user_input)
-        # print json_object
+        print type(json_object)
+        print json_object
 
 
     # return redirect(url_for("index"))
-    # display JSON in browswer 
-    return render_template("tree.html", json_object=json_object)
+    # display JSON in browser 
+
+    # return render_template("tree.html", json_object=json_object)
+    # RETURN THE JSON OBJECT YOU 'TARD
+    return json_object
+
+    
 
 # @app.route("/tree")
 # def tree():
@@ -34,3 +43,18 @@ def code_submitted():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+        # $.ajax({
+        #     url: "/",
+        #     method: "POST",
+        #     data: {
+        #         list_name: "List Name"
+        #     },
+
+        # }).done(function(data){
+        #     alert(data);
+        # }).fail(function(){
+        #     alert('fail!!!');
+        # });
