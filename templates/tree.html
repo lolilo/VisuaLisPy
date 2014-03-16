@@ -9,19 +9,28 @@
     {{json_object}}
 
 <p>
-    {{ json_object|safe }}
+    {{ json_object|safe }} </p>
 
-
+    <script src="/static/js/jquery-2.1.0.js"></script>
     <script src="/static/convert_json_to_tree_object.js"></script>
 
     <script type="text/javascript">
-        // {{json_object}}
-        tree = createTree();
+        var json_string = JSON.stringify({{ json_object|safe }});
+
+        console.log('json_string is', json_string);
+
+        var json_object = $.parseJSON(json_string);
+
+        console.log('this is json_object', json_object);
+
+        var tree = createTree(json_object);
         console.log('this is tree', tree);
 
-        n = depthFirstTraversal(tree);
+        var n = depthFirstTraversal(tree);
         // console.log(n);
         
     </script>
+
+
 
     {% endblock %}
