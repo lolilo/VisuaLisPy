@@ -2,7 +2,9 @@
     {% block body %}
 
     <form id="code_submission" class="form-control" method="POST" action="/get_json">
-        <textarea name="user_input" placeholder="Enter Scheme program here." cols="50" rows="5"></textarea><br>
+        <textarea name="user_input" placeholder="Enter Scheme program here." cols="50" rows="5">
+          (define area (lambda (r) (* 3.141592653 (* r r))))
+        </textarea><br>
 
 
 <!--       <input type="text" id="lisp" name="user_input">

@@ -21,38 +21,12 @@ def code_submitted():
         # return render_template("tree.html", json_object='Please type in valid code.')
         # return 'Please type in valid code.'
 
-
-
-        s ="""
-                    {
-                         "*": [
-                              "*",
-                              9,
-                              8
-                         ]
-                    };
-                    """
-        return s
-
-
-    print user_input
     if user_input:
         json_object = lis.return_json(user_input)
         print json_object
 
-
-    # return redirect(url_for("index"))
-    # display JSON in browser 
-
-    # return render_template("tree.html", json_object=json_object)
-    # RETURN THE JSON OBJECT YOU 'TARD
+    # return JSON to ajax call
     return json_object
-
-    
-
-# @app.route("/tree")
-# def tree():
-
 
 if __name__ == "__main__":
     app.run(debug=True)

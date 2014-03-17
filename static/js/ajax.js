@@ -12,20 +12,17 @@ $(document).ready(function(){
         }).done(function(data){
             // console.log(typeof(data));
             expressionTrace = data["trace"][1]["expression_trace"];
+
+            // expressionTrace is the object that contains one object for each line of code
+            // for each object in expressionTrace, create a binary tree
             console.log(expressionTrace);
             for (var key in expressionTrace) {
-                console.log(expressionTrace);
+                console.log('in the for loop', expressionTrace[key]);
+                tree = createTree(expressionTrace[key]);
+                console.log('this is tree', tree);
+
+                n = depthFirstTraversal(tree);
             }
-            
-
-            // tree = createTree(data);
-            // console.log('this is tree', tree);
-            // n = depthFirstTraversal(tree);
-            // console.log('traversal', n);
-
-
-
-
 
         }).fail(function(){
             console.log('fail!!!');
