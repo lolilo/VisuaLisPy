@@ -13,8 +13,8 @@ def index():
 @app.route("/get_json", methods=["POST"])
 def code_submitted():
     user_input = request.form.get("user_input")
-    print request.form
-    print request.form.get("user_input")
+    # print request.form
+    # print request.form.get("user_input")
 
     if not user_input:
         print 'NO USER INPUT'
@@ -37,9 +37,7 @@ def code_submitted():
 
     print user_input
     if user_input:
-        print 'USER INPUT'
         json_object = lis.return_json(user_input)
-        print type(json_object)
         print json_object
 
 
@@ -58,18 +56,3 @@ def code_submitted():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
-        # $.ajax({
-        #     url: "/",
-        #     method: "POST",
-        #     data: {
-        #         list_name: "List Name"
-        #     },
-
-        # }).done(function(data){
-        #     alert(data);
-        # }).fail(function(){
-        #     alert('fail!!!');
-        # });

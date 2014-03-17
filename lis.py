@@ -195,13 +195,25 @@ def read_from(tokens):
             expression_tokens.append(read_from(tokens))
 
         new_node = {new_token_leading_symbol : []}
-        expression_trace.append(new_node)
-        expression_trace[-1][new_token_leading_symbol].extend(expression_tokens)
+
+
+        
+
+
         # print '\n THIS IS EXPRESSION_TRACE after appending new node: ', expression_trace
         # print "\n THIS IS ONE EXPRESSION: ", expression_trace[-1]
         # print expression_trace[-1].values()
+
+
+
         print 'popping off the end, )'
         tokens.pop(0) # pop off ')' Popping is faster than deleting. What. 
+
+        # need to only append complete expression onto expression_trace
+        # when tokens == [], complete expression has been traced
+        if not tokens:
+            expression_trace.append(new_node)
+            expression_trace[-1][new_token_leading_symbol].extend(expression_tokens)
 
         print 'returning expression tokens %r' % expression_tokens
         # Holy shit, these are lists within lists. Awesome. 
@@ -252,14 +264,20 @@ def return_json(user_input):
     # split into separate lines and feed separately into the eval function, maybe
 
     # list of lines of code
-    user_input_lines = user_input.split('\r\n')
+    user_input_clean = user_input.strip()
+    user_input_lines = user_input_clean.split('\r\n')
     # do I care about unicode? It still works...but print statements are kind of ugly.
+
+    # remove white space from each line
+    for i in range(len(user_input_lines)):
+        user_input_lines[i] = user_input_lines[i].strip()
+
     print 'the lines!', user_input_lines
 
     global expression_trace 
     expression_trace = []
     json_output = {
-                "code" : user_input, 
+                "code" : user_input_lines, 
                 "trace" : []
                 }
 
