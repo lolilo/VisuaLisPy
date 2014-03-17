@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, session, url_for, request
+from flask import Flask, render_template, redirect, url_for, request
 import lis
 
 app = Flask(__name__)
@@ -13,12 +13,27 @@ def index():
 @app.route("/get_json", methods=["POST"])
 def code_submitted():
     user_input = request.form.get("user_input")
+    print request.form
     print request.form.get("user_input")
 
     if not user_input:
         print 'NO USER INPUT'
         # return render_template("tree.html", json_object='Please type in valid code.')
-        return 'Please type in valid code.'
+        # return 'Please type in valid code.'
+
+
+
+        s ="""
+                    {
+                         "*": [
+                              "*",
+                              9,
+                              8
+                         ]
+                    };
+                    """
+        return s
+
 
     print user_input
     if user_input:

@@ -7,9 +7,10 @@ $(document).ready(function(){
         $.ajax({
             url: "/get_json",
             method: "POST",
-            // data: $("form#code_submission").serialize(),
+            data: $("form#code_submission").serialize(),
             dataType: "json"
         }).done(function(data){
+            console.log(typeof(data));
             console.log(data);
         }).fail(function(){
             console.log('fail!!!');
