@@ -31,7 +31,6 @@ var s =
                     };
 
 
-
 var BinaryTreeNode = function (value) {
   this.value = value;
   this.left = null;
