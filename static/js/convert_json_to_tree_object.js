@@ -120,6 +120,11 @@ createNode = function(args){
       parent.setLeft(lambda_variable);
       parent.setRight(createNode(lambda_exp));
 
+      // why did I not need to return parent here?
+      // oh, it's because I return parent at the end. Derrrrrp
+
+
+
       // console.log(parent);
       // console.log(depthFirstTraversal(parent));
     }
@@ -135,6 +140,9 @@ createNode = function(args){
       parent.setRight(child2);
       // console.log('values!', parent.left.value, parent.right.value);
       // console.log(parent);
+
+
+      // I probably don't need this return.
       return parent;
     }
     // return the final tree
