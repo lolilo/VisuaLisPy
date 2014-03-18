@@ -6,21 +6,22 @@
           (define area (lambda (r) (* 3.141592653 (* r r))))
         </textarea><br>
 
-
-<!--       <input type="text" id="lisp" name="user_input">
-      </input> -->
-
       <input type="submit" id="form_submit" class="btn btn-lg btn-primary btn-block" value="Submit">
     </form>
 
-
-
     <script src="/static/js/jquery-2.1.0.js"></script>
     <script src="/static/js/convert_json_to_tree_object.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="/static/js/ajax.js"></script>
-    <script type="text/javascript">
-    // in case I need this for something
-    </script>
 
+    <script> 
+      $(function(){
+        $("#tree").load("/tree");
+      });
+    </script> 
+
+    <body>
+      <div id="tree"></div>
+    </body>
 
     {% endblock %}

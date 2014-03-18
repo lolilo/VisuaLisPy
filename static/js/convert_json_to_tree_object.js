@@ -145,8 +145,8 @@ createNode = function(args){
 
 };
 
-// tree = createTree(s);
-// console.log(tree);
+tree = createTree(define);
+console.log(tree);
 
 // depthFirstTraversal(tree);
 
