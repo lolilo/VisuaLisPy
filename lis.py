@@ -20,21 +20,13 @@ class Env(dict):
             return self
         else: 
             return self.outer.find(var)
-            # Return the lowest index in the string where substring sub is found, 
-            # such that sub is contained in the slice s[start:end]...a string? Huh?
 
 def add_globals(env):
     # Add Scheme standard procedures to an environment.
     import operator as op
     import arithmetic as art
 
-    # I feel like I shouldn't update all the things like this? 
-    # Limit env to ones defined below.
-
-    # env.update(vars(math)) # vars(object) is equivalent to object.__dict__
-    
     env.update({
-
             # art file allows for *args
             '+' : art.add, 
             '-' : art.sub, 
@@ -161,7 +153,6 @@ Symbol = str
 
 def parse(s):
     # read a Scheme expression from a string
-    # print 'read the Scheme expression', s
     return read_from(tokenize(s))
 
 def tokenize(s):
@@ -195,16 +186,6 @@ def read_from(tokens):
             expression_tokens.append(read_from(tokens))
 
         new_node = {new_token_leading_symbol : []}
-
-
-        
-
-
-        # print '\n THIS IS EXPRESSION_TRACE after appending new node: ', expression_trace
-        # print "\n THIS IS ONE EXPRESSION: ", expression_trace[-1]
-        # print expression_trace[-1].values()
-
-
 
         print 'popping off the end, )'
         tokens.pop(0) # pop off ')' Popping is faster than deleting. What. 
@@ -259,9 +240,10 @@ def repl():
 
 def return_json(user_input):
 
-    # user_input = user_input.replace('\r\n', ' ')
-    # need to figure this out, read multiple lines
-    # split into separate lines and feed separately into the eval function, maybe
+    # prepare tracing structures
+    global expression_trace 
+    expression_trace = []
+    global_env_for_json_conversion = {}
 
     # list of lines of code
     user_input_clean = user_input.strip()
@@ -271,26 +253,24 @@ def return_json(user_input):
     # remove white space from each line
     for i in range(len(user_input_lines)):
         user_input_lines[i] = user_input_lines[i].strip()
+    # print 'the lines!', user_input_lines
 
-    print 'the lines!', user_input_lines
-
-    global expression_trace 
-    expression_trace = []
-    json_output = {
-                "code" : user_input_lines, 
-                "trace" : []
-                }
-
+    # evaluate each line of code
     for line in user_input_lines:
         val = eval(parse(line))
-    # if val is None:
-    #     json_expression_trace = json.dumps(expression_trace, indent=5)
-    # if val is not None:
-    global_env_for_json_conversion = {}
 
+    # for every entry in the global_env dictionary, convert it for JSON
     for i in global_env.iteritems():
         key = i[0]
         global_env_for_json_conversion[key] = str(global_env[key])
+
+    # prepare JSON output object
+    json_output = {
+        # code is a list of user_input_lines as strings
+        "code" : user_input_lines, 
+        # trace is a list of dictionaries
+        "trace" : []
+        }
     
     json_output["trace"].append(dict(global_env=global_env_for_json_conversion))
     json_output["trace"].append(dict(expression_trace=expression_trace))
@@ -307,5 +287,5 @@ def main():
 if __name__ == "__main__":
     global expression_trace
     expression_trace = []
-    repl()
+    # repl()
 
