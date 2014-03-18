@@ -190,10 +190,8 @@ def read_from(tokens):
         # when tokens == [], complete expression has been traced
         # append to expression_trace
         if not tokens:
-            new_node = {new_node_leading_symbol : []}
+            new_node = {new_node_leading_symbol : expression_tokens}
             expression_trace.append(new_node)
-            newly_added_node = expression_trace[-1][new_node_leading_symbol]
-            newly_added_node.extend(expression_tokens)
 
         print 'returning expression tokens %r' % expression_tokens
         # Holy shit, these are lists within lists. Awesome. 
