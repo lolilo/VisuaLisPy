@@ -19,10 +19,12 @@ $(document).ready(function(){
             for (var key in expressionTrace) {
                 console.log('in the for loop', expressionTrace[key]);
                 treeData = createTree(expressionTrace[key]);
-
-
                 console.log('this is tree', JSON.stringify(treeData));
-                $("#tree").load("/tree");
+
+                root = treeData[0];
+                // call update function from render_tree.js
+                update(root);
+                // $("#tree").load("/tree");
             }
 
         }).fail(function(){

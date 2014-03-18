@@ -1,6 +1,28 @@
 {% extends 'master.html' %}
     {% block body %}
 
+      <head>
+        <meta charset="utf-8">
+        <style>
+
+     .node circle {
+       fill: #fff;
+       stroke: #00CC00;
+       stroke-width: 3px;
+     }
+
+     .node text { font: 13px sans-serif; }
+
+     .link {
+       fill: none;
+       stroke: #ccc;
+       stroke-width: 2px;
+     }
+     
+        </style>
+      </head>
+
+
     <form id="code_submission" method="POST" action="/get_json">
         <textarea class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="50" rows="5">(define area (lambda (r) (* 3.141592653 (* r r))))
         </textarea><br>
@@ -13,8 +35,9 @@
 
     <!-- json_to_D3_tree is called in ajax.js -->
     <script src="/static/js/json_to_D3_tree.js"></script>
+    <script src="/static/js/render_tree.js"></script>
     <script src="/static/js/ajax.js"></script>
-    
+
 
 <!-- 
 
