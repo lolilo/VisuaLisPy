@@ -134,11 +134,14 @@ def eval(x, env=global_env):
         print 'procedure call!'
         # procedure call (proc exp*)
         exps = [eval(exp, env) for exp in x] # list of evaluated exp
-        proc = exps.pop(0) # Are we arbitrarily choosing the first element of the exps list?
-        # Nope. Recursive call of sorts...solidify this later.
-        print 'procedure is', proc
-        print 'exps is ', exps
+        proc = exps.pop(0) # procedure is the first element of exps, (* 9 9)
+        
+        # print proc([9, 8, 7]) # doesn't work
+        # print proc(9, 8, 7)
+        # # * turns a series of args into an iterable (list) as it passes into a function
+
         return proc(*exps) # arbitrary amount of exps, which will be recursively evaluated
+        # final returned value is the final value...of course
 
 # alias
 isa = isinstance # isinstance(9, int) --> True, isinstance(9, str) --> False
@@ -167,34 +170,30 @@ def read_from(tokens):
         raise SyntaxError('unexpected EOF while reading')
     token = tokens.pop(0) # pop off first token and assign to token for analysis
 
+    # need to save leading symbol for new node -- will use for expression_trace
+    new_node_leading_symbol = tokens[0]
+
     if '(' == token:
 
         print '\n\nSTARTING A NEW NODE.'
         # each node has its own environment -- must account for this later in eval
         # could optimize this later to refer to later constructed nodes. Meh. 
 
-
-        # initialize dictionary/object for each node
-        
-        new_token_leading_symbol = tokens[0]
-
-        # expression_trace.append(new_node)
-        # print 'expression_trace after append', expression_trace
-
         expression_tokens = []
         while tokens[0] != ')':
             expression_tokens.append(read_from(tokens))
-
-        new_node = {new_token_leading_symbol : []}
 
         print 'popping off the end, )'
         tokens.pop(0) # pop off ')' Popping is faster than deleting. What. 
 
         # need to only append complete expression onto expression_trace
         # when tokens == [], complete expression has been traced
+        # append to expression_trace
         if not tokens:
+            new_node = {new_node_leading_symbol : []}
             expression_trace.append(new_node)
-            expression_trace[-1][new_token_leading_symbol].extend(expression_tokens)
+            newly_added_node = expression_trace[-1][new_node_leading_symbol]
+            newly_added_node.extend(expression_tokens)
 
         print 'returning expression tokens %r' % expression_tokens
         # Holy shit, these are lists within lists. Awesome. 
@@ -287,5 +286,9 @@ def main():
 if __name__ == "__main__":
     global expression_trace
     expression_trace = []
+
+    # uncomment repl() for troubleshooting in the terminal
     # repl()
 
+    s = '(define area (lambda (r) (* 3.141592653 (* r r))))'
+    print return_json(s)
