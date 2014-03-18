@@ -23,6 +23,18 @@ var json =
          ]
     };
 
+var mult =
+                    {
+                         "*": [
+                              "*",
+                              9,
+                              9,
+                              9,
+                              9,
+                              9
+                         ]
+                    };
+
 
 
 var createTree = function(json){
@@ -97,7 +109,6 @@ var createNode = function(args){
 var treeData = [
   {
     "name": "define",
-    // "parent": "null",
     "children": [
       {
         "name": "area",
@@ -173,11 +184,12 @@ var treeData = [
 //   }
 // ];
 
-var tree = createTree(json);
-console.log('tree', tree);
-console.log('treeData', treeData);
+// var tree = createTree(mult);
+// console.log('tree', tree);
+// console.log('treeData', treeData);
 
-console.log(JSON.stringify(treeData)==JSON.stringify(tree));
+// console.log(JSON.stringify(treeData)==JSON.stringify(tree));
+
 // oblivious to white space
 
 

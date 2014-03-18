@@ -16,13 +16,14 @@ $(document).ready(function(){
             // expressionTrace is the list object that contains one object for each line of code
             // for each object in expressionTrace, create a binary tree
             console.log(expressionTrace);
-            // for (var key in expressionTrace) {
-            //     console.log('in the for loop', expressionTrace[key]);
-            //     tree = createTree(expressionTrace[key]);
-            //     console.log('this is tree', tree);
+            for (var key in expressionTrace) {
+                console.log('in the for loop', expressionTrace[key]);
+                treeData = createTree(expressionTrace[key]);
 
-            //     n = depthFirstTraversal(tree);
-            // }
+
+                console.log('this is tree', JSON.stringify(treeData));
+                $("#tree").load("/tree");
+            }
 
         }).fail(function(){
             console.log('fail!!!');
