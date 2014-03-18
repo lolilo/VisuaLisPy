@@ -1,14 +1,25 @@
 <html>
-
     <head>
+        <style>
+            div#wrapper {
+            padding: 30px;
+            float:left;
+            width: 600px;
+            margin: -20px 0px 0px 0px;
+            border: 0px;
+          }
+        </style>
+
         <title>VisuaLisPy</title>
         <link href="/static/css/bootstrap.css" rel="stylesheet">
 <!--         <link href="/static/css/main.css" rel="stylesheet"> -->
     </head>
 
     <body>
-        <h1>VisuaLisPy</h1>
-        <p>visualize computer language interpretation</p>
+        <div id="wrapper">
+            <h1>VisuaLisPy</h1>
+            <p>visualize computer language interpretation</p>
+        </div>
         <div class="container">
             {% block body %}{% endblock %}
         </div>
