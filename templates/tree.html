@@ -22,7 +22,7 @@
    stroke-width: 3px;
  }
 
- .node text { font: 12px sans-serif; }
+ .node text { font: 13px sans-serif; }
 
  .link {
    fill: none;
@@ -46,36 +46,7 @@ load it in main index.html. Doesn't work if you only load it here. Weird.
  -->
 
 
-
 <script>
-
-// var treeData = [
-//   {
-//     "name": "Top Level",
-//     "parent": "null",
-//     "children": [
-//       {
-//         "name": "Level 2: A",
-//         "parent": "Top Level",
-//         "children": [
-//           {
-//             "name": "Son of A",
-//             "parent": "Level 2: A"
-//           },
-//           {
-//             "name": "Daughter of A",
-//             "parent": "Level 2: A"
-//           }
-//         ]
-//       },
-//       {
-//         "name": "Level 2: B",
-//         "parent": "Top Level"
-//       }
-//     ]
-//   }
-// ];
-
 
 var treeData = [
   {
@@ -142,7 +113,7 @@ var treeData = [
   // }
 
 // ************** Generate the tree diagram  *****************
-var margin = {top: 20, right: 0, bottom: 20, left: 120},
+var margin = {top: 20, right: 0, bottom: 20, left: 100},
  width = 3000 - margin.right - margin.left,
  height = 500 - margin.top - margin.bottom;
  

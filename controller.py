@@ -13,8 +13,6 @@ def index():
 @app.route("/get_json", methods=["POST"])
 def code_submitted():
     user_input = request.form.get("user_input")
-    # print request.form
-    # print request.form.get("user_input")
 
     if not user_input:
         print 'NO USER INPUT'
@@ -29,7 +27,7 @@ def code_submitted():
     return json_object
 
 # handler for tree HTML
-# just a test
+# just a test...maybe?
 @app.route("/tree")
 def tree():
     html = render_template("tree.html")
