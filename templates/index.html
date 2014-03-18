@@ -2,8 +2,7 @@
     {% block body %}
 
     <form id="code_submission" method="POST" action="/get_json">
-        <textarea class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="50" rows="5">
-          (define area (lambda (r) (* 3.141592653 (* r r))))
+        <textarea class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="50" rows="5">(define area (lambda (r) (* 3.141592653 (* r r))))
         </textarea><br>
 
       <input type="submit" class="btn btn-default" id="form_submit" value="Submit">
@@ -11,6 +10,9 @@
 
     <script src="/static/js/jquery-2.1.0.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+    <!-- json_to_D3_tree is called in ajax.js -->
+    <script src="/static/js/json_to_D3_tree.js"></script>
     <script src="/static/js/ajax.js"></script>
 
     <script> 
