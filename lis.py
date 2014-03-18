@@ -22,7 +22,7 @@ class Env(dict):
             return self.outer.find(var)
 
 def add_globals(env):
-    # Add Scheme standard procedures to an environment.
+    # Add Scheme standard procedures to an environment. This is only called once at the start of the program.
     import operator as op
     import arithmetic as art
 
@@ -78,10 +78,11 @@ def eval(x, env=global_env):
     if isa(x, Symbol):
         print '%r is a Symbol ' % x,
         print 'that evaluates to %r' % env.find(x)[x]
-        # print '%r is a Symbol; this will evaluate to %r' % (x, env.find(x)[x])
+        # .find is a method defined in the Env class
+        # env.find locates the proper environment
+        # the [x] returns the actual procedure/symbol definition
         return env.find(x)[x]
-        # .find is a method defined in the Env class here. 
-
+         
     # constant literal
     elif not isa(x, list):
         print "%r is not a list; %r is of type %r" % (x, x, type(x))
