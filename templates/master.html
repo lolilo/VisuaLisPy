@@ -3,19 +3,24 @@
         <style>
             div#head-wrapper {
             padding: 30px;
-            float:left;
+            /*float:left;*/
             width: 600px;
             margin: -20px 0px 0px 0px;
             border: 0px;
 
-          }
+            }
             div#foot-wrapper {
             padding: 30px;
             float:left;
             width: 100%;
             margin: -20px 0px 0px 0px;
             border: 0px;
-          }
+            }
+
+            .clear {
+            /*clear both left and right float*/
+            clear: both;
+            }
 
         </style>
         {% block css %}{% endblock %}
@@ -26,7 +31,7 @@
     </head>
 
     <body>
-        <div id="head-wrapper">
+        <div id="head-wrapper" class="row" onclick="location.href='/';" style="cursor: hand">
             <h1>VisuaLisPy</h1>
             <p>visualize computer language interpretation</p>
         </div>
@@ -34,11 +39,12 @@
         <div class="container">
             {% block body %}{% endblock %}
         </div>
-
+    <br class="clear"/>
     <footer>
         <div id="foot-wrapper">
           <p align='right'>
-              <a href="/about">about</a>
+                <a href="/">main</a> |
+                <a href="/about">about</a>
           </p>
         </div>
     </footer>

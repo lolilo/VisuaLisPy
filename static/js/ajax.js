@@ -44,23 +44,28 @@ $(document).ready(function(){
     });
 
     $("a").click(function(event){
-        event.preventDefault();
-        // console.log(event.currentTarget === this);
         var link = $(this).attr('href');
         // console.log(this);
         // console.log(link);
 
-        document.getElementById("message_display").value = "";
-        $.ajax({
-            url: link,
-            method: "GET"
-            // gets a program as a string
-        }).done(function(data){
-            code = data;
-            document.getElementById("user_input").value = code;
-        }).fail(function(){
-            console.log("fail. :(");
-        });
+        if (link == "/about"){
+            return;
+        }
+        else{
+            event.preventDefault();
+            // console.log(event.currentTarget === this);
+            document.getElementById("message_display").value = "";
+            $.ajax({
+                url: link,
+                method: "GET"
+                // gets a program as a string
+            }).done(function(data){
+                code = data;
+                document.getElementById("user_input").value = code;
+            }).fail(function(){
+                console.log("fail. :(");
+            });
+        }
     });
 });
 
