@@ -180,11 +180,18 @@ def read_from(tokens):
         # each node has its own environment -- must account for this later in eval
         # could optimize this later to refer to later constructed nodes. Meh. 
 
+
+
         expression_tokens = []
         while tokens[0] != ')':
+
+            # lambda (*args) -- need to format for tree display
+            if 'lambda' == tokens[0]:
+                tokens.insert(2, 'args')
+
             expression_tokens.append(read_from(tokens))
 
-        print 'popping off the end, )'
+        print 'popping off', tokens[0]
         tokens.pop(0) # pop off ')' Popping is faster than deleting. What. 
 
         # need to only append complete expression onto expression_trace
@@ -290,5 +297,5 @@ if __name__ == "__main__":
     # uncomment repl() for troubleshooting in the terminal
     # repl()
 
-    # s = '(define area (lambda (r) (* 3.141592653 (* r r))))'
-    # print return_json(s)
+    s = '(define area (lambda (r) (* 3.141592653 (* r r))))'
+    print return_json(s)
