@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
     var formSubmitButton = $("#form_submit");
+    var clearButton = $("#clear_program");
 
     formSubmitButton.on("click", function(event){
         event.preventDefault(); // prevent the browser form submission from happening
@@ -31,19 +32,30 @@ $(document).ready(function(){
         });
     });
 
+    clearButton.on("click", function(event){
+        event.preventDefault();
+        // clear any displayed message
+        messageArea = document.getElementById("message_display");
+        messageArea.innerHTML = "";
+        // clear text area
+        document.getElementById("user_input").value = "";
+    });
+
     $("a").click(function(event){
         event.preventDefault();
         // console.log(event.currentTarget === this);
         var link = $(this).attr('href');
         // console.log(this);
         // console.log(link);
+
+        document.getElementById("message_display").value = "";
         $.ajax({
             url: link,
             method: "GET"
             // gets a program as a string
         }).done(function(data){
             code = data;
-            document.getElementById("user_input").innerHTML = code;
+            document.getElementById("user_input").value = code;
         }).fail(function(){
             console.log("fail. :(");
         });
