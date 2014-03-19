@@ -274,9 +274,10 @@ def return_json(user_input):
     json_output["trace"].append(dict(expression_trace=expression_trace))
     json_object = json.dumps(json_output, indent=5)
 
+    print to_string(val)
     # print json_object
     return json_object
-    print to_string(val)
+
 
 def main():
     """In case we need this for something"""

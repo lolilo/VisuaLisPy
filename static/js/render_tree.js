@@ -23,9 +23,10 @@ var svg = d3.select("#tree").append("svg")
 function update(source) {
   // Clear anything we've drawn previously
   // selectAll.remove() was removing <g transform="translate(100,20)", which was essential for d3 to render the tree
-  svg.selectAll("g").remove();
-  svg.selectAll("path").remove();
-
+  if (svg.selectAll("g")){
+    svg.selectAll("g").remove();
+    svg.selectAll("path").remove();
+  }
   // Compute the new tree layout.
   var nodes = tree.nodes(root).reverse(),
    links = tree.links(nodes);
