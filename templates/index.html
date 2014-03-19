@@ -32,6 +32,18 @@
     line-height: 10px;
     }*/
 
+    .ex {
+      display: inline;
+      float: right;
+      width: 350px;
+      text-align: right;
+    }
+
+    .clear {
+      /*clear both left and right float*/
+      clear: both;
+    }
+
     .form-control {
       width: 34px;
     }
@@ -57,22 +69,25 @@
 
 {% block body %}
 
-  <form id="code_submission" method="POST" action="/get_json">
+<!-- onsubmit and onclick are default attributes that will run if jQuery has not yet loaded -->
+
+  <form id="code_submission" method="POST" action="/get_json" onsubmit="return false;">
     <textarea id="user_input" class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="20" rows="5">
       (define count (lambda (item L) (if L (+ (equal? item (car L)) (count item (cdr L))) 0)))
     </textarea>
     </p>
-    <input type="submit" class="btn btn-default" id="form_submit" value="Submit">
+    <input type="submit" class="btn btn-default" id="form_submit" value="Submit" onclick="return false;">
     <button class="btn btn-default" id="clear_program">Clear Program</button>
 <!--       <div>
       <pre> Examples:  <a href="get_db_code/area">define area</a> | <a href="/get_db_code/factorial">define factorial</a></pre>
       </div> -->
 
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Examples:  <a href="get_db_code/area">define area</a> | <a href="/get_db_code/factorial">define factorial</a>
+    <pre class="ex">Examples: <a href="get_db_code/area">define area</a> | <a href="/get_db_code/factorial">define factorial</a></pre>
+    <br class="clear"/>
   </form> 
 
   <hr/>
-  
+
   <div id="message_display"><p/><p/></div>
   <div id="tree"></div>
 
@@ -86,4 +101,4 @@
   <script src="/static/js/render_tree.js"></script>
   <script src="/static/js/ajax.js"></script>
 
-  {% endblock %}
+{% endblock %}

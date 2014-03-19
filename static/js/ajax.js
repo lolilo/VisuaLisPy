@@ -23,6 +23,8 @@ $(document).ready(function(){
                 messageArea = document.getElementById("message_display");
                 messageArea.innerHTML = "";
                 update(root); // renders tree in #tree div
+                $("svg").hide();
+                $("svg").fadeIn(800);
             }
 
         }).fail(function(){
