@@ -12,13 +12,19 @@ var tree = d3.layout.tree()
 var diagonal = d3.svg.diagonal()
  .projection(function(d) { return [d.y, d.x]; });
 
-var svg = d3.select("body").append("svg")
- .attr("width", width + margin.right + margin.left)
- .attr("height", height + margin.top + margin.bottom)
-  .append("g")
- .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+// previously was appending to body, d3.select("body").append("svg")
+// now we append to the #tree div. Need # since it is a div, not a tag like body.
+var svg = d3.select("#tree").append("svg")
+                 .attr("width", width + margin.right + margin.left)
+                 .attr("height", height + margin.top + margin.bottom)
+                 .append("g")
+                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 function update(source) {
+  // Clear anything we've drawn previously
+  // selectAll.remove() was removing <g transform="translate(100,20)", which was essential for d3 to render the tree
+  svg.selectAll("g").remove();
+  svg.selectAll("path").remove();
 
   // Compute the new tree layout.
   var nodes = tree.nodes(root).reverse(),

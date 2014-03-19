@@ -10,21 +10,18 @@ $(document).ready(function(){
             data: $("form#code_submission").serialize(),
             dataType: "json"
         }).done(function(data){
-            // console.log(typeof(data));
             expressionTrace = data["trace"][1]["expression_trace"];
-
             // expressionTrace is the list object that contains one object for each line of code
-            // for each object in expressionTrace, create a binary tree
-            console.log(expressionTrace);
+            // for each object in expressionTrace, create a tree
             for (var key in expressionTrace) {
-                console.log('in the for loop', expressionTrace[key]);
+                // console.log('in the for loop', expressionTrace[key]);
                 treeData = createTree(expressionTrace[key]);
                 console.log('this is tree', JSON.stringify(treeData));
 
                 root = treeData[0];
                 // call update function from render_tree.js
-                update(root);
-                // $("#tree").load("/tree");
+                var html = update(root);
+                console.log(html);
             }
 
         }).fail(function(){

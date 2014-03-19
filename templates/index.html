@@ -1,57 +1,39 @@
 {% extends 'master.html' %}
-    {% block body %}
+{% block css %}
+<style>
+   .node circle {
+     fill: #fff;
+     stroke: #00CC00;
+     stroke-width: 3px;
+   }
 
-      <head>
-        <meta charset="utf-8">
-        <style>
+   .node text { font: 13px sans-serif; }
 
-     .node circle {
-       fill: #fff;
-       stroke: #00CC00;
-       stroke-width: 3px;
-     }
+   .link {
+     fill: none;
+     stroke: #ccc;
+     stroke-width: 2px;
+   }
+</style>
+{% endblock %}
 
-     .node text { font: 13px sans-serif; }
+{% block body %}
 
-     .link {
-       fill: none;
-       stroke: #ccc;
-       stroke-width: 2px;
-     }
-     
-        </style>
-      </head>
+  <form id="code_submission" method="POST" action="/get_json">
+      <textarea class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="50" rows="5">(define area (lambda (r) (* 3.141592653 (* r r))))
+      </textarea><br>
 
+    <input type="submit" class="btn btn-default" id="form_submit" value="Submit">
+  </form>
 
-    <form id="code_submission" method="POST" action="/get_json">
-        <textarea class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="50" rows="5">(define area (lambda (r) (* 3.141592653 (* r r))))
-        </textarea><br>
+  <div id="tree"></div>
 
-      <input type="submit" class="btn btn-default" id="form_submit" value="Submit">
-    </form>
+  <script src="/static/js/jquery-2.1.0.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
-    <script src="/static/js/jquery-2.1.0.js"></script>
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <!-- json_to_D3_tree is called in ajax.js -->
+  <script src="/static/js/json_to_D3_tree.js"></script>
+  <script src="/static/js/render_tree.js"></script>
+  <script src="/static/js/ajax.js"></script>
 
-    <!-- json_to_D3_tree is called in ajax.js -->
-    <script src="/static/js/json_to_D3_tree.js"></script>
-    <script src="/static/js/render_tree.js"></script>
-    <script src="/static/js/ajax.js"></script>
-
-
-<!-- 
-
-
-    <script> 
-      $(function(){
-        $("#tree").load("/tree");
-      });
-    </script> 
-
- -->
-
-    <body>
-      <div id="tree"></div>
-    </body>
-
-    {% endblock %}
+  {% endblock %}

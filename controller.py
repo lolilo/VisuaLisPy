@@ -26,12 +26,5 @@ def code_submitted():
     # return JSON to ajax call
     return json_object
 
-# handler for tree HTML
-# just a test...maybe?
-# @app.route("/tree")
-# def tree():
-#     html = render_template("tree.html")
-#     return html
-
 if __name__ == "__main__":
     app.run(debug=True)
