@@ -9,6 +9,7 @@
       border: 0px;
     }
 
+    /*tree CSS*/
     .node circle {
       fill: #fff;
       stroke: #00CC00;
@@ -24,6 +25,12 @@
       stroke: #ccc;
       stroke-width: 2px;
     }
+    /*end tree CSS*/
+
+/*    br {
+    display: block;
+    line-height: 10px;
+    }*/
 
     .form-control {
       width: 34px;
@@ -35,6 +42,14 @@
       margin-left: -20px;
       text-align:left;
       background-color:#ffa;*/
+
+/*
+    div#examples {
+      padding: 0px;
+      float:left;
+    }
+*/
+
     }
 
 </style>
@@ -43,18 +58,25 @@
 {% block body %}
 
   <form id="code_submission" method="POST" action="/get_json">
-      <textarea class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="20" rows="5">(define count (lambda (item L) (if L (+ (equal? item (car L)) (count item (cdr L))) 0)))
-      </textarea><br>
-
+    <textarea id="user_input" class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="20" rows="5">
+      (define count (lambda (item L) (if L (+ (equal? item (car L)) (count item (cdr L))) 0)))
+    </textarea>
+    </p>
     <input type="submit" class="btn btn-default" id="form_submit" value="Submit">
-    <p/>
-    <pre> Examples:  <a href="get_db_code/area">define area</a> | <a href="/get_db_code/factorial">define factorial</a></pre>
-  </form>
+    <button class="btn btn-default" id="clear_program">Clear Program</button>
+<!--       <div>
+      <pre> Examples:  <a href="get_db_code/area">define area</a> | <a href="/get_db_code/factorial">define factorial</a></pre>
+      </div> -->
+
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Examples:  <a href="get_db_code/area">define area</a> | <a href="/get_db_code/factorial">define factorial</a>
+  </form> 
+
+    <hr/>
+
+
 
   <div id="message_display"><p/><p/></div>
   <div id="tree"></div>
-
-
 
 <!-- need to fix this so that ajax loads before user clicks submit button -->
 

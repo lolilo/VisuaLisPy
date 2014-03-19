@@ -1,13 +1,22 @@
 <html>
     <head>
         <style>
-            div#wrapper {
+            div#head-wrapper {
             padding: 30px;
             float:left;
             width: 600px;
             margin: -20px 0px 0px 0px;
             border: 0px;
+
           }
+            div#foot-wrapper {
+            padding: 30px;
+            float:left;
+            width: 100%;
+            margin: -20px 0px 0px 0px;
+            border: 0px;
+          }
+
         </style>
         {% block css %}{% endblock %}
 
@@ -17,7 +26,7 @@
     </head>
 
     <body>
-        <div id="wrapper">
+        <div id="head-wrapper">
             <h1>VisuaLisPy</h1>
             <p>visualize computer language interpretation</p>
         </div>
@@ -25,5 +34,15 @@
         <div class="container">
             {% block body %}{% endblock %}
         </div>
+
+    <footer>
+        <div id="foot-wrapper">
+          <p align='right'>
+              <a href="/about">about</a>
+          </p>
+        </div>
+    </footer>
+
+
     </body>
 </html>

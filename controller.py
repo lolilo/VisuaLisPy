@@ -30,8 +30,14 @@ def get_db_code(code_name):
     # return JSON to ajax call -- code from database
     code_object = db.s.query(db.Code).filter_by(name=code_name).one()
     code = code_object.code
-    json_object = lis.return_json(code)
-    return json_object
+    # json_object = lis.return_json(code)
+    # return json_object
+    return code
+
+@app.route("/about")
+def about():
+    html = render_template("about.html")
+    return html
 
 if __name__ == "__main__":
     app.run(debug=True)
