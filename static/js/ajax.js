@@ -14,9 +14,8 @@ $(document).ready(function(){
             // expressionTrace is the list object that contains one object for each line of code
             // for each object in expressionTrace, create a tree
             for (var key in expressionTrace) {
-                // console.log('in the for loop', expressionTrace[key]);
                 treeData = createTree(expressionTrace[key]);
-                console.log('this is tree', JSON.stringify(treeData));
+                // console.log('this is tree', JSON.stringify(treeData));
 
                 root = treeData[0];
                 // call update function from render_tree.js
