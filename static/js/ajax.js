@@ -30,6 +30,33 @@ $(document).ready(function(){
             message_area.innerHTML = fail_message;
         });
     });
+
+
+
+    $("a").click(function(event){
+        event.preventDefault();
+        // console.log(event.currentTarget === this);
+        var link = $(this).attr('href');
+        // console.log(this);
+        // console.log(link);
+        $.ajax({
+            url: link,
+            method: "GET",
+            dataType: "json"
+        }).done(function(data){
+            console.log(data);
+        }).fail(function(){
+            console.log("fail. :(");
+        });
+    });
+
+
+
+
+
+
+
+
 });
 
 
