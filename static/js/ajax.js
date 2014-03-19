@@ -20,12 +20,16 @@ $(document).ready(function(){
 
                 root = treeData[0];
                 // call update function from render_tree.js
-                var html = update(root);
-                console.log(html);
+                message_area = document.getElementById("message_display");
+                message_area.innerHTML = "";
+                update(root); // renders tree in #tree div
             }
 
         }).fail(function(){
-            console.log('fail!!!');
+            fail_message = "Sorry, your Scheme program is invalid or may contain an expression currently unsupported by VisuaLisPy.";
+            message_area = document.getElementById("message_display");
+            message_area.innerHTML = fail_message;
+            // console.log(fail_message);
         });
     });
 });

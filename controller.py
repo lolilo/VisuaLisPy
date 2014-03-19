@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, flash
 import lis
 
 app = Flask(__name__)
@@ -16,8 +16,7 @@ def code_submitted():
 
     if not user_input:
         print 'NO USER INPUT'
-        # return render_template("tree.html", json_object='Please type in valid code.')
-        # return 'Please type in valid code.'
+        flash("Sorry, your Scheme program is invalid or may contain expressions that are not currently supported.")
 
     if user_input:
         json_object = lis.return_json(user_input)
