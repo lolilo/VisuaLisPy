@@ -19,19 +19,17 @@ $(document).ready(function(){
 
                 root = treeData[0];
                 // call update function from render_tree.js
-                message_area = document.getElementById("message_display");
-                message_area.innerHTML = "";
+                messageArea = document.getElementById("message_display");
+                messageArea.innerHTML = "";
                 update(root); // renders tree in #tree div
             }
 
         }).fail(function(){
-            fail_message = "Sorry, the given Scheme program is invalid or may contain an expression currently unsupported by VisuaLisPy. :(";
-            message_area = document.getElementById("message_display");
-            message_area.innerHTML = fail_message;
+            failMessage = "Sorry, the given Scheme program is invalid or may contain an expression currently unsupported by VisuaLisPy. :(";
+            messageArea = document.getElementById("message_display");
+            messageArea.innerHTML = failMessage;
         });
     });
-
-
 
     $("a").click(function(event){
         event.preventDefault();
@@ -41,22 +39,15 @@ $(document).ready(function(){
         // console.log(link);
         $.ajax({
             url: link,
-            method: "GET",
-            dataType: "json"
+            method: "GET"
+            // gets a program as a string
         }).done(function(data){
-            console.log(data);
+            code = data;
+            document.getElementById("user_input").innerHTML = code;
         }).fail(function(){
             console.log("fail. :(");
         });
     });
-
-
-
-
-
-
-
-
 });
 
 

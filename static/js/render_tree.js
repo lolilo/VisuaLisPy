@@ -1,7 +1,7 @@
 
 // ************** Generate the tree diagram  *****************
 var margin = {top: 20, right: 0, bottom: 20, left: 100},
- width = 3000 - margin.right - margin.left,
+ width = 2000 - margin.right - margin.left,
  height = 500 - margin.top - margin.bottom;
  
 var i = 0;
