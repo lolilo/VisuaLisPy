@@ -1,26 +1,49 @@
 {% extends 'master.html' %}
 {% block css %}
 <style>
-   .node circle {
-     fill: #fff;
-     stroke: #00CC00;
-     stroke-width: 3px;
-   }
+    div#tree {
+      padding: 0px;
+      float:left;
+      width: 600px;
+      margin: -20px 0px 0px -100px;
+      border: 0px;
+    }
 
-   .node text { font: 13px sans-serif; }
+    .node circle {
+      fill: #fff;
+      stroke: #00CC00;
+      stroke-width: 3px;
+    }
 
-   .link {
-     fill: none;
-     stroke: #ccc;
-     stroke-width: 2px;
-   }
+    .node text { 
+      font: 13px sans-serif; 
+    }
+
+    .link {
+      fill: none;
+      stroke: #ccc;
+      stroke-width: 2px;
+    }
+
+    .form-control {
+      width: 34px;
+    }
+    /*HOW TO OVERWRITE BOOTSTRAP.*/
+
+   /* .form-control{
+      float:left;
+      margin-left: -20px;
+      text-align:left;
+      background-color:#ffa;*/
+    }
+
 </style>
 {% endblock %}
 
 {% block body %}
 
   <form id="code_submission" method="POST" action="/get_json">
-      <textarea class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="50" rows="5">(define area (lambda (r) (* 3.141592653 (* r r))))
+      <textarea class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="20" rows="5">(define count (lambda (item L) (if L (+ (equal? item (car L)) (count item (cdr L))) 0)))
       </textarea><br>
 
     <input type="submit" class="btn btn-default" id="form_submit" value="Submit">

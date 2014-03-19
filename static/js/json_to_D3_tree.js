@@ -50,6 +50,7 @@ var createTree = function(json){
 
 
 var createNode = function(args){
+  
 
   if (typeof(args) != typeof([])){
     // console.log('this is not a list', args);
@@ -66,38 +67,66 @@ var createNode = function(args){
       "children": []
     };
 
-    if (parent=="define"){
-      var define = parent;
-      var define_var = args[1];
-      var define_exp = args[2];
+    var variable = 'x'; // just a placeholder
+    var exp = [];
 
-      var define_var_node = createNode(define_var);
-      var define_exp_node = createNode(define_exp);
+    // JavaScript weridness. Sigh. 
+    // This is for arithmetic objects.
+    var arithmetic_parents = ["+", "-", "*", "/"];
+    var children = [];
+    var i = 0; // iterator
+
+    if (parent=="define"){
+      variable = args[1];
+      exp = args[2];
+
+      var define_var_node = createNode(variable);
+      var define_exp_node = createNode(exp);
     
       new_node["children"].push(define_var_node, define_exp_node);
     }
 
     else if (parent=="lambda"){
-      var lambda = parent;
-      var lambda_var = args[1][0];
-      var lambda_exp = args[2];
+      variable = args[1][0];
+      exp = args[2];
 
-      var lambda_var_node = createNode(lambda_var);
-      var lambda_exp_node = createNode(lambda_exp);
+      var lambda_var_node = createNode(variable);
+      var lambda_exp_node = createNode(exp);
       new_node["children"].push(lambda_var_node, lambda_exp_node);
     }
 
-    else if (parent=="*"){
-      // NEED TO HAVE THIS TAKE ARBITRARY AMOUNT OF ARGS
-      var children = args.slice(1);
+    // (if test conseq alt)
+    // else if (parent=="if"){
+    //   var test = args[1];
+    //   var conseq = args[2];
+    //   var alt = args[3];
+
+    //   var test_node = createNode(test);
+    //   var conseq_node = createNode(conseq);
+    //   var alt_node = createNode(alt);
+    //   new_node["children"].push(test_node, conseq_node, alt_node);
+    // }
+
+    else if (arithmetic_parents.indexOf(parent) >= 0){
+      // valid for arbitrary amount of args
+      children = args.slice(1);
       // console.log('these are the children for *', children);
-      for (var i in children){
-        // console.log('this is a child', children[i]);
+      for (i in children){
         child_node = createNode(children[i]);
         new_node["children"].push(child_node);
       }
-      // console.log('new_node for *', new_node);
     }
+
+    // this is a function that exists in the current environment
+    // may or maybe not be user defined
+    else{
+      children = args.slice(1);
+      for (i in children){
+        child_node = createNode(children[i]);
+        new_node["children"].push(child_node);
+      }
+    }
+
     // uncomment this to see all the individual objects in tree
     // console.log(new_node);
     return new_node;

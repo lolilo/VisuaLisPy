@@ -38,8 +38,8 @@ def add_globals(env):
             '>=' : op.ge,
             '<=' : op.le,
             '=' : op.eq,
-            'equal?' : op.eq, # values are equal
-            'eq?' : op.is_, # point to the same object in memory
+            'equal?' : op.eq, # true if variable values are equal
+            'eq?' : op.is_, # true if variables point to the same object in memory
             'length' : len,
 
             # Lambda forms (lambda expressions) have the same syntactic position as
@@ -289,5 +289,5 @@ if __name__ == "__main__":
     # uncomment repl() for troubleshooting in the terminal
     # repl()
 
-    s = '(define area (lambda (r) (* 3.141592653 (* r r))))'
-    print return_json(s)
+    # s = '(define area (lambda (r) (* 3.141592653 (* r r))))'
+    # print return_json(s)

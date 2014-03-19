@@ -26,10 +26,9 @@ $(document).ready(function(){
             }
 
         }).fail(function(){
-            fail_message = "Sorry, your Scheme program is invalid or may contain an expression currently unsupported by VisuaLisPy.";
+            fail_message = "Sorry, the given Scheme program is invalid or may contain an expression currently unsupported by VisuaLisPy. :(";
             message_area = document.getElementById("message_display");
             message_area.innerHTML = fail_message;
-            // console.log(fail_message);
         });
     });
 });
