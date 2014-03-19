@@ -67,8 +67,7 @@
 <!-- onsubmit and onclick are default attributes that will run if jQuery has not yet loaded -->
 
   <form id="code_submission" method="POST" action="/get_json" onsubmit="return false;">
-    <textarea id="user_input" class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="20" rows="5">
-      (define count (lambda (item L) (if L (+ (equal? item (car L)) (count item (cdr L))) 0)))
+    <textarea id="user_input" class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="20" rows="5">(define count (lambda (item L) (if L (+ (equal? item (car L)) (count item (cdr L))) 0)))
     </textarea>
     </p>
     <input type="submit" class="btn btn-default" id="form_submit" value="Submit" onclick="return false;">
