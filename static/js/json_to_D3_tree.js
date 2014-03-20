@@ -52,9 +52,7 @@ var createNode = function(args){
 
     if (parent=="lambda"){
       var lambda_args = args[1]; // arguments list
-      // console.log(lambda_args);
-      lambda_args.unshift('(args)'); // insert args node
-      console.log(lambda_args);
+      lambda_args.unshift("(args)"); // insert "(args)" node for tree rendering
     }
 
     for (i in children){
