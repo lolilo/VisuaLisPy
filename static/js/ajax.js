@@ -48,7 +48,7 @@ $(document).ready(function(){
         // console.log(this);
         // console.log(link);
 
-        if (link == "/about"){
+        if (link == "/about" || link == "/"){
             return;
         }
         else{
