@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import lis
 import db
-# import time
 
 app = Flask(__name__)
 app.secret_key = "thisisasecret"
@@ -24,7 +23,6 @@ def code_submitted():
         json_object = lis.return_json(user_input)
         print json_object
 
-    # time.sleep(5)
     return json_object
 
 @app.route("/get_db_code/<code_name>")
