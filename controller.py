@@ -39,5 +39,10 @@ def about():
     html = render_template("about.html")
     return html
 
+@app.route("/tree")
+def tree():
+    html = render_template("tree.html")
+    return html
+
 if __name__ == "__main__":
     app.run(debug=True)

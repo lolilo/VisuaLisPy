@@ -182,12 +182,6 @@ def read_from(tokens):
 
         expression_tokens = []
         while tokens[0] != ')':
-
-            # lambda (*args) -- need to format for tree display
-            # if 'lambda' == tokens[0]:
-            #     print 'LAMBDA SHITS'
-            #     tokens.insert(2, '')
-
             expression_tokens.append(read_from(tokens))
 
         # print 'popping off', tokens[0]

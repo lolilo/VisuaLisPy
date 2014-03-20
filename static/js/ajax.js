@@ -23,6 +23,7 @@ $(document).ready(function(){
                 messageArea = document.getElementById("message_display");
                 messageArea.innerHTML = "";
                 update(root); // renders tree in #tree div
+                // editTree(); // custom edit tree
                 $("svg").hide();
                 $("svg").fadeIn(800);
             }

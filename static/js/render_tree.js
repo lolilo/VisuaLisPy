@@ -27,9 +27,10 @@ function update(source) {
     svg.selectAll("g").remove();
     svg.selectAll("path").remove();
   }
+
   // Compute the new tree layout.
   var nodes = tree.nodes(root).reverse(),
-   links = tree.links(nodes);
+    links = tree.links(nodes);
 
   // Normalize for fixed-depth.
   nodes.forEach(function(d) { d.y = d.depth * 180; });
@@ -57,14 +58,6 @@ function update(source) {
    .text(function(d) { return d.name; })
    .style("fill-opacity", 1);
 
-
- // nodeEnter.append("text")
- //  .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
- //  .attr("dy", ".35em")
- //  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
- //  .text(function(d) { return d.name; })
- //  .style("fill-opacity", 1e-6);
-
   // Declare the links.
   var link = svg.selectAll("path.link")
    .data(links, function(d) { return d.target.id; });
@@ -73,5 +66,4 @@ function update(source) {
   link.enter().insert("path", "g")
    .attr("class", "link")
    .attr("d", diagonal);
-
 }
