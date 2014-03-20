@@ -85,7 +85,7 @@ def eval(x, env=global_env):
          
     # constant literal
     elif not isa(x, list):
-        print "%r is not a list; %r is of type %r" % (x, x, type(x))
+        # print "%r is not a list; %r is of type %r" % (x, x, type(x))
         return x
 
     # (quote exp)
@@ -166,7 +166,7 @@ def tokenize(s):
 
 def read_from(tokens):
     # read an expression from a sequence of tokens
-    print 'reading from tokens %r' % tokens
+    # print 'reading from tokens %r' % tokens
     if len(tokens) == 0:
         raise SyntaxError('unexpected EOF while reading')
     token = tokens.pop(0) # pop off first token and assign to token for analysis
@@ -176,7 +176,7 @@ def read_from(tokens):
 
     if '(' == token:
 
-        print '\n\nSTARTING A NEW NODE.'
+        # print '\n\nSTARTING A NEW NODE.'
         # each node has its own environment -- must account for this later in eval
         # could optimize this later to refer to later constructed nodes. Meh. 
 
@@ -189,7 +189,7 @@ def read_from(tokens):
 
             expression_tokens.append(read_from(tokens))
 
-        print 'popping off', tokens[0]
+        # print 'popping off', tokens[0]
         tokens.pop(0) # pop off ')' Popping is faster than deleting. What. 
 
         # need to only append complete expression onto expression_trace
@@ -199,7 +199,7 @@ def read_from(tokens):
             new_node = {new_node_leading_symbol : expression_tokens}
             expression_trace.append(new_node)
 
-        print 'returning expression tokens %r' % expression_tokens
+        # print 'returning expression tokens %r' % expression_tokens
         # Holy shit, these are lists within lists. Awesome. 
         # It's the binary tree! :O 
         return expression_tokens

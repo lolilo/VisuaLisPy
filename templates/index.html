@@ -64,9 +64,7 @@
 
 {% block body %}
 
-
-<!-- need to fix this so that ajax loads before user clicks submit button -->
-
+<!-- load jQuery/Ajax before user clicks submit button -->
   <script src="/static/js/jquery-2.1.0.js"></script>
   <script src="/static/js/ajax.js"></script>
 
@@ -78,11 +76,8 @@
     </p>
     <input type="submit" class="btn btn-default" id="form_submit" value="Submit" onclick="return false;">
     <button class="btn btn-default" id="clear_program">Clear Program</button>
-<!--       <div>
-      <pre> Examples:  <a href="get_db_code/area">define area</a> | <a href="/get_db_code/factorial">define factorial</a></pre>
-      </div> -->
 
-    <pre class="ex">Examples: <a href="get_db_code/area">define area</a> | <a href="/get_db_code/factorial">define factorial</a></pre>
+    <pre class="ex">Examples: <a href="get_db_code/area" onclick="return false;">define area</a> | <a href="/get_db_code/factorial" onclick="return false;">define factorial</a></pre>
     <br class="clear"/>
   </form> 
 
@@ -91,9 +86,7 @@
   <div id="message_display"><p/><p/></div>
   <div id="tree"></div>
 
-
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-
   <!-- json_to_D3_tree is called in ajax.js -->
   <script src="/static/js/json_to_D3_tree.js"></script>
   <script src="/static/js/render_tree.js"></script>
