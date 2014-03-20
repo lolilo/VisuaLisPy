@@ -18,10 +18,8 @@ function editTree(env){
         decoded = $("<div/>").html(text.innerHTML).text();
 
         if (env[decoded]){
-            console.log('here');
             $(circle).css('stroke', '#00CC00');
         }
-        // console.log(text.innerHTML);
     }
 }
 

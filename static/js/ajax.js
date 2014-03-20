@@ -12,23 +12,15 @@ $(document).ready(function(){
             dataType: "json"
         }).done(function(data){
             var key;
-            var env_functions = [];
             // get environment data
-            // env = get_env(data);
-
             var env = data["trace"][0]["global_env"];
-            // for (key in env){
-            //     env_functions.push(key);
-            // }
-            console.log(env);
-
+            // console.log(env);
             var expressionTrace = data["trace"][1]["expression_trace"];
             // expressionTrace is the list object that contains one object for each line of code
             // for each object in expressionTrace, create a tree
             for (key in expressionTrace) {
                 treeData = createTree(expressionTrace[key]);
                 // console.log('this is tree', JSON.stringify(treeData));
-
                 root = treeData[0];
                 // call update function from render_tree.js
                 messageArea = document.getElementById("message_display");
