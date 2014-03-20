@@ -11,10 +11,21 @@ $(document).ready(function(){
             data: $("form#code_submission").serialize(),
             dataType: "json"
         }).done(function(data){
-            expressionTrace = data["trace"][1]["expression_trace"];
+            var key;
+            var env_functions = [];
+            // get environment data
+            // env = get_env(data);
+
+            var env = data["trace"][0]["global_env"];
+            // for (key in env){
+            //     env_functions.push(key);
+            // }
+            console.log(env);
+
+            var expressionTrace = data["trace"][1]["expression_trace"];
             // expressionTrace is the list object that contains one object for each line of code
             // for each object in expressionTrace, create a tree
-            for (var key in expressionTrace) {
+            for (key in expressionTrace) {
                 treeData = createTree(expressionTrace[key]);
                 // console.log('this is tree', JSON.stringify(treeData));
 
@@ -23,7 +34,7 @@ $(document).ready(function(){
                 messageArea = document.getElementById("message_display");
                 messageArea.innerHTML = "";
                 update(root); // renders tree in #tree div
-                editTree(); // custom edit tree
+                editTree(env); // custom edit tree
                 $("svg").hide();
                 $("svg").fadeIn(800);
             }
