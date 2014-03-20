@@ -50,6 +50,13 @@ var createNode = function(args){
     var children = args.slice(1);
     var i = 0; // iterator
 
+    if (parent=="lambda"){
+      var lambda_args = args[1]; // arguments list
+      // console.log(lambda_args);
+      lambda_args.unshift('(args)'); // insert args node
+      console.log(lambda_args);
+    }
+
     for (i in children){
       child_node = createNode(children[i]);
       new_node["children"].push(child_node);
