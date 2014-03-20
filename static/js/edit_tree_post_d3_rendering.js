@@ -11,8 +11,14 @@ function editTree(env){
         // console.log(node);
         circle = $(node).children('circle')[0];
         text = $(node).children('text')[0];
+        // must decode special characters, if there are any
+        // This sets the innerHTML of a new element (not appended to the page), 
+        // causing jQuery to decode it into HTML, 
+        // which is then pulled back out with .text().
+        decoded = $("<div/>").html(text.innerHTML).text();
 
-        if (env[text.innerHTML]){
+        if (env[decoded]){
+            console.log('here');
             $(circle).css('stroke', '#00CC00');
         }
         // console.log(text.innerHTML);
