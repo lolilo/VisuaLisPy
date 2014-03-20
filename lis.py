@@ -176,7 +176,7 @@ def read_from(tokens):
 
     if '(' == token:
 
-        # print '\n\nSTARTING A NEW NODE.'
+        print '\n\nSTARTING A NEW NODE.'
         # each node has its own environment -- must account for this later in eval
         # could optimize this later to refer to later constructed nodes. Meh. 
 
@@ -185,6 +185,7 @@ def read_from(tokens):
 
             # lambda (*args) -- need to format for tree display
             if 'lambda' == tokens[0]:
+                print 'LAMBDA SHITS'
                 tokens.insert(2, '')
 
             expression_tokens.append(read_from(tokens))

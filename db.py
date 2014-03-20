@@ -23,8 +23,6 @@ class Code(Base):
     # s.query(Code).filter_by(id=1).one()
     # s.query(Code).filter_by(name='area').one()
 
-
-
 ### End class declarations
 
 def main():
