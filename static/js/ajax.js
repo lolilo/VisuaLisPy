@@ -1,3 +1,5 @@
+var env = {};
+
 $(document).ready(function(){
 
     var formSubmitButton = $("#form_submit");
@@ -13,7 +15,7 @@ $(document).ready(function(){
         }).done(function(data){
             var key;
             // get environment data
-            var env = data["trace"][0]["global_env"];
+            env = data["trace"][0]["global_env"];
             // console.log(env);
             var expressionTrace = data["trace"][1]["expression_trace"];
             // expressionTrace is the list object that contains one object for each line of code
@@ -32,7 +34,7 @@ $(document).ready(function(){
                     svg.selectAll("path").remove();
                 }
                 render_tree(root); // renders tree in #tree div
-                editTree(env); // custom edit tree
+                // editTree(env); // custom edit tree
                 // $("svg").hide();
                 // $("svg").fadeIn(800);
             }

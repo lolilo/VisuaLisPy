@@ -18,6 +18,7 @@ var svg = d3.select("#tree").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+// takes in (root, env)
 function render_tree(flare) {
   root = flare;
   root.x0 = height / 2;
@@ -54,7 +55,7 @@ function update(source) {
   var nodeEnter = node.enter().append("g")
       .attr("class", "node")
       .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-      .on("click", click);
+      .on("click", clickNode);
 
   nodeEnter.append("circle")
       .attr("r", 1e-6)
@@ -78,6 +79,10 @@ function update(source) {
 
   nodeUpdate.select("text")
       .style("fill-opacity", 1);
+
+  // console.log('UPDATING');
+  // console.log(env);
+  editTree(env);
 
   // Transition exiting nodes to the parent's new position.
   var nodeExit = node.exit().transition()
@@ -125,7 +130,7 @@ function update(source) {
 }
 
 // Toggle children on click.
-function click(d) {
+function clickNode(d) {
   if (d.children) {
     d._children = d.children;
     d.children = null;
