@@ -19,7 +19,7 @@ var svg = d3.select("#tree").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // takes in (root, env)
-function render_tree(flare) {
+function renderTree(flare) {
   root = flare;
   root.x0 = height / 2;
   root.y0 = 0;

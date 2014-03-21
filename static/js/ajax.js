@@ -33,8 +33,7 @@ $(document).ready(function(){
                     svg.selectAll("g").remove();
                     svg.selectAll("path").remove();
                 }
-                render_tree(root); // renders tree in #tree div
-                // editTree(env); // custom edit tree
+                renderTree(root); // renders tree in #tree div
                 // $("svg").hide();
                 // $("svg").fadeIn(800);
             }
