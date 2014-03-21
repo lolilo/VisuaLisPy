@@ -26,12 +26,12 @@ function render_tree(flare) {
   function collapse(d) {
     if (d.children) {
       d._children = d.children;
-      d._children.forEach(collapse);
+      // d._children.forEach(collapse);
       d.children = null;
     }
   }
-
-  root.children.forEach(collapse);
+  // display all nodes upon first rendering -- commented this out
+  // root.children.forEach(collapse);
   update(root);
 }
 
