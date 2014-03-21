@@ -25,10 +25,10 @@ $(document).ready(function(){
                 // call update function from render_tree.js
                 messageArea = document.getElementById("message_display");
                 messageArea.innerHTML = "";
-                update(root); // renders tree in #tree div
+                render_tree(root); // renders tree in #tree div
                 editTree(env); // custom edit tree
-                $("svg").hide();
-                $("svg").fadeIn(800);
+                // $("svg").hide();
+                // $("svg").fadeIn(800);
             }
 
         }).fail(function(){
