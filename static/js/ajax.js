@@ -25,6 +25,12 @@ $(document).ready(function(){
                 // call update function from render_tree.js
                 messageArea = document.getElementById("message_display");
                 messageArea.innerHTML = "";
+
+                // clear canvas
+                if (svg.selectAll("g")){
+                    svg.selectAll("g").remove();
+                    svg.selectAll("path").remove();
+                }
                 render_tree(root); // renders tree in #tree div
                 editTree(env); // custom edit tree
                 // $("svg").hide();
@@ -72,6 +78,4 @@ $(document).ready(function(){
         }
     });
 });
-
-
 
