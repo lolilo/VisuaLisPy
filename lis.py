@@ -113,6 +113,7 @@ def eval(x, env=global_env):
 
     # (define var exp)
     elif x[0] == 'define':
+        print x
         (_, var, exp) = x
         print 'define %r as %r' % (var, exp)
         env[var] = eval(exp, env) # adds var to the global environment dictionary
@@ -166,7 +167,7 @@ def tokenize(s):
 
 def read_from(tokens):
     # read an expression from a sequence of tokens
-    # print 'reading from tokens %r' % tokens
+    print 'reading from tokens %r' % tokens
     if len(tokens) == 0:
         raise SyntaxError('unexpected EOF while reading')
     token = tokens.pop(0) # pop off first token and assign to token for analysis
@@ -184,7 +185,7 @@ def read_from(tokens):
         while tokens[0] != ')':
             expression_tokens.append(read_from(tokens))
 
-        # print 'popping off', tokens[0]
+        print 'popping off', tokens[0]
         tokens.pop(0) # pop off ')' Popping is faster than deleting. What. 
 
         # need to only append complete expression onto expression_trace
