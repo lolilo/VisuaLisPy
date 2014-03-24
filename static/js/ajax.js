@@ -1,10 +1,8 @@
 var env = {};
 
 $(document).ready(function(){
-
     var formSubmitButton = $("#form_submit");
     var clearButton = $("#clear_program");
-
     var drawTree = function(data){
         var key;
         // get environment data
@@ -39,10 +37,14 @@ $(document).ready(function(){
             method: "POST",
             data: $("form#code_submission").serialize(),
             dataType: "json"
-        }).done(function(data){
+            // when ajax call occurs, sets both callback functions
+            // not like an if statement where either or runs
+        }).done(drawTree
             // Why can't I just have drawTree--need to extract data via anonymous function?
-            drawTree(data);
-        }).fail(function(){
+            // drawTree(data); this breaks because 
+            // data is not yet defined when ajax tries to set the callback 
+            // and we attempt to run drawTree
+        ).fail(function(){
             failMessage = "Sorry, the given Scheme program is invalid or may contain an expression currently unsupported by VisuaLisPy. :(";
             messageArea = document.getElementById("message_display");
             messageArea.innerHTML = failMessage;
