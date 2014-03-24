@@ -5,6 +5,33 @@ $(document).ready(function(){
     var formSubmitButton = $("#form_submit");
     var clearButton = $("#clear_program");
 
+    var drawTree = function(data){
+        var key;
+        // get environment data
+        env = data["trace"][0]["global_env"];
+        // console.log(env);
+        var expressionTrace = data["trace"][1]["expression_trace"];
+        // expressionTrace is the list object that contains one object for each line of code
+        // for each object in expressionTrace, create a tree
+        for (key in expressionTrace) {
+            treeData = createTree(expressionTrace[key]);
+            // console.log('this is tree', JSON.stringify(treeData));
+            root = treeData[0];
+            // call update function from render_tree.js
+            messageArea = document.getElementById("message_display");
+            messageArea.innerHTML = "";
+
+            // clear canvas
+            if (svg.selectAll("g")){
+                svg.selectAll("g").remove();
+                svg.selectAll("path").remove();
+            }
+            renderTree(root); // renders tree in #tree div
+            // $("svg").hide();
+            // $("svg").fadeIn(800);
+        }
+    };
+
     formSubmitButton.on("click", function(event){
         event.preventDefault(); // prevent the browser form submission from happening
         $.ajax({
@@ -13,31 +40,8 @@ $(document).ready(function(){
             data: $("form#code_submission").serialize(),
             dataType: "json"
         }).done(function(data){
-            var key;
-            // get environment data
-            env = data["trace"][0]["global_env"];
-            // console.log(env);
-            var expressionTrace = data["trace"][1]["expression_trace"];
-            // expressionTrace is the list object that contains one object for each line of code
-            // for each object in expressionTrace, create a tree
-            for (key in expressionTrace) {
-                treeData = createTree(expressionTrace[key]);
-                // console.log('this is tree', JSON.stringify(treeData));
-                root = treeData[0];
-                // call update function from render_tree.js
-                messageArea = document.getElementById("message_display");
-                messageArea.innerHTML = "";
-
-                // clear canvas
-                if (svg.selectAll("g")){
-                    svg.selectAll("g").remove();
-                    svg.selectAll("path").remove();
-                }
-                renderTree(root); // renders tree in #tree div
-                // $("svg").hide();
-                // $("svg").fadeIn(800);
-            }
-
+            // Why can't I just have drawTree--need to extract data via anonymous function?
+            drawTree(data);
         }).fail(function(){
             failMessage = "Sorry, the given Scheme program is invalid or may contain an expression currently unsupported by VisuaLisPy. :(";
             messageArea = document.getElementById("message_display");
