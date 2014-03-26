@@ -3,8 +3,11 @@ from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import sessionmaker, scoped_session
 # from sqlalchemy.orm import sessionmaker, scoped_session
+import os
 
-engine = create_engine("sqlite:///code.db", echo=False)
+exp = os.environ.get("DATABASE_URL", "postgres://localhost/programs")
+engine = create_engine(exp, echo=False)
+# engine = create_engine("sqlite:///code.db", echo=False)
 s = scoped_session(sessionmaker(
                                 bind=engine,
                                 autocommit = False,
