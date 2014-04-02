@@ -84,3 +84,5 @@ the interpreter will output a JSON object in the following format.
                }
           ]
      }
+
+Whereas Scheme's grammar is straightforward enough to map input to output with little modification, JavaScript is more complex. I used regular expressions to outline JavaScript tokenizing rules and [PLY (Python Lex-Yacc)](http://www.dabeaz.com/ply/) to generate a lexer and parser. 
