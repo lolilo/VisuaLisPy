@@ -12,8 +12,9 @@ $(document).ready(function(){
         // expressionTrace is the list object that contains one object for each line of code
         // for each object in expressionTrace, create a tree
         for (key in expressionTrace) {
-            treeData = createTree(expressionTrace[key]);
-            // console.log('this is tree', JSON.stringify(treeData));
+            treeData = createD3TreeFormat(expressionTrace[key]);
+            console.log('this is tree', JSON.stringify(treeData, null, '\t'));
+
             root = treeData[0];
             // call update function from render_tree.js
             messageArea = document.getElementById("message_display");

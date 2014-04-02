@@ -2,7 +2,9 @@ lispy_web
 =========
 
 For the user input of defining a fibonnaci function, 
-(define fib (lambda (n) (if (< n 2) n (+ (fib (- n 1)) (fib (- n 2))))))
+
+     (define fib (lambda (n) (if (< n 2) n (+ (fib (- n 1)) (fib (- n 2))))))
+
 the interpreter will output a JSON object in the following format.
 
      {
