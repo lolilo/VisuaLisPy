@@ -1,7 +1,8 @@
 lispy_web
 =========
 
-     JSON object
+For the user input of defining a fibonnaci function, (define fib (lambda (n) (if (< n 2) n (+ (fib (- n 1)) (fib (- n 2)))))), the interpreter will output a JSON object in the following format.
+
      {
           "code": [
                "(define fib (lambda (n) (if (< n 2) n (+ (fib (- n 1)) (fib (- n 2))))))"
@@ -31,7 +32,6 @@ lispy_web
                          "car": "<function <lambda> at 0x15d6e60>", 
                          "list": "<function <lambda> at 0x15d6f50>", 
                          "length": "<built-in function len>", 
-                         "fact": "<function <lambda> at 0x7f63200de500>"
                     }
                }, 
                {
