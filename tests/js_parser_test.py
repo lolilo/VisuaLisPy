@@ -5,27 +5,6 @@ from js_parser import *
 
 class TestListOperations(unittest.TestCase):
 
-    # def setUp(self):
-        # self.months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
-        #                'Sep', 'Oct', 'Nov', 'Dec']
-        # self.notes = ['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do']
-        # self.multiples = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]
-        
-
-
-    # def test_1_A_head(self):
-    #     self.assertEqual(head(self.months), 'Jan')
-    #     self.assertEqual(head(self.notes), 'Do')
-    #     self.assertEqual(head(self.multiples), 0)
-
-    # def test_1_B_tail(self):
-    #     self.assertEqual(tail(self.months), ['Feb', 'Mar', 'Apr', 'May', 'Jun',
-    #                                          'Jul', 'Aug', 'Sep', 'Oct', 'Nov',
-    #                                          'Dec'])
-    #     self.assertEqual(tail(self.notes), ['Re', 'Mi', 'Fa', 'So', 'La', 'Ti',
-    #                                         'Do'])
-    #     self.assertEqual(tail(self.multiples), [3, 6, 9, 12, 15, 18, 21, 24, 27])
-
     # Simple function with no arguments and a one-statement body.
     def test_js1(self):
         self.jstext1 = "function myfun() { return nothing ; }"
@@ -75,7 +54,6 @@ class TestListOperations(unittest.TestCase):
         self.jstext6 = "apply(1, 2 + eval(recursion), sqrt(2))"
         self.jstree6 = [('stmt', ('exp', ('call', 'apply', [('number', 1.0), ('binop', ('number', 2.0), '+', ('call', 'eval', [('identifier', 'recursion')])), ('call', 'sqrt', [('number', 2.0)])])))]
         self.assertEqual(test_parser(self.jstext6), self.jstree6) 
-
 
 if __name__ == '__main__':
     unittest.main()
