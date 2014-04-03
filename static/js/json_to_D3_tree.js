@@ -80,7 +80,7 @@ var createJSD3TreeFormat = function(json){
     var block = json[i]; // block to parse
     console.log('block is now ' + JSON.stringify(block, null, '\t'));
     
-    if (json[i][0] == "stmt" || json[i][0] == "FUNCTION"){
+    if (json[i][0] == "stmt"){
       console.log('editing block start point');
       block = json[i][1];
 
@@ -97,36 +97,6 @@ var createJSD3TreeFormat = function(json){
     tree.push(createJSNode(block));
   }
 
-
-
-
-  // for (i; i < json.length; i++){
-  //   console.log('IS THIS A FUNCTION BLOCK? ' + json[i][0]);
-  //   if (json[i][0] == "function"){
-  //     console.log('IS THIS A FUNCTION BLOCK? ' + json[i][0]);
-  //     jsElement = json[i];
-  //   }
-
-  //   else {
-  //     jsElement = json[i][0];
-  //     console.log('json is ' + json_input);
-  //     console.log('jsElement is ' + jsElement);
-
-  //     if (jsElement=="stmt"){
-  //       jsElement = json[i][1];
-  //     }
-  //     if (jsElement[0]=="exp"){
-  //       jsElement = json[i][1][1];
-  //     }
-  //   }
-  //   console.log('jsElement is now ' + JSON.stringify(jsElement, null, '\t'));
-  //   json_list = jsElement;
-  //   // console.log('json_list is ' + json_list);
-  //   tree.push(createJSNode(json_list));
-  // }
-
-
-
   // return final tree
   return tree;
 };
@@ -138,21 +108,20 @@ var createJSNode = function(args){
 
   var parent = args[1];
   var childArray = args.slice(2);
+  if (args[0] == "function" || args[0] == "BLOCK"){
+    parent = args[0];
+    if (parent == "BLOCK"){
+      childArray = args[1];
+    }
+  }
+  
+
+  // BLOCK is followed by a list of lists
 
   s_parent = JSON.stringify(parent, null, '\t');
   console.log('parent is ', s_parent);
 
 
-  // while (typeof(parent) == typeof([])){
-  //   parent = parent[0];
-  //   nextChildArray = childArray;
-  //   childArray = childArray[1]; // if we iterate again, this will be updated. 
-    
-
-  //   console.log('in while loop!');
-  //   console.log('parent is ', JSON.stringify(parent, null, '\t'));
-  //   console.log('childArray is ', JSON.stringify(childArray, null, '\t'));
-  // }
   console.log("MAKING NODE FOR PARENT " + parent);
   var new_node = {
     "name": parent,
@@ -165,7 +134,7 @@ var createJSNode = function(args){
   //   console.log('childArray is now', JSON.stringify(childArray, null, '\t'));
   // }
 
-  console.log('child array is', childArray);
+  console.log('child array is', JSON.stringify(childArray, null, '\t'));
   // var children = childArray.slice(1);
   // console.log('SLICING ' + JSON.stringify(children, null, '\t'));
   var i = 0; // iterator
