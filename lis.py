@@ -235,9 +235,9 @@ def repl():
         user_input = raw_input('lis.py > ')
         # able to push enter infinitely
         if user_input:
-            return_json(user_input)
+            format_json(user_input)
 
-def return_json(user_input):
+def format_json(user_input):
 
     # prepare tracing structures
     global expression_trace 
@@ -291,4 +291,4 @@ if __name__ == "__main__":
     # repl()
 
     # s = '(define area (lambda (r) (* 3.141592653 (* r r))))'
-    # print return_json(s)
+    # print format_json(s)

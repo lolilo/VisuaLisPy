@@ -49,36 +49,35 @@ class TestListOperations(unittest.TestCase):
         # can I differentiate from stmt and exp without filtering stmt first? 
         self.jstree5 = [('stmt', ('exp', ('binop', '+', ('identifier', 'x'), ('number', 1.0))))]
         self.assertEqual(test_parser(self.jstext5), self.jstree5)
-    # nested function calls!
+    # Simple associativity.
     def test_js6(self):
-        self.jstext6 = "apply(1, 2 + eval(recursion), sqrt(2))"
-        self.jstree6 = [('stmt', ('exp', ('call', 'apply', [('number', 1.0), ('binop', '+', ('number', 2.0), ('call', 'eval', [('identifier', 'recursion')])), ('call', 'sqrt', [('number', 2.0)])])))]
+        self.jstext6 = "1 - 2 - 3"   # (1-2)-3
+        self.jstree6 = [('stmt', ('exp', ('binop', '-', ('binop', '-', ('number', 1.0), ('number', 2.0)), ('number', 3.0))))]
         self.assertEqual(test_parser(self.jstext6), self.jstree6) 
-    # fibonacci
+    # Precedence and associativity.
     def test_js7(self):
-        self.jstext7 = """function fib(n){
-                if (n < 2){
-                    return n;
-                }
-                else {
-                    return fib(n - 1) + fib(n - 2);
-                };
-            }"""
-        self.jstree7 = [('function', 'fib', ['n'], [('if-then-else', ('binop', '<', ('identifier', 'n'), ('number', 2.0)), [('return', ('identifier', 'n'))], [('return', ('binop', '+', ('call', 'fib', [('binop', '-', ('identifier', 'n'), ('number', 1.0))]), ('call', 'fib', [('binop', '-', ('identifier', 'n'), ('number', 2.0))])))])])]
-        self.assertEqual(test_parser(self.jstext7), self.jstree7)
+        self.jstext7 = "1 + 2 * 3 - 4 / 5 * (6 + 2)" 
+        self.jstree7 = [('stmt', ('exp', ('binop', '-', ('binop', '+', ('number', 1.0), ('binop', '*', ('number', 2.0), ('number', 3.0))), ('binop', '*', ('binop', '/', ('number', 4.0), ('number', 5.0)), ('binop', '+', ('number', 6.0), ('number', 2.0))))))]
+        self.assertEqual(test_parser(self.jstext7), self.jstree7) 
 
+    # # nested function calls!
+    # def test_js6(self):
+    #     self.jstext6 = "apply(1, 2 + eval(recursion), sqrt(2))"
+    #     self.jstree6 = [('stmt', ('exp', ('call', 'apply', [('number', 1.0), ('binop', '+', ('number', 2.0), ('call', 'eval', [('identifier', 'recursion')])), ('call', 'sqrt', [('number', 2.0)])])))]
+    #     self.assertEqual(test_parser(self.jstext6), self.jstree6) 
+    # # fibonacci
+    # def test_js7(self):
+    #     self.jstext7 = """function fib(n){
+    #             if (n < 2){
+    #                 return n;
+    #             }
+    #             else {
+    #                 return fib(n - 1) + fib(n - 2);
+    #             };
+    #         }"""
+    #     self.jstree7 = [('function', 'fib', ['n'], [('if-then-else', ('binop', '<', ('identifier', 'n'), ('number', 2.0)), [('return', ('identifier', 'n'))], [('return', ('binop', '+', ('call', 'fib', [('binop', '-', ('identifier', 'n'), ('number', 1.0))]), ('call', 'fib', [('binop', '-', ('identifier', 'n'), ('number', 2.0))])))])])]
+        # self.assertEqual(test_parser(self.jstext7), self.jstree7)
 
-# # Simple associativity.
-# jstext2 = "1 - 2 - 3"   # means (1-2)-3
-# jstree2 = ('binop', ('binop', ('number', 1.0), '-', ('number', 2.0)), '-',
-# ('number', 3.0))
-# print test_parser(jstext2) == jstree2
-# print test_parser(jstext2)
-# # Precedence and associativity.
-# jstext3 = "1 + 2 * 3 - 4 / 5 * (6 + 2)" 
-# jstree3 = ('binop', ('binop', ('number', 1.0), '+', ('binop', ('number', 2.0), '*', ('number', 3.0))), '-', ('binop', ('binop', ('number', 4.0), '/', ('number', 5.0)), '*', ('binop', ('number', 6.0), '+', ('number', 2.0))))
-# print test_parser(jstext3) == jstree3
-# print test_parser(jstext3)
 # # String and boolean constants, comparisons.
 # jstext4 = ' "hello" == "goodbye" || true && false '
 # jstree4 = ('binop', ('binop', ('string', 'hello'), '==', ('string', 'goodbye')), '||', ('binop', ('true', 'true'), '&&', ('false', 'false')))

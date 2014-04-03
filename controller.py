@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import lis
+import js_parser
 import db
 
 app = Flask(__name__)
@@ -14,15 +15,18 @@ def index():
 @app.route("/get_json", methods=["POST"])
 def code_submitted():
     # return JSON to ajax call -- code input by user
-    user_input = request.form.get("user_input")
+    user_input = request.form.get("user_input").strip()
 
     if not user_input:
         print 'NO USER INPUT'
 
-    if user_input:
-        json_object = lis.return_json(user_input)
-        print json_object
+    elif user_input[0] == '(': # if Scheme program
+        json_object = lis.format_json(user_input)
 
+    else: # try JavaScript
+        json_object = js_parser.format_json(user_input)
+    
+    print json_object
     return json_object
 
 @app.route("/get_db_code/<code_name>")

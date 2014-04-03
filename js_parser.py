@@ -236,5 +236,20 @@ js_ex = """function fib(n){
     };
 }"""
 # print test_parser(js_ex)
-# j_ob = json.dumps(test_parser(js_ex), indent=5)
+j_ob = json.dumps(test_parser(jstext3), indent=5)
 # print j_ob
+
+
+def format_json(user_input):
+  # prepare JSON output object
+  json_output = {
+      # code is a list of user_input_lines as strings
+      "code" : user_input, 
+      # trace is a list of dictionaries
+      "trace" : []
+      }
+  
+  json_output["trace"].append(dict(global_env="currently not available"))
+  json_output["trace"].append(dict(expression_trace=test_parser(user_input)))
+
+  return json.dumps(json_output, indent=5)

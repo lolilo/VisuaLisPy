@@ -6,10 +6,11 @@ $(document).ready(function(){
     var drawTree = function(data){
         var key;
         // get environment data
+        console.log(JSON.stringify(data, null, '\t'));
         env = data["trace"][0]["global_env"];
         // console.log(env);
         var expressionTrace = data["trace"][1]["expression_trace"];
-        // expressionTrace is the list object that contains one object for each line of code
+        // expressionTrace is the list object that contains one object for each block of code
         // for each object in expressionTrace, create a tree
         for (key in expressionTrace) {
             treeData = createD3TreeFormat(expressionTrace[key]);
