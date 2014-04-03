@@ -38,7 +38,7 @@ def p_element_independent_stmt(p):
 
 def p_optparams(p):
   'optparams : params'
-  p[0] = p[1]
+  p[0] = ("parameters", p[1])
 
 def p_optparams_empty(p):
   'optparams : '
@@ -51,7 +51,7 @@ def p_params(p):
 # one parameter, or last parameter
 def p_params_one(p):
   'params : IDENTIFIER'
-  p[0] = ("IDENTIFIER", [p[1]])
+  p[0] = [p[1]]
 
 def p_compound_stmt(p):
   'compoundstmt : LBRACE stmts RBRACE'
