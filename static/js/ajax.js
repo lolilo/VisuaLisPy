@@ -18,17 +18,19 @@ $(document).ready(function(){
 
 
         for (key in expressionTrace) {
-            jsElement = expressionTrace[key][0];
+            jsElement = expressionTrace;
+            console.log(JSON.stringify(jsElement, null, '\t'));
+            treeData = createJSD3TreeFormat(jsElement);
 
-            // TODO: this is unncessary work, checking each time
-            if (jsElement == "stmt" || jsElement == "function") {
-                // console.log(expressionTrace);
-                treeData = createJSD3TreeFormat(expressionTrace);
-            }
-            else {
-                // console.log("THIS IS NOT JAVASCRIPT");
-                treeData = createSchemeD3TreeFormat(expressionTrace[key]);
-            }
+            // // TODO: this is unncessary work, checking each time
+            // if (jsElement == "stmt" || jsElement == "function") {
+            //     // console.log(expressionTrace);
+            //     treeData = createJSD3TreeFormat(expressionTrace);
+            // }
+            // else {
+            //     // console.log("THIS IS NOT JAVASCRIPT");
+            //     treeData = createSchemeD3TreeFormat(expressionTrace[key]);
+            // }
             console.log('this is tree', JSON.stringify(treeData, null, '\t'));
 
             root = treeData[0];
@@ -67,6 +69,10 @@ $(document).ready(function(){
             messageArea.innerHTML = failMessage;
         });
     });
+
+    // debugging -- autoclick
+    formSubmitButton.click();
+
 
     clearButton.on("click", function(event){
         event.preventDefault();

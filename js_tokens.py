@@ -56,7 +56,15 @@ def t_eolcomment(t):
     r'//.*'
     pass
 
-reserved = [ 'function', 'if', 'var', 'return', 'else', 'true', 'false' ]
+reserved = [ 'function', 
+                'if', 
+                'var', 
+                'return', 
+                'else', 
+                'true', 
+                'false',
+                'for',
+                'while', ] # TODO: loops
 
 def t_IDENTIFIER(t):
     r'[A-Za-z][A-Za-z_]*'

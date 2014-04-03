@@ -21,10 +21,10 @@ def p_js_empty(p):
 # elements are either function declarations or statements
 def p_element_function(p):
   'element : FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt'
-  p[0] = ("function", p[2], p[4], p[6])
+  p[0] = ("FUNCTION", "function", p[2], p[4], p[6])
 
 def p_element_stmt(p):
-  'element : stmt SEMICOLON' # this messes with if, else...unnecessary semicolon
+  'element : stmt SEMICOLON' # this messes with 'if, else'...unnecessary semicolon
   p[0] = ("stmt", p[1])
 
 def p_element_independent_stmt(p):
@@ -51,11 +51,11 @@ def p_params(p):
 # one parameter, or last parameter
 def p_params_one(p):
   'params : IDENTIFIER'
-  p[0] = [p[1]]
+  p[0] = ("IDENTIFIER", [p[1]])
 
 def p_compound_stmt(p):
   'compoundstmt : LBRACE stmts RBRACE'
-  p[0] = ('compoundstmt', p[2])
+  p[0] = ("BLOCK", p[2])
 
 def p_stmts_empty(p):
   'stmts : '
