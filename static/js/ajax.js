@@ -6,17 +6,24 @@ $(document).ready(function(){
     var drawTree = function(data){
         var key;
         // get environment data
-        console.log(JSON.stringify(data, null, '\t'));
+        // console.log(JSON.stringify(data, null, '\t'));
         env = data["trace"][0]["global_env"];
         // console.log(env);
         var expressionTrace = data["trace"][1]["expression_trace"];
         // expressionTrace is the list object that contains one object for each block of code
         // for each object in expressionTrace, create a tree
+
+
+// I need to reorganize my if statement...maybe?
+
+
         for (key in expressionTrace) {
             jsElement = expressionTrace[key][0];
+
+            // TODO: this is unncessary work, checking each time
             if (jsElement == "stmt" || jsElement == "function") {
-                console.log("AHHH");
-                treeData = createJSD3TreeFormat(expressionTrace[key]);
+                // console.log(expressionTrace);
+                treeData = createJSD3TreeFormat(expressionTrace);
             }
             else {
                 // console.log("THIS IS NOT JAVASCRIPT");

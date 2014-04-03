@@ -69,11 +69,62 @@ var createNode = function(args){
 
 var createJSD3TreeFormat = function(json){
   var tree = [];
-  // to start off, need to access the only key in the dictionary json
-  for (var key in json){
-    json_list = json[key];
-    tree.push(createNode(json_list));
+  var i = 0; // iterator
+  json_input = JSON.stringify(json, null, '\t');
+  // console.log('json is ' + json_input);
+
+  for (i; i < json.length; i++){
+    jsElement = json[i][0];
+    console.log('json is ' + json_input);
+    console.log('jsElement is ' + jsElement);
+
+    if (jsElement=="stmt" || jsElement=="function"){
+      jsElement = json[i][1];
+    }
+    if (jsElement[0]=="exp"){
+      jsElement = json[i][1][1];
+    }
+
+    console.log('jsElement is now ' + jsElement);
+    json_list = jsElement;
+    console.log('json_list is ' + json_list);
+    tree.push(createJSNode(json_list));
     }
   // return final tree
   return tree;
+};
+
+var createJSNode = function(args){
+  console.log("ARGS IS " + args);
+  console.log(args.length);
+  // if (args.length == 1){
+  //   var terminal_node = {
+  //     "name": args
+  //   };
+  //   return terminal_node;
+  // }
+
+  var parent = args[1];
+  console.log("MAKING NODE FOR PARENT " + parent);
+  var new_node = {
+    "name": parent,
+    "children": []
+  };
+  var children = args.slice(2);
+  console.log('SLICING ' + children);
+  var i = 0; // iterator
+
+  // if (parent=="lambda"){
+  //   var lambda_args = args[1]; // arguments list
+  //   lambda_args.unshift("(args)"); // insert "(args)" node for tree rendering
+  // }
+
+  for (i in children){
+    child_node = createJSNode(children[i]);
+    new_node["children"].push(child_node);
+  }
+
+  // uncomment this to see all the individual objects in tree
+  // console.log(new_node);
+  return new_node;
 };
