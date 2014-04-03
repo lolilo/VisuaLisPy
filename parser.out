@@ -1,0 +1,2588 @@
+Created by PLY version 3.4 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    LBRACKET
+    RBRACKET
+
+Grammar
+
+Rule 0     S' -> js
+Rule 1     js -> element js
+Rule 2     js -> <empty>
+Rule 3     element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt
+Rule 4     element -> stmt SEMICOLON
+Rule 5     element -> stmt
+Rule 6     optparams -> params
+Rule 7     optparams -> <empty>
+Rule 8     params -> IDENTIFIER COMMA params
+Rule 9     params -> IDENTIFIER
+Rule 10    compoundstmt -> LBRACE stmts RBRACE
+Rule 11    stmts -> <empty>
+Rule 12    stmts -> stmt SEMICOLON stmts
+Rule 13    stmt -> IF exp compoundstmt
+Rule 14    stmt -> IF exp compoundstmt ELSE compoundstmt
+Rule 15    stmt -> IDENTIFIER EQUAL exp
+Rule 16    stmt -> RETURN exp
+Rule 17    stmt -> VAR IDENTIFIER EQUAL exp
+Rule 18    stmt -> exp
+Rule 19    exp -> IDENTIFIER
+Rule 20    exp -> NUMBER
+Rule 21    exp -> STRING
+Rule 22    exp -> TRUE
+Rule 23    exp -> FALSE
+Rule 24    exp -> NOT exp
+Rule 25    exp -> LPAREN exp RPAREN
+Rule 26    exp -> exp PLUS exp
+Rule 27    exp -> exp MINUS exp
+Rule 28    exp -> exp TIMES exp
+Rule 29    exp -> exp MOD exp
+Rule 30    exp -> exp DIVIDE exp
+Rule 31    exp -> exp EQUALEQUAL exp
+Rule 32    exp -> exp LE exp
+Rule 33    exp -> exp LT exp
+Rule 34    exp -> exp GE exp
+Rule 35    exp -> exp GT exp
+Rule 36    exp -> exp ANDAND exp
+Rule 37    exp -> exp OROR exp
+Rule 38    exp -> IDENTIFIER LPAREN optargs RPAREN
+Rule 39    optargs -> args
+Rule 40    optargs -> <empty>
+Rule 41    args -> exp COMMA args
+Rule 42    args -> exp
+
+Terminals, with rules where they appear
+
+ANDAND               : 36
+COMMA                : 8 41
+DIVIDE               : 30
+ELSE                 : 14
+EQUAL                : 15 17
+EQUALEQUAL           : 31
+FALSE                : 23
+FUNCTION             : 3
+GE                   : 34
+GT                   : 35
+IDENTIFIER           : 3 8 9 15 17 19 38
+IF                   : 13 14
+LBRACE               : 10
+LBRACKET             : 
+LE                   : 32
+LPAREN               : 3 25 38
+LT                   : 33
+MINUS                : 27
+MOD                  : 29
+NOT                  : 24
+NUMBER               : 20
+OROR                 : 37
+PLUS                 : 26
+RBRACE               : 10
+RBRACKET             : 
+RETURN               : 16
+RPAREN               : 3 25 38
+SEMICOLON            : 4 12
+STRING               : 21
+TIMES                : 28
+TRUE                 : 22
+VAR                  : 17
+error                : 
+
+Nonterminals, with rules where they appear
+
+args                 : 39 41
+compoundstmt         : 3 13 14 14
+element              : 1
+exp                  : 13 14 15 16 17 18 24 25 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 41 42
+js                   : 1 0
+optargs              : 38
+optparams            : 3
+params               : 6 8
+stmt                 : 4 5 12
+stmts                : 10 12
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . js
+    (1) js -> . element js
+    (2) js -> .
+    (3) element -> . FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt
+    (4) element -> . stmt SEMICOLON
+    (5) element -> . stmt
+    (13) stmt -> . IF exp compoundstmt
+    (14) stmt -> . IF exp compoundstmt ELSE compoundstmt
+    (15) stmt -> . IDENTIFIER EQUAL exp
+    (16) stmt -> . RETURN exp
+    (17) stmt -> . VAR IDENTIFIER EQUAL exp
+    (18) stmt -> . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    $end            reduce using rule 2 (js -> .)
+    FUNCTION        shift and go to state 5
+    IF              shift and go to state 11
+    IDENTIFIER      shift and go to state 4
+    RETURN          shift and go to state 1
+    VAR             shift and go to state 9
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    stmt                           shift and go to state 7
+    element                        shift and go to state 13
+    exp                            shift and go to state 14
+    js                             shift and go to state 10
+
+state 1
+
+    (16) stmt -> RETURN . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 17
+
+state 2
+
+    (20) exp -> NUMBER .
+
+    PLUS            reduce using rule 20 (exp -> NUMBER .)
+    MINUS           reduce using rule 20 (exp -> NUMBER .)
+    TIMES           reduce using rule 20 (exp -> NUMBER .)
+    MOD             reduce using rule 20 (exp -> NUMBER .)
+    DIVIDE          reduce using rule 20 (exp -> NUMBER .)
+    EQUALEQUAL      reduce using rule 20 (exp -> NUMBER .)
+    LE              reduce using rule 20 (exp -> NUMBER .)
+    LT              reduce using rule 20 (exp -> NUMBER .)
+    GE              reduce using rule 20 (exp -> NUMBER .)
+    GT              reduce using rule 20 (exp -> NUMBER .)
+    ANDAND          reduce using rule 20 (exp -> NUMBER .)
+    OROR            reduce using rule 20 (exp -> NUMBER .)
+    SEMICOLON       reduce using rule 20 (exp -> NUMBER .)
+    FUNCTION        reduce using rule 20 (exp -> NUMBER .)
+    IF              reduce using rule 20 (exp -> NUMBER .)
+    IDENTIFIER      reduce using rule 20 (exp -> NUMBER .)
+    RETURN          reduce using rule 20 (exp -> NUMBER .)
+    VAR             reduce using rule 20 (exp -> NUMBER .)
+    NUMBER          reduce using rule 20 (exp -> NUMBER .)
+    STRING          reduce using rule 20 (exp -> NUMBER .)
+    TRUE            reduce using rule 20 (exp -> NUMBER .)
+    FALSE           reduce using rule 20 (exp -> NUMBER .)
+    NOT             reduce using rule 20 (exp -> NUMBER .)
+    LPAREN          reduce using rule 20 (exp -> NUMBER .)
+    $end            reduce using rule 20 (exp -> NUMBER .)
+    LBRACE          reduce using rule 20 (exp -> NUMBER .)
+    RPAREN          reduce using rule 20 (exp -> NUMBER .)
+    COMMA           reduce using rule 20 (exp -> NUMBER .)
+
+
+state 3
+
+    (22) exp -> TRUE .
+
+    PLUS            reduce using rule 22 (exp -> TRUE .)
+    MINUS           reduce using rule 22 (exp -> TRUE .)
+    TIMES           reduce using rule 22 (exp -> TRUE .)
+    MOD             reduce using rule 22 (exp -> TRUE .)
+    DIVIDE          reduce using rule 22 (exp -> TRUE .)
+    EQUALEQUAL      reduce using rule 22 (exp -> TRUE .)
+    LE              reduce using rule 22 (exp -> TRUE .)
+    LT              reduce using rule 22 (exp -> TRUE .)
+    GE              reduce using rule 22 (exp -> TRUE .)
+    GT              reduce using rule 22 (exp -> TRUE .)
+    ANDAND          reduce using rule 22 (exp -> TRUE .)
+    OROR            reduce using rule 22 (exp -> TRUE .)
+    SEMICOLON       reduce using rule 22 (exp -> TRUE .)
+    FUNCTION        reduce using rule 22 (exp -> TRUE .)
+    IF              reduce using rule 22 (exp -> TRUE .)
+    IDENTIFIER      reduce using rule 22 (exp -> TRUE .)
+    RETURN          reduce using rule 22 (exp -> TRUE .)
+    VAR             reduce using rule 22 (exp -> TRUE .)
+    NUMBER          reduce using rule 22 (exp -> TRUE .)
+    STRING          reduce using rule 22 (exp -> TRUE .)
+    TRUE            reduce using rule 22 (exp -> TRUE .)
+    FALSE           reduce using rule 22 (exp -> TRUE .)
+    NOT             reduce using rule 22 (exp -> TRUE .)
+    LPAREN          reduce using rule 22 (exp -> TRUE .)
+    $end            reduce using rule 22 (exp -> TRUE .)
+    LBRACE          reduce using rule 22 (exp -> TRUE .)
+    RPAREN          reduce using rule 22 (exp -> TRUE .)
+    COMMA           reduce using rule 22 (exp -> TRUE .)
+
+
+state 4
+
+    (15) stmt -> IDENTIFIER . EQUAL exp
+    (19) exp -> IDENTIFIER .
+    (38) exp -> IDENTIFIER . LPAREN optargs RPAREN
+
+  ! shift/reduce conflict for LPAREN resolved as shift
+    EQUAL           shift and go to state 18
+    PLUS            reduce using rule 19 (exp -> IDENTIFIER .)
+    MINUS           reduce using rule 19 (exp -> IDENTIFIER .)
+    TIMES           reduce using rule 19 (exp -> IDENTIFIER .)
+    MOD             reduce using rule 19 (exp -> IDENTIFIER .)
+    DIVIDE          reduce using rule 19 (exp -> IDENTIFIER .)
+    EQUALEQUAL      reduce using rule 19 (exp -> IDENTIFIER .)
+    LE              reduce using rule 19 (exp -> IDENTIFIER .)
+    LT              reduce using rule 19 (exp -> IDENTIFIER .)
+    GE              reduce using rule 19 (exp -> IDENTIFIER .)
+    GT              reduce using rule 19 (exp -> IDENTIFIER .)
+    ANDAND          reduce using rule 19 (exp -> IDENTIFIER .)
+    OROR            reduce using rule 19 (exp -> IDENTIFIER .)
+    SEMICOLON       reduce using rule 19 (exp -> IDENTIFIER .)
+    FUNCTION        reduce using rule 19 (exp -> IDENTIFIER .)
+    IF              reduce using rule 19 (exp -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 19 (exp -> IDENTIFIER .)
+    RETURN          reduce using rule 19 (exp -> IDENTIFIER .)
+    VAR             reduce using rule 19 (exp -> IDENTIFIER .)
+    NUMBER          reduce using rule 19 (exp -> IDENTIFIER .)
+    STRING          reduce using rule 19 (exp -> IDENTIFIER .)
+    TRUE            reduce using rule 19 (exp -> IDENTIFIER .)
+    FALSE           reduce using rule 19 (exp -> IDENTIFIER .)
+    NOT             reduce using rule 19 (exp -> IDENTIFIER .)
+    $end            reduce using rule 19 (exp -> IDENTIFIER .)
+    LPAREN          shift and go to state 19
+
+  ! LPAREN          [ reduce using rule 19 (exp -> IDENTIFIER .) ]
+
+
+state 5
+
+    (3) element -> FUNCTION . IDENTIFIER LPAREN optparams RPAREN compoundstmt
+
+    IDENTIFIER      shift and go to state 20
+
+
+state 6
+
+    (21) exp -> STRING .
+
+    PLUS            reduce using rule 21 (exp -> STRING .)
+    MINUS           reduce using rule 21 (exp -> STRING .)
+    TIMES           reduce using rule 21 (exp -> STRING .)
+    MOD             reduce using rule 21 (exp -> STRING .)
+    DIVIDE          reduce using rule 21 (exp -> STRING .)
+    EQUALEQUAL      reduce using rule 21 (exp -> STRING .)
+    LE              reduce using rule 21 (exp -> STRING .)
+    LT              reduce using rule 21 (exp -> STRING .)
+    GE              reduce using rule 21 (exp -> STRING .)
+    GT              reduce using rule 21 (exp -> STRING .)
+    ANDAND          reduce using rule 21 (exp -> STRING .)
+    OROR            reduce using rule 21 (exp -> STRING .)
+    SEMICOLON       reduce using rule 21 (exp -> STRING .)
+    FUNCTION        reduce using rule 21 (exp -> STRING .)
+    IF              reduce using rule 21 (exp -> STRING .)
+    IDENTIFIER      reduce using rule 21 (exp -> STRING .)
+    RETURN          reduce using rule 21 (exp -> STRING .)
+    VAR             reduce using rule 21 (exp -> STRING .)
+    NUMBER          reduce using rule 21 (exp -> STRING .)
+    STRING          reduce using rule 21 (exp -> STRING .)
+    TRUE            reduce using rule 21 (exp -> STRING .)
+    FALSE           reduce using rule 21 (exp -> STRING .)
+    NOT             reduce using rule 21 (exp -> STRING .)
+    LPAREN          reduce using rule 21 (exp -> STRING .)
+    $end            reduce using rule 21 (exp -> STRING .)
+    LBRACE          reduce using rule 21 (exp -> STRING .)
+    RPAREN          reduce using rule 21 (exp -> STRING .)
+    COMMA           reduce using rule 21 (exp -> STRING .)
+
+
+state 7
+
+    (4) element -> stmt . SEMICOLON
+    (5) element -> stmt .
+
+    SEMICOLON       shift and go to state 21
+    FUNCTION        reduce using rule 5 (element -> stmt .)
+    IF              reduce using rule 5 (element -> stmt .)
+    IDENTIFIER      reduce using rule 5 (element -> stmt .)
+    RETURN          reduce using rule 5 (element -> stmt .)
+    VAR             reduce using rule 5 (element -> stmt .)
+    NUMBER          reduce using rule 5 (element -> stmt .)
+    STRING          reduce using rule 5 (element -> stmt .)
+    TRUE            reduce using rule 5 (element -> stmt .)
+    FALSE           reduce using rule 5 (element -> stmt .)
+    NOT             reduce using rule 5 (element -> stmt .)
+    LPAREN          reduce using rule 5 (element -> stmt .)
+    $end            reduce using rule 5 (element -> stmt .)
+
+
+state 8
+
+    (25) exp -> LPAREN . exp RPAREN
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 22
+
+state 9
+
+    (17) stmt -> VAR . IDENTIFIER EQUAL exp
+
+    IDENTIFIER      shift and go to state 23
+
+
+state 10
+
+    (0) S' -> js .
+
+
+
+state 11
+
+    (13) stmt -> IF . exp compoundstmt
+    (14) stmt -> IF . exp compoundstmt ELSE compoundstmt
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 24
+
+state 12
+
+    (23) exp -> FALSE .
+
+    PLUS            reduce using rule 23 (exp -> FALSE .)
+    MINUS           reduce using rule 23 (exp -> FALSE .)
+    TIMES           reduce using rule 23 (exp -> FALSE .)
+    MOD             reduce using rule 23 (exp -> FALSE .)
+    DIVIDE          reduce using rule 23 (exp -> FALSE .)
+    EQUALEQUAL      reduce using rule 23 (exp -> FALSE .)
+    LE              reduce using rule 23 (exp -> FALSE .)
+    LT              reduce using rule 23 (exp -> FALSE .)
+    GE              reduce using rule 23 (exp -> FALSE .)
+    GT              reduce using rule 23 (exp -> FALSE .)
+    ANDAND          reduce using rule 23 (exp -> FALSE .)
+    OROR            reduce using rule 23 (exp -> FALSE .)
+    SEMICOLON       reduce using rule 23 (exp -> FALSE .)
+    FUNCTION        reduce using rule 23 (exp -> FALSE .)
+    IF              reduce using rule 23 (exp -> FALSE .)
+    IDENTIFIER      reduce using rule 23 (exp -> FALSE .)
+    RETURN          reduce using rule 23 (exp -> FALSE .)
+    VAR             reduce using rule 23 (exp -> FALSE .)
+    NUMBER          reduce using rule 23 (exp -> FALSE .)
+    STRING          reduce using rule 23 (exp -> FALSE .)
+    TRUE            reduce using rule 23 (exp -> FALSE .)
+    FALSE           reduce using rule 23 (exp -> FALSE .)
+    NOT             reduce using rule 23 (exp -> FALSE .)
+    LPAREN          reduce using rule 23 (exp -> FALSE .)
+    $end            reduce using rule 23 (exp -> FALSE .)
+    LBRACE          reduce using rule 23 (exp -> FALSE .)
+    RPAREN          reduce using rule 23 (exp -> FALSE .)
+    COMMA           reduce using rule 23 (exp -> FALSE .)
+
+
+state 13
+
+    (1) js -> element . js
+    (1) js -> . element js
+    (2) js -> .
+    (3) element -> . FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt
+    (4) element -> . stmt SEMICOLON
+    (5) element -> . stmt
+    (13) stmt -> . IF exp compoundstmt
+    (14) stmt -> . IF exp compoundstmt ELSE compoundstmt
+    (15) stmt -> . IDENTIFIER EQUAL exp
+    (16) stmt -> . RETURN exp
+    (17) stmt -> . VAR IDENTIFIER EQUAL exp
+    (18) stmt -> . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    $end            reduce using rule 2 (js -> .)
+    FUNCTION        shift and go to state 5
+    IF              shift and go to state 11
+    IDENTIFIER      shift and go to state 4
+    RETURN          shift and go to state 1
+    VAR             shift and go to state 9
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    stmt                           shift and go to state 7
+    js                             shift and go to state 25
+    exp                            shift and go to state 14
+    element                        shift and go to state 13
+
+state 14
+
+    (18) stmt -> exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    SEMICOLON       reduce using rule 18 (stmt -> exp .)
+    FUNCTION        reduce using rule 18 (stmt -> exp .)
+    IF              reduce using rule 18 (stmt -> exp .)
+    IDENTIFIER      reduce using rule 18 (stmt -> exp .)
+    RETURN          reduce using rule 18 (stmt -> exp .)
+    VAR             reduce using rule 18 (stmt -> exp .)
+    NUMBER          reduce using rule 18 (stmt -> exp .)
+    STRING          reduce using rule 18 (stmt -> exp .)
+    TRUE            reduce using rule 18 (stmt -> exp .)
+    FALSE           reduce using rule 18 (stmt -> exp .)
+    NOT             reduce using rule 18 (stmt -> exp .)
+    LPAREN          reduce using rule 18 (stmt -> exp .)
+    $end            reduce using rule 18 (stmt -> exp .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+    EQUALEQUAL      shift and go to state 35
+    LE              shift and go to state 28
+    LT              shift and go to state 32
+    GE              shift and go to state 30
+    GT              shift and go to state 33
+    ANDAND          shift and go to state 26
+    OROR            shift and go to state 27
+
+
+state 15
+
+    (24) exp -> NOT . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 38
+
+state 16
+
+    (19) exp -> IDENTIFIER .
+    (38) exp -> IDENTIFIER . LPAREN optargs RPAREN
+
+  ! shift/reduce conflict for LPAREN resolved as shift
+    PLUS            reduce using rule 19 (exp -> IDENTIFIER .)
+    MINUS           reduce using rule 19 (exp -> IDENTIFIER .)
+    TIMES           reduce using rule 19 (exp -> IDENTIFIER .)
+    MOD             reduce using rule 19 (exp -> IDENTIFIER .)
+    DIVIDE          reduce using rule 19 (exp -> IDENTIFIER .)
+    EQUALEQUAL      reduce using rule 19 (exp -> IDENTIFIER .)
+    LE              reduce using rule 19 (exp -> IDENTIFIER .)
+    LT              reduce using rule 19 (exp -> IDENTIFIER .)
+    GE              reduce using rule 19 (exp -> IDENTIFIER .)
+    GT              reduce using rule 19 (exp -> IDENTIFIER .)
+    ANDAND          reduce using rule 19 (exp -> IDENTIFIER .)
+    OROR            reduce using rule 19 (exp -> IDENTIFIER .)
+    SEMICOLON       reduce using rule 19 (exp -> IDENTIFIER .)
+    FUNCTION        reduce using rule 19 (exp -> IDENTIFIER .)
+    IF              reduce using rule 19 (exp -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 19 (exp -> IDENTIFIER .)
+    RETURN          reduce using rule 19 (exp -> IDENTIFIER .)
+    VAR             reduce using rule 19 (exp -> IDENTIFIER .)
+    NUMBER          reduce using rule 19 (exp -> IDENTIFIER .)
+    STRING          reduce using rule 19 (exp -> IDENTIFIER .)
+    TRUE            reduce using rule 19 (exp -> IDENTIFIER .)
+    FALSE           reduce using rule 19 (exp -> IDENTIFIER .)
+    NOT             reduce using rule 19 (exp -> IDENTIFIER .)
+    $end            reduce using rule 19 (exp -> IDENTIFIER .)
+    LBRACE          reduce using rule 19 (exp -> IDENTIFIER .)
+    RPAREN          reduce using rule 19 (exp -> IDENTIFIER .)
+    COMMA           reduce using rule 19 (exp -> IDENTIFIER .)
+    LPAREN          shift and go to state 19
+
+  ! LPAREN          [ reduce using rule 19 (exp -> IDENTIFIER .) ]
+
+
+state 17
+
+    (16) stmt -> RETURN exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    SEMICOLON       reduce using rule 16 (stmt -> RETURN exp .)
+    FUNCTION        reduce using rule 16 (stmt -> RETURN exp .)
+    IF              reduce using rule 16 (stmt -> RETURN exp .)
+    IDENTIFIER      reduce using rule 16 (stmt -> RETURN exp .)
+    RETURN          reduce using rule 16 (stmt -> RETURN exp .)
+    VAR             reduce using rule 16 (stmt -> RETURN exp .)
+    NUMBER          reduce using rule 16 (stmt -> RETURN exp .)
+    STRING          reduce using rule 16 (stmt -> RETURN exp .)
+    TRUE            reduce using rule 16 (stmt -> RETURN exp .)
+    FALSE           reduce using rule 16 (stmt -> RETURN exp .)
+    NOT             reduce using rule 16 (stmt -> RETURN exp .)
+    LPAREN          reduce using rule 16 (stmt -> RETURN exp .)
+    $end            reduce using rule 16 (stmt -> RETURN exp .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+    EQUALEQUAL      shift and go to state 35
+    LE              shift and go to state 28
+    LT              shift and go to state 32
+    GE              shift and go to state 30
+    GT              shift and go to state 33
+    ANDAND          shift and go to state 26
+    OROR            shift and go to state 27
+
+
+state 18
+
+    (15) stmt -> IDENTIFIER EQUAL . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 39
+
+state 19
+
+    (38) exp -> IDENTIFIER LPAREN . optargs RPAREN
+    (39) optargs -> . args
+    (40) optargs -> .
+    (41) args -> . exp COMMA args
+    (42) args -> . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    RPAREN          reduce using rule 40 (optargs -> .)
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    args                           shift and go to state 40
+    exp                            shift and go to state 42
+    optargs                        shift and go to state 41
+
+state 20
+
+    (3) element -> FUNCTION IDENTIFIER . LPAREN optparams RPAREN compoundstmt
+
+    LPAREN          shift and go to state 43
+
+
+state 21
+
+    (4) element -> stmt SEMICOLON .
+
+    FUNCTION        reduce using rule 4 (element -> stmt SEMICOLON .)
+    IF              reduce using rule 4 (element -> stmt SEMICOLON .)
+    IDENTIFIER      reduce using rule 4 (element -> stmt SEMICOLON .)
+    RETURN          reduce using rule 4 (element -> stmt SEMICOLON .)
+    VAR             reduce using rule 4 (element -> stmt SEMICOLON .)
+    NUMBER          reduce using rule 4 (element -> stmt SEMICOLON .)
+    STRING          reduce using rule 4 (element -> stmt SEMICOLON .)
+    TRUE            reduce using rule 4 (element -> stmt SEMICOLON .)
+    FALSE           reduce using rule 4 (element -> stmt SEMICOLON .)
+    NOT             reduce using rule 4 (element -> stmt SEMICOLON .)
+    LPAREN          reduce using rule 4 (element -> stmt SEMICOLON .)
+    $end            reduce using rule 4 (element -> stmt SEMICOLON .)
+
+
+state 22
+
+    (25) exp -> LPAREN exp . RPAREN
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    RPAREN          shift and go to state 44
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+    EQUALEQUAL      shift and go to state 35
+    LE              shift and go to state 28
+    LT              shift and go to state 32
+    GE              shift and go to state 30
+    GT              shift and go to state 33
+    ANDAND          shift and go to state 26
+    OROR            shift and go to state 27
+
+
+state 23
+
+    (17) stmt -> VAR IDENTIFIER . EQUAL exp
+
+    EQUAL           shift and go to state 45
+
+
+state 24
+
+    (13) stmt -> IF exp . compoundstmt
+    (14) stmt -> IF exp . compoundstmt ELSE compoundstmt
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+    (10) compoundstmt -> . LBRACE stmts RBRACE
+
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+    EQUALEQUAL      shift and go to state 35
+    LE              shift and go to state 28
+    LT              shift and go to state 32
+    GE              shift and go to state 30
+    GT              shift and go to state 33
+    ANDAND          shift and go to state 26
+    OROR            shift and go to state 27
+    LBRACE          shift and go to state 47
+
+    compoundstmt                   shift and go to state 46
+
+state 25
+
+    (1) js -> element js .
+
+    $end            reduce using rule 1 (js -> element js .)
+
+
+state 26
+
+    (36) exp -> exp ANDAND . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 48
+
+state 27
+
+    (37) exp -> exp OROR . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 49
+
+state 28
+
+    (32) exp -> exp LE . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 50
+
+state 29
+
+    (30) exp -> exp DIVIDE . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 51
+
+state 30
+
+    (34) exp -> exp GE . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 52
+
+state 31
+
+    (28) exp -> exp TIMES . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 53
+
+state 32
+
+    (33) exp -> exp LT . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 54
+
+state 33
+
+    (35) exp -> exp GT . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 55
+
+state 34
+
+    (26) exp -> exp PLUS . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 56
+
+state 35
+
+    (31) exp -> exp EQUALEQUAL . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 57
+
+state 36
+
+    (27) exp -> exp MINUS . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 58
+
+state 37
+
+    (29) exp -> exp MOD . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 59
+
+state 38
+
+    (24) exp -> NOT exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    PLUS            reduce using rule 24 (exp -> NOT exp .)
+    MINUS           reduce using rule 24 (exp -> NOT exp .)
+    TIMES           reduce using rule 24 (exp -> NOT exp .)
+    MOD             reduce using rule 24 (exp -> NOT exp .)
+    DIVIDE          reduce using rule 24 (exp -> NOT exp .)
+    EQUALEQUAL      reduce using rule 24 (exp -> NOT exp .)
+    LE              reduce using rule 24 (exp -> NOT exp .)
+    LT              reduce using rule 24 (exp -> NOT exp .)
+    GE              reduce using rule 24 (exp -> NOT exp .)
+    GT              reduce using rule 24 (exp -> NOT exp .)
+    ANDAND          reduce using rule 24 (exp -> NOT exp .)
+    OROR            reduce using rule 24 (exp -> NOT exp .)
+    SEMICOLON       reduce using rule 24 (exp -> NOT exp .)
+    FUNCTION        reduce using rule 24 (exp -> NOT exp .)
+    IF              reduce using rule 24 (exp -> NOT exp .)
+    IDENTIFIER      reduce using rule 24 (exp -> NOT exp .)
+    RETURN          reduce using rule 24 (exp -> NOT exp .)
+    VAR             reduce using rule 24 (exp -> NOT exp .)
+    NUMBER          reduce using rule 24 (exp -> NOT exp .)
+    STRING          reduce using rule 24 (exp -> NOT exp .)
+    TRUE            reduce using rule 24 (exp -> NOT exp .)
+    FALSE           reduce using rule 24 (exp -> NOT exp .)
+    NOT             reduce using rule 24 (exp -> NOT exp .)
+    LPAREN          reduce using rule 24 (exp -> NOT exp .)
+    $end            reduce using rule 24 (exp -> NOT exp .)
+    LBRACE          reduce using rule 24 (exp -> NOT exp .)
+    RPAREN          reduce using rule 24 (exp -> NOT exp .)
+    COMMA           reduce using rule 24 (exp -> NOT exp .)
+
+  ! PLUS            [ shift and go to state 34 ]
+  ! MINUS           [ shift and go to state 36 ]
+  ! TIMES           [ shift and go to state 31 ]
+  ! MOD             [ shift and go to state 37 ]
+  ! DIVIDE          [ shift and go to state 29 ]
+  ! EQUALEQUAL      [ shift and go to state 35 ]
+  ! LE              [ shift and go to state 28 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GE              [ shift and go to state 30 ]
+  ! GT              [ shift and go to state 33 ]
+  ! ANDAND          [ shift and go to state 26 ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 39
+
+    (15) stmt -> IDENTIFIER EQUAL exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    SEMICOLON       reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    FUNCTION        reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    IF              reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    IDENTIFIER      reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    RETURN          reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    VAR             reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    NUMBER          reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    STRING          reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    TRUE            reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    FALSE           reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    NOT             reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    LPAREN          reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    $end            reduce using rule 15 (stmt -> IDENTIFIER EQUAL exp .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+    EQUALEQUAL      shift and go to state 35
+    LE              shift and go to state 28
+    LT              shift and go to state 32
+    GE              shift and go to state 30
+    GT              shift and go to state 33
+    ANDAND          shift and go to state 26
+    OROR            shift and go to state 27
+
+
+state 40
+
+    (39) optargs -> args .
+
+    RPAREN          reduce using rule 39 (optargs -> args .)
+
+
+state 41
+
+    (38) exp -> IDENTIFIER LPAREN optargs . RPAREN
+
+    RPAREN          shift and go to state 60
+
+
+state 42
+
+    (41) args -> exp . COMMA args
+    (42) args -> exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    COMMA           shift and go to state 61
+    RPAREN          reduce using rule 42 (args -> exp .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+    EQUALEQUAL      shift and go to state 35
+    LE              shift and go to state 28
+    LT              shift and go to state 32
+    GE              shift and go to state 30
+    GT              shift and go to state 33
+    ANDAND          shift and go to state 26
+    OROR            shift and go to state 27
+
+
+state 43
+
+    (3) element -> FUNCTION IDENTIFIER LPAREN . optparams RPAREN compoundstmt
+    (6) optparams -> . params
+    (7) optparams -> .
+    (8) params -> . IDENTIFIER COMMA params
+    (9) params -> . IDENTIFIER
+
+    RPAREN          reduce using rule 7 (optparams -> .)
+    IDENTIFIER      shift and go to state 63
+
+    params                         shift and go to state 62
+    optparams                      shift and go to state 64
+
+state 44
+
+    (25) exp -> LPAREN exp RPAREN .
+
+    PLUS            reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    MINUS           reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    TIMES           reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    MOD             reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    DIVIDE          reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    EQUALEQUAL      reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    LE              reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    LT              reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    GE              reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    GT              reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    ANDAND          reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    OROR            reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    SEMICOLON       reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    FUNCTION        reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    IF              reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    IDENTIFIER      reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    RETURN          reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    VAR             reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    NUMBER          reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    STRING          reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    TRUE            reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    FALSE           reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    NOT             reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    LPAREN          reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    $end            reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    LBRACE          reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    RPAREN          reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+    COMMA           reduce using rule 25 (exp -> LPAREN exp RPAREN .)
+
+
+state 45
+
+    (17) stmt -> VAR IDENTIFIER EQUAL . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    exp                            shift and go to state 65
+
+state 46
+
+    (13) stmt -> IF exp compoundstmt .
+    (14) stmt -> IF exp compoundstmt . ELSE compoundstmt
+
+    SEMICOLON       reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    FUNCTION        reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    IF              reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    IDENTIFIER      reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    RETURN          reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    VAR             reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    NUMBER          reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    STRING          reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    TRUE            reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    FALSE           reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    NOT             reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    LPAREN          reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    $end            reduce using rule 13 (stmt -> IF exp compoundstmt .)
+    ELSE            shift and go to state 66
+
+
+state 47
+
+    (10) compoundstmt -> LBRACE . stmts RBRACE
+    (11) stmts -> .
+    (12) stmts -> . stmt SEMICOLON stmts
+    (13) stmt -> . IF exp compoundstmt
+    (14) stmt -> . IF exp compoundstmt ELSE compoundstmt
+    (15) stmt -> . IDENTIFIER EQUAL exp
+    (16) stmt -> . RETURN exp
+    (17) stmt -> . VAR IDENTIFIER EQUAL exp
+    (18) stmt -> . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    RBRACE          reduce using rule 11 (stmts -> .)
+    IF              shift and go to state 11
+    IDENTIFIER      shift and go to state 4
+    RETURN          shift and go to state 1
+    VAR             shift and go to state 9
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    stmts                          shift and go to state 67
+    exp                            shift and go to state 14
+    stmt                           shift and go to state 68
+
+state 48
+
+    (36) exp -> exp ANDAND exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    ANDAND          reduce using rule 36 (exp -> exp ANDAND exp .)
+    OROR            reduce using rule 36 (exp -> exp ANDAND exp .)
+    SEMICOLON       reduce using rule 36 (exp -> exp ANDAND exp .)
+    FUNCTION        reduce using rule 36 (exp -> exp ANDAND exp .)
+    IF              reduce using rule 36 (exp -> exp ANDAND exp .)
+    IDENTIFIER      reduce using rule 36 (exp -> exp ANDAND exp .)
+    RETURN          reduce using rule 36 (exp -> exp ANDAND exp .)
+    VAR             reduce using rule 36 (exp -> exp ANDAND exp .)
+    NUMBER          reduce using rule 36 (exp -> exp ANDAND exp .)
+    STRING          reduce using rule 36 (exp -> exp ANDAND exp .)
+    TRUE            reduce using rule 36 (exp -> exp ANDAND exp .)
+    FALSE           reduce using rule 36 (exp -> exp ANDAND exp .)
+    NOT             reduce using rule 36 (exp -> exp ANDAND exp .)
+    LPAREN          reduce using rule 36 (exp -> exp ANDAND exp .)
+    $end            reduce using rule 36 (exp -> exp ANDAND exp .)
+    LBRACE          reduce using rule 36 (exp -> exp ANDAND exp .)
+    RPAREN          reduce using rule 36 (exp -> exp ANDAND exp .)
+    COMMA           reduce using rule 36 (exp -> exp ANDAND exp .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+    EQUALEQUAL      shift and go to state 35
+    LE              shift and go to state 28
+    LT              shift and go to state 32
+    GE              shift and go to state 30
+    GT              shift and go to state 33
+
+  ! PLUS            [ reduce using rule 36 (exp -> exp ANDAND exp .) ]
+  ! MINUS           [ reduce using rule 36 (exp -> exp ANDAND exp .) ]
+  ! TIMES           [ reduce using rule 36 (exp -> exp ANDAND exp .) ]
+  ! MOD             [ reduce using rule 36 (exp -> exp ANDAND exp .) ]
+  ! DIVIDE          [ reduce using rule 36 (exp -> exp ANDAND exp .) ]
+  ! EQUALEQUAL      [ reduce using rule 36 (exp -> exp ANDAND exp .) ]
+  ! LE              [ reduce using rule 36 (exp -> exp ANDAND exp .) ]
+  ! LT              [ reduce using rule 36 (exp -> exp ANDAND exp .) ]
+  ! GE              [ reduce using rule 36 (exp -> exp ANDAND exp .) ]
+  ! GT              [ reduce using rule 36 (exp -> exp ANDAND exp .) ]
+  ! ANDAND          [ shift and go to state 26 ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 49
+
+    (37) exp -> exp OROR exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    OROR            reduce using rule 37 (exp -> exp OROR exp .)
+    SEMICOLON       reduce using rule 37 (exp -> exp OROR exp .)
+    FUNCTION        reduce using rule 37 (exp -> exp OROR exp .)
+    IF              reduce using rule 37 (exp -> exp OROR exp .)
+    IDENTIFIER      reduce using rule 37 (exp -> exp OROR exp .)
+    RETURN          reduce using rule 37 (exp -> exp OROR exp .)
+    VAR             reduce using rule 37 (exp -> exp OROR exp .)
+    NUMBER          reduce using rule 37 (exp -> exp OROR exp .)
+    STRING          reduce using rule 37 (exp -> exp OROR exp .)
+    TRUE            reduce using rule 37 (exp -> exp OROR exp .)
+    FALSE           reduce using rule 37 (exp -> exp OROR exp .)
+    NOT             reduce using rule 37 (exp -> exp OROR exp .)
+    LPAREN          reduce using rule 37 (exp -> exp OROR exp .)
+    $end            reduce using rule 37 (exp -> exp OROR exp .)
+    LBRACE          reduce using rule 37 (exp -> exp OROR exp .)
+    RPAREN          reduce using rule 37 (exp -> exp OROR exp .)
+    COMMA           reduce using rule 37 (exp -> exp OROR exp .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+    EQUALEQUAL      shift and go to state 35
+    LE              shift and go to state 28
+    LT              shift and go to state 32
+    GE              shift and go to state 30
+    GT              shift and go to state 33
+    ANDAND          shift and go to state 26
+
+  ! PLUS            [ reduce using rule 37 (exp -> exp OROR exp .) ]
+  ! MINUS           [ reduce using rule 37 (exp -> exp OROR exp .) ]
+  ! TIMES           [ reduce using rule 37 (exp -> exp OROR exp .) ]
+  ! MOD             [ reduce using rule 37 (exp -> exp OROR exp .) ]
+  ! DIVIDE          [ reduce using rule 37 (exp -> exp OROR exp .) ]
+  ! EQUALEQUAL      [ reduce using rule 37 (exp -> exp OROR exp .) ]
+  ! LE              [ reduce using rule 37 (exp -> exp OROR exp .) ]
+  ! LT              [ reduce using rule 37 (exp -> exp OROR exp .) ]
+  ! GE              [ reduce using rule 37 (exp -> exp OROR exp .) ]
+  ! GT              [ reduce using rule 37 (exp -> exp OROR exp .) ]
+  ! ANDAND          [ reduce using rule 37 (exp -> exp OROR exp .) ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 50
+
+    (32) exp -> exp LE exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    EQUALEQUAL      reduce using rule 32 (exp -> exp LE exp .)
+    LE              reduce using rule 32 (exp -> exp LE exp .)
+    LT              reduce using rule 32 (exp -> exp LE exp .)
+    GE              reduce using rule 32 (exp -> exp LE exp .)
+    GT              reduce using rule 32 (exp -> exp LE exp .)
+    ANDAND          reduce using rule 32 (exp -> exp LE exp .)
+    OROR            reduce using rule 32 (exp -> exp LE exp .)
+    SEMICOLON       reduce using rule 32 (exp -> exp LE exp .)
+    FUNCTION        reduce using rule 32 (exp -> exp LE exp .)
+    IF              reduce using rule 32 (exp -> exp LE exp .)
+    IDENTIFIER      reduce using rule 32 (exp -> exp LE exp .)
+    RETURN          reduce using rule 32 (exp -> exp LE exp .)
+    VAR             reduce using rule 32 (exp -> exp LE exp .)
+    NUMBER          reduce using rule 32 (exp -> exp LE exp .)
+    STRING          reduce using rule 32 (exp -> exp LE exp .)
+    TRUE            reduce using rule 32 (exp -> exp LE exp .)
+    FALSE           reduce using rule 32 (exp -> exp LE exp .)
+    NOT             reduce using rule 32 (exp -> exp LE exp .)
+    LPAREN          reduce using rule 32 (exp -> exp LE exp .)
+    $end            reduce using rule 32 (exp -> exp LE exp .)
+    LBRACE          reduce using rule 32 (exp -> exp LE exp .)
+    RPAREN          reduce using rule 32 (exp -> exp LE exp .)
+    COMMA           reduce using rule 32 (exp -> exp LE exp .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+
+  ! PLUS            [ reduce using rule 32 (exp -> exp LE exp .) ]
+  ! MINUS           [ reduce using rule 32 (exp -> exp LE exp .) ]
+  ! TIMES           [ reduce using rule 32 (exp -> exp LE exp .) ]
+  ! MOD             [ reduce using rule 32 (exp -> exp LE exp .) ]
+  ! DIVIDE          [ reduce using rule 32 (exp -> exp LE exp .) ]
+  ! EQUALEQUAL      [ shift and go to state 35 ]
+  ! LE              [ shift and go to state 28 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GE              [ shift and go to state 30 ]
+  ! GT              [ shift and go to state 33 ]
+  ! ANDAND          [ shift and go to state 26 ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 51
+
+    (30) exp -> exp DIVIDE exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    PLUS            reduce using rule 30 (exp -> exp DIVIDE exp .)
+    MINUS           reduce using rule 30 (exp -> exp DIVIDE exp .)
+    TIMES           reduce using rule 30 (exp -> exp DIVIDE exp .)
+    MOD             reduce using rule 30 (exp -> exp DIVIDE exp .)
+    DIVIDE          reduce using rule 30 (exp -> exp DIVIDE exp .)
+    EQUALEQUAL      reduce using rule 30 (exp -> exp DIVIDE exp .)
+    LE              reduce using rule 30 (exp -> exp DIVIDE exp .)
+    LT              reduce using rule 30 (exp -> exp DIVIDE exp .)
+    GE              reduce using rule 30 (exp -> exp DIVIDE exp .)
+    GT              reduce using rule 30 (exp -> exp DIVIDE exp .)
+    ANDAND          reduce using rule 30 (exp -> exp DIVIDE exp .)
+    OROR            reduce using rule 30 (exp -> exp DIVIDE exp .)
+    SEMICOLON       reduce using rule 30 (exp -> exp DIVIDE exp .)
+    FUNCTION        reduce using rule 30 (exp -> exp DIVIDE exp .)
+    IF              reduce using rule 30 (exp -> exp DIVIDE exp .)
+    IDENTIFIER      reduce using rule 30 (exp -> exp DIVIDE exp .)
+    RETURN          reduce using rule 30 (exp -> exp DIVIDE exp .)
+    VAR             reduce using rule 30 (exp -> exp DIVIDE exp .)
+    NUMBER          reduce using rule 30 (exp -> exp DIVIDE exp .)
+    STRING          reduce using rule 30 (exp -> exp DIVIDE exp .)
+    TRUE            reduce using rule 30 (exp -> exp DIVIDE exp .)
+    FALSE           reduce using rule 30 (exp -> exp DIVIDE exp .)
+    NOT             reduce using rule 30 (exp -> exp DIVIDE exp .)
+    LPAREN          reduce using rule 30 (exp -> exp DIVIDE exp .)
+    $end            reduce using rule 30 (exp -> exp DIVIDE exp .)
+    LBRACE          reduce using rule 30 (exp -> exp DIVIDE exp .)
+    RPAREN          reduce using rule 30 (exp -> exp DIVIDE exp .)
+    COMMA           reduce using rule 30 (exp -> exp DIVIDE exp .)
+
+  ! PLUS            [ shift and go to state 34 ]
+  ! MINUS           [ shift and go to state 36 ]
+  ! TIMES           [ shift and go to state 31 ]
+  ! MOD             [ shift and go to state 37 ]
+  ! DIVIDE          [ shift and go to state 29 ]
+  ! EQUALEQUAL      [ shift and go to state 35 ]
+  ! LE              [ shift and go to state 28 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GE              [ shift and go to state 30 ]
+  ! GT              [ shift and go to state 33 ]
+  ! ANDAND          [ shift and go to state 26 ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 52
+
+    (34) exp -> exp GE exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    EQUALEQUAL      reduce using rule 34 (exp -> exp GE exp .)
+    LE              reduce using rule 34 (exp -> exp GE exp .)
+    LT              reduce using rule 34 (exp -> exp GE exp .)
+    GE              reduce using rule 34 (exp -> exp GE exp .)
+    GT              reduce using rule 34 (exp -> exp GE exp .)
+    ANDAND          reduce using rule 34 (exp -> exp GE exp .)
+    OROR            reduce using rule 34 (exp -> exp GE exp .)
+    SEMICOLON       reduce using rule 34 (exp -> exp GE exp .)
+    FUNCTION        reduce using rule 34 (exp -> exp GE exp .)
+    IF              reduce using rule 34 (exp -> exp GE exp .)
+    IDENTIFIER      reduce using rule 34 (exp -> exp GE exp .)
+    RETURN          reduce using rule 34 (exp -> exp GE exp .)
+    VAR             reduce using rule 34 (exp -> exp GE exp .)
+    NUMBER          reduce using rule 34 (exp -> exp GE exp .)
+    STRING          reduce using rule 34 (exp -> exp GE exp .)
+    TRUE            reduce using rule 34 (exp -> exp GE exp .)
+    FALSE           reduce using rule 34 (exp -> exp GE exp .)
+    NOT             reduce using rule 34 (exp -> exp GE exp .)
+    LPAREN          reduce using rule 34 (exp -> exp GE exp .)
+    $end            reduce using rule 34 (exp -> exp GE exp .)
+    LBRACE          reduce using rule 34 (exp -> exp GE exp .)
+    RPAREN          reduce using rule 34 (exp -> exp GE exp .)
+    COMMA           reduce using rule 34 (exp -> exp GE exp .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+
+  ! PLUS            [ reduce using rule 34 (exp -> exp GE exp .) ]
+  ! MINUS           [ reduce using rule 34 (exp -> exp GE exp .) ]
+  ! TIMES           [ reduce using rule 34 (exp -> exp GE exp .) ]
+  ! MOD             [ reduce using rule 34 (exp -> exp GE exp .) ]
+  ! DIVIDE          [ reduce using rule 34 (exp -> exp GE exp .) ]
+  ! EQUALEQUAL      [ shift and go to state 35 ]
+  ! LE              [ shift and go to state 28 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GE              [ shift and go to state 30 ]
+  ! GT              [ shift and go to state 33 ]
+  ! ANDAND          [ shift and go to state 26 ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 53
+
+    (28) exp -> exp TIMES exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    PLUS            reduce using rule 28 (exp -> exp TIMES exp .)
+    MINUS           reduce using rule 28 (exp -> exp TIMES exp .)
+    TIMES           reduce using rule 28 (exp -> exp TIMES exp .)
+    MOD             reduce using rule 28 (exp -> exp TIMES exp .)
+    DIVIDE          reduce using rule 28 (exp -> exp TIMES exp .)
+    EQUALEQUAL      reduce using rule 28 (exp -> exp TIMES exp .)
+    LE              reduce using rule 28 (exp -> exp TIMES exp .)
+    LT              reduce using rule 28 (exp -> exp TIMES exp .)
+    GE              reduce using rule 28 (exp -> exp TIMES exp .)
+    GT              reduce using rule 28 (exp -> exp TIMES exp .)
+    ANDAND          reduce using rule 28 (exp -> exp TIMES exp .)
+    OROR            reduce using rule 28 (exp -> exp TIMES exp .)
+    SEMICOLON       reduce using rule 28 (exp -> exp TIMES exp .)
+    FUNCTION        reduce using rule 28 (exp -> exp TIMES exp .)
+    IF              reduce using rule 28 (exp -> exp TIMES exp .)
+    IDENTIFIER      reduce using rule 28 (exp -> exp TIMES exp .)
+    RETURN          reduce using rule 28 (exp -> exp TIMES exp .)
+    VAR             reduce using rule 28 (exp -> exp TIMES exp .)
+    NUMBER          reduce using rule 28 (exp -> exp TIMES exp .)
+    STRING          reduce using rule 28 (exp -> exp TIMES exp .)
+    TRUE            reduce using rule 28 (exp -> exp TIMES exp .)
+    FALSE           reduce using rule 28 (exp -> exp TIMES exp .)
+    NOT             reduce using rule 28 (exp -> exp TIMES exp .)
+    LPAREN          reduce using rule 28 (exp -> exp TIMES exp .)
+    $end            reduce using rule 28 (exp -> exp TIMES exp .)
+    LBRACE          reduce using rule 28 (exp -> exp TIMES exp .)
+    RPAREN          reduce using rule 28 (exp -> exp TIMES exp .)
+    COMMA           reduce using rule 28 (exp -> exp TIMES exp .)
+
+  ! PLUS            [ shift and go to state 34 ]
+  ! MINUS           [ shift and go to state 36 ]
+  ! TIMES           [ shift and go to state 31 ]
+  ! MOD             [ shift and go to state 37 ]
+  ! DIVIDE          [ shift and go to state 29 ]
+  ! EQUALEQUAL      [ shift and go to state 35 ]
+  ! LE              [ shift and go to state 28 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GE              [ shift and go to state 30 ]
+  ! GT              [ shift and go to state 33 ]
+  ! ANDAND          [ shift and go to state 26 ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 54
+
+    (33) exp -> exp LT exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    EQUALEQUAL      reduce using rule 33 (exp -> exp LT exp .)
+    LE              reduce using rule 33 (exp -> exp LT exp .)
+    LT              reduce using rule 33 (exp -> exp LT exp .)
+    GE              reduce using rule 33 (exp -> exp LT exp .)
+    GT              reduce using rule 33 (exp -> exp LT exp .)
+    ANDAND          reduce using rule 33 (exp -> exp LT exp .)
+    OROR            reduce using rule 33 (exp -> exp LT exp .)
+    SEMICOLON       reduce using rule 33 (exp -> exp LT exp .)
+    FUNCTION        reduce using rule 33 (exp -> exp LT exp .)
+    IF              reduce using rule 33 (exp -> exp LT exp .)
+    IDENTIFIER      reduce using rule 33 (exp -> exp LT exp .)
+    RETURN          reduce using rule 33 (exp -> exp LT exp .)
+    VAR             reduce using rule 33 (exp -> exp LT exp .)
+    NUMBER          reduce using rule 33 (exp -> exp LT exp .)
+    STRING          reduce using rule 33 (exp -> exp LT exp .)
+    TRUE            reduce using rule 33 (exp -> exp LT exp .)
+    FALSE           reduce using rule 33 (exp -> exp LT exp .)
+    NOT             reduce using rule 33 (exp -> exp LT exp .)
+    LPAREN          reduce using rule 33 (exp -> exp LT exp .)
+    $end            reduce using rule 33 (exp -> exp LT exp .)
+    LBRACE          reduce using rule 33 (exp -> exp LT exp .)
+    RPAREN          reduce using rule 33 (exp -> exp LT exp .)
+    COMMA           reduce using rule 33 (exp -> exp LT exp .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+
+  ! PLUS            [ reduce using rule 33 (exp -> exp LT exp .) ]
+  ! MINUS           [ reduce using rule 33 (exp -> exp LT exp .) ]
+  ! TIMES           [ reduce using rule 33 (exp -> exp LT exp .) ]
+  ! MOD             [ reduce using rule 33 (exp -> exp LT exp .) ]
+  ! DIVIDE          [ reduce using rule 33 (exp -> exp LT exp .) ]
+  ! EQUALEQUAL      [ shift and go to state 35 ]
+  ! LE              [ shift and go to state 28 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GE              [ shift and go to state 30 ]
+  ! GT              [ shift and go to state 33 ]
+  ! ANDAND          [ shift and go to state 26 ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 55
+
+    (35) exp -> exp GT exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    EQUALEQUAL      reduce using rule 35 (exp -> exp GT exp .)
+    LE              reduce using rule 35 (exp -> exp GT exp .)
+    LT              reduce using rule 35 (exp -> exp GT exp .)
+    GE              reduce using rule 35 (exp -> exp GT exp .)
+    GT              reduce using rule 35 (exp -> exp GT exp .)
+    ANDAND          reduce using rule 35 (exp -> exp GT exp .)
+    OROR            reduce using rule 35 (exp -> exp GT exp .)
+    SEMICOLON       reduce using rule 35 (exp -> exp GT exp .)
+    FUNCTION        reduce using rule 35 (exp -> exp GT exp .)
+    IF              reduce using rule 35 (exp -> exp GT exp .)
+    IDENTIFIER      reduce using rule 35 (exp -> exp GT exp .)
+    RETURN          reduce using rule 35 (exp -> exp GT exp .)
+    VAR             reduce using rule 35 (exp -> exp GT exp .)
+    NUMBER          reduce using rule 35 (exp -> exp GT exp .)
+    STRING          reduce using rule 35 (exp -> exp GT exp .)
+    TRUE            reduce using rule 35 (exp -> exp GT exp .)
+    FALSE           reduce using rule 35 (exp -> exp GT exp .)
+    NOT             reduce using rule 35 (exp -> exp GT exp .)
+    LPAREN          reduce using rule 35 (exp -> exp GT exp .)
+    $end            reduce using rule 35 (exp -> exp GT exp .)
+    LBRACE          reduce using rule 35 (exp -> exp GT exp .)
+    RPAREN          reduce using rule 35 (exp -> exp GT exp .)
+    COMMA           reduce using rule 35 (exp -> exp GT exp .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+
+  ! PLUS            [ reduce using rule 35 (exp -> exp GT exp .) ]
+  ! MINUS           [ reduce using rule 35 (exp -> exp GT exp .) ]
+  ! TIMES           [ reduce using rule 35 (exp -> exp GT exp .) ]
+  ! MOD             [ reduce using rule 35 (exp -> exp GT exp .) ]
+  ! DIVIDE          [ reduce using rule 35 (exp -> exp GT exp .) ]
+  ! EQUALEQUAL      [ shift and go to state 35 ]
+  ! LE              [ shift and go to state 28 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GE              [ shift and go to state 30 ]
+  ! GT              [ shift and go to state 33 ]
+  ! ANDAND          [ shift and go to state 26 ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 56
+
+    (26) exp -> exp PLUS exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    PLUS            reduce using rule 26 (exp -> exp PLUS exp .)
+    MINUS           reduce using rule 26 (exp -> exp PLUS exp .)
+    EQUALEQUAL      reduce using rule 26 (exp -> exp PLUS exp .)
+    LE              reduce using rule 26 (exp -> exp PLUS exp .)
+    LT              reduce using rule 26 (exp -> exp PLUS exp .)
+    GE              reduce using rule 26 (exp -> exp PLUS exp .)
+    GT              reduce using rule 26 (exp -> exp PLUS exp .)
+    ANDAND          reduce using rule 26 (exp -> exp PLUS exp .)
+    OROR            reduce using rule 26 (exp -> exp PLUS exp .)
+    SEMICOLON       reduce using rule 26 (exp -> exp PLUS exp .)
+    FUNCTION        reduce using rule 26 (exp -> exp PLUS exp .)
+    IF              reduce using rule 26 (exp -> exp PLUS exp .)
+    IDENTIFIER      reduce using rule 26 (exp -> exp PLUS exp .)
+    RETURN          reduce using rule 26 (exp -> exp PLUS exp .)
+    VAR             reduce using rule 26 (exp -> exp PLUS exp .)
+    NUMBER          reduce using rule 26 (exp -> exp PLUS exp .)
+    STRING          reduce using rule 26 (exp -> exp PLUS exp .)
+    TRUE            reduce using rule 26 (exp -> exp PLUS exp .)
+    FALSE           reduce using rule 26 (exp -> exp PLUS exp .)
+    NOT             reduce using rule 26 (exp -> exp PLUS exp .)
+    LPAREN          reduce using rule 26 (exp -> exp PLUS exp .)
+    $end            reduce using rule 26 (exp -> exp PLUS exp .)
+    LBRACE          reduce using rule 26 (exp -> exp PLUS exp .)
+    RPAREN          reduce using rule 26 (exp -> exp PLUS exp .)
+    COMMA           reduce using rule 26 (exp -> exp PLUS exp .)
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+
+  ! TIMES           [ reduce using rule 26 (exp -> exp PLUS exp .) ]
+  ! MOD             [ reduce using rule 26 (exp -> exp PLUS exp .) ]
+  ! DIVIDE          [ reduce using rule 26 (exp -> exp PLUS exp .) ]
+  ! PLUS            [ shift and go to state 34 ]
+  ! MINUS           [ shift and go to state 36 ]
+  ! EQUALEQUAL      [ shift and go to state 35 ]
+  ! LE              [ shift and go to state 28 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GE              [ shift and go to state 30 ]
+  ! GT              [ shift and go to state 33 ]
+  ! ANDAND          [ shift and go to state 26 ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 57
+
+    (31) exp -> exp EQUALEQUAL exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    EQUALEQUAL      reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    ANDAND          reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    OROR            reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    SEMICOLON       reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    FUNCTION        reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    IF              reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    IDENTIFIER      reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    RETURN          reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    VAR             reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    NUMBER          reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    STRING          reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    TRUE            reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    FALSE           reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    NOT             reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    LPAREN          reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    $end            reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    LBRACE          reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    RPAREN          reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    COMMA           reduce using rule 31 (exp -> exp EQUALEQUAL exp .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+    LE              shift and go to state 28
+    LT              shift and go to state 32
+    GE              shift and go to state 30
+    GT              shift and go to state 33
+
+  ! PLUS            [ reduce using rule 31 (exp -> exp EQUALEQUAL exp .) ]
+  ! MINUS           [ reduce using rule 31 (exp -> exp EQUALEQUAL exp .) ]
+  ! TIMES           [ reduce using rule 31 (exp -> exp EQUALEQUAL exp .) ]
+  ! MOD             [ reduce using rule 31 (exp -> exp EQUALEQUAL exp .) ]
+  ! DIVIDE          [ reduce using rule 31 (exp -> exp EQUALEQUAL exp .) ]
+  ! LE              [ reduce using rule 31 (exp -> exp EQUALEQUAL exp .) ]
+  ! LT              [ reduce using rule 31 (exp -> exp EQUALEQUAL exp .) ]
+  ! GE              [ reduce using rule 31 (exp -> exp EQUALEQUAL exp .) ]
+  ! GT              [ reduce using rule 31 (exp -> exp EQUALEQUAL exp .) ]
+  ! EQUALEQUAL      [ shift and go to state 35 ]
+  ! ANDAND          [ shift and go to state 26 ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 58
+
+    (27) exp -> exp MINUS exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    PLUS            reduce using rule 27 (exp -> exp MINUS exp .)
+    MINUS           reduce using rule 27 (exp -> exp MINUS exp .)
+    EQUALEQUAL      reduce using rule 27 (exp -> exp MINUS exp .)
+    LE              reduce using rule 27 (exp -> exp MINUS exp .)
+    LT              reduce using rule 27 (exp -> exp MINUS exp .)
+    GE              reduce using rule 27 (exp -> exp MINUS exp .)
+    GT              reduce using rule 27 (exp -> exp MINUS exp .)
+    ANDAND          reduce using rule 27 (exp -> exp MINUS exp .)
+    OROR            reduce using rule 27 (exp -> exp MINUS exp .)
+    SEMICOLON       reduce using rule 27 (exp -> exp MINUS exp .)
+    FUNCTION        reduce using rule 27 (exp -> exp MINUS exp .)
+    IF              reduce using rule 27 (exp -> exp MINUS exp .)
+    IDENTIFIER      reduce using rule 27 (exp -> exp MINUS exp .)
+    RETURN          reduce using rule 27 (exp -> exp MINUS exp .)
+    VAR             reduce using rule 27 (exp -> exp MINUS exp .)
+    NUMBER          reduce using rule 27 (exp -> exp MINUS exp .)
+    STRING          reduce using rule 27 (exp -> exp MINUS exp .)
+    TRUE            reduce using rule 27 (exp -> exp MINUS exp .)
+    FALSE           reduce using rule 27 (exp -> exp MINUS exp .)
+    NOT             reduce using rule 27 (exp -> exp MINUS exp .)
+    LPAREN          reduce using rule 27 (exp -> exp MINUS exp .)
+    $end            reduce using rule 27 (exp -> exp MINUS exp .)
+    LBRACE          reduce using rule 27 (exp -> exp MINUS exp .)
+    RPAREN          reduce using rule 27 (exp -> exp MINUS exp .)
+    COMMA           reduce using rule 27 (exp -> exp MINUS exp .)
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+
+  ! TIMES           [ reduce using rule 27 (exp -> exp MINUS exp .) ]
+  ! MOD             [ reduce using rule 27 (exp -> exp MINUS exp .) ]
+  ! DIVIDE          [ reduce using rule 27 (exp -> exp MINUS exp .) ]
+  ! PLUS            [ shift and go to state 34 ]
+  ! MINUS           [ shift and go to state 36 ]
+  ! EQUALEQUAL      [ shift and go to state 35 ]
+  ! LE              [ shift and go to state 28 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GE              [ shift and go to state 30 ]
+  ! GT              [ shift and go to state 33 ]
+  ! ANDAND          [ shift and go to state 26 ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 59
+
+    (29) exp -> exp MOD exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    PLUS            reduce using rule 29 (exp -> exp MOD exp .)
+    MINUS           reduce using rule 29 (exp -> exp MOD exp .)
+    TIMES           reduce using rule 29 (exp -> exp MOD exp .)
+    MOD             reduce using rule 29 (exp -> exp MOD exp .)
+    DIVIDE          reduce using rule 29 (exp -> exp MOD exp .)
+    EQUALEQUAL      reduce using rule 29 (exp -> exp MOD exp .)
+    LE              reduce using rule 29 (exp -> exp MOD exp .)
+    LT              reduce using rule 29 (exp -> exp MOD exp .)
+    GE              reduce using rule 29 (exp -> exp MOD exp .)
+    GT              reduce using rule 29 (exp -> exp MOD exp .)
+    ANDAND          reduce using rule 29 (exp -> exp MOD exp .)
+    OROR            reduce using rule 29 (exp -> exp MOD exp .)
+    SEMICOLON       reduce using rule 29 (exp -> exp MOD exp .)
+    FUNCTION        reduce using rule 29 (exp -> exp MOD exp .)
+    IF              reduce using rule 29 (exp -> exp MOD exp .)
+    IDENTIFIER      reduce using rule 29 (exp -> exp MOD exp .)
+    RETURN          reduce using rule 29 (exp -> exp MOD exp .)
+    VAR             reduce using rule 29 (exp -> exp MOD exp .)
+    NUMBER          reduce using rule 29 (exp -> exp MOD exp .)
+    STRING          reduce using rule 29 (exp -> exp MOD exp .)
+    TRUE            reduce using rule 29 (exp -> exp MOD exp .)
+    FALSE           reduce using rule 29 (exp -> exp MOD exp .)
+    NOT             reduce using rule 29 (exp -> exp MOD exp .)
+    LPAREN          reduce using rule 29 (exp -> exp MOD exp .)
+    $end            reduce using rule 29 (exp -> exp MOD exp .)
+    LBRACE          reduce using rule 29 (exp -> exp MOD exp .)
+    RPAREN          reduce using rule 29 (exp -> exp MOD exp .)
+    COMMA           reduce using rule 29 (exp -> exp MOD exp .)
+
+  ! PLUS            [ shift and go to state 34 ]
+  ! MINUS           [ shift and go to state 36 ]
+  ! TIMES           [ shift and go to state 31 ]
+  ! MOD             [ shift and go to state 37 ]
+  ! DIVIDE          [ shift and go to state 29 ]
+  ! EQUALEQUAL      [ shift and go to state 35 ]
+  ! LE              [ shift and go to state 28 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GE              [ shift and go to state 30 ]
+  ! GT              [ shift and go to state 33 ]
+  ! ANDAND          [ shift and go to state 26 ]
+  ! OROR            [ shift and go to state 27 ]
+
+
+state 60
+
+    (38) exp -> IDENTIFIER LPAREN optargs RPAREN .
+
+    PLUS            reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    MINUS           reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    TIMES           reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    MOD             reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    DIVIDE          reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    EQUALEQUAL      reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    LE              reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    LT              reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    GE              reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    GT              reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    ANDAND          reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    OROR            reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    SEMICOLON       reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    FUNCTION        reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    IF              reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    IDENTIFIER      reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    RETURN          reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    VAR             reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    NUMBER          reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    STRING          reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    TRUE            reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    FALSE           reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    NOT             reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    LPAREN          reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    $end            reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    LBRACE          reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    RPAREN          reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+    COMMA           reduce using rule 38 (exp -> IDENTIFIER LPAREN optargs RPAREN .)
+
+
+state 61
+
+    (41) args -> exp COMMA . args
+    (41) args -> . exp COMMA args
+    (42) args -> . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    IDENTIFIER      shift and go to state 16
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    args                           shift and go to state 69
+    exp                            shift and go to state 42
+
+state 62
+
+    (6) optparams -> params .
+
+    RPAREN          reduce using rule 6 (optparams -> params .)
+
+
+state 63
+
+    (8) params -> IDENTIFIER . COMMA params
+    (9) params -> IDENTIFIER .
+
+    COMMA           shift and go to state 70
+    RPAREN          reduce using rule 9 (params -> IDENTIFIER .)
+
+
+state 64
+
+    (3) element -> FUNCTION IDENTIFIER LPAREN optparams . RPAREN compoundstmt
+
+    RPAREN          shift and go to state 71
+
+
+state 65
+
+    (17) stmt -> VAR IDENTIFIER EQUAL exp .
+    (26) exp -> exp . PLUS exp
+    (27) exp -> exp . MINUS exp
+    (28) exp -> exp . TIMES exp
+    (29) exp -> exp . MOD exp
+    (30) exp -> exp . DIVIDE exp
+    (31) exp -> exp . EQUALEQUAL exp
+    (32) exp -> exp . LE exp
+    (33) exp -> exp . LT exp
+    (34) exp -> exp . GE exp
+    (35) exp -> exp . GT exp
+    (36) exp -> exp . ANDAND exp
+    (37) exp -> exp . OROR exp
+
+    SEMICOLON       reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    FUNCTION        reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    IF              reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    IDENTIFIER      reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    RETURN          reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    VAR             reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    NUMBER          reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    STRING          reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    TRUE            reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    FALSE           reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    NOT             reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    LPAREN          reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    $end            reduce using rule 17 (stmt -> VAR IDENTIFIER EQUAL exp .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 31
+    MOD             shift and go to state 37
+    DIVIDE          shift and go to state 29
+    EQUALEQUAL      shift and go to state 35
+    LE              shift and go to state 28
+    LT              shift and go to state 32
+    GE              shift and go to state 30
+    GT              shift and go to state 33
+    ANDAND          shift and go to state 26
+    OROR            shift and go to state 27
+
+
+state 66
+
+    (14) stmt -> IF exp compoundstmt ELSE . compoundstmt
+    (10) compoundstmt -> . LBRACE stmts RBRACE
+
+    LBRACE          shift and go to state 47
+
+    compoundstmt                   shift and go to state 72
+
+state 67
+
+    (10) compoundstmt -> LBRACE stmts . RBRACE
+
+    RBRACE          shift and go to state 73
+
+
+state 68
+
+    (12) stmts -> stmt . SEMICOLON stmts
+
+    SEMICOLON       shift and go to state 74
+
+
+state 69
+
+    (41) args -> exp COMMA args .
+
+    RPAREN          reduce using rule 41 (args -> exp COMMA args .)
+
+
+state 70
+
+    (8) params -> IDENTIFIER COMMA . params
+    (8) params -> . IDENTIFIER COMMA params
+    (9) params -> . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 63
+
+    params                         shift and go to state 75
+
+state 71
+
+    (3) element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN . compoundstmt
+    (10) compoundstmt -> . LBRACE stmts RBRACE
+
+    LBRACE          shift and go to state 47
+
+    compoundstmt                   shift and go to state 76
+
+state 72
+
+    (14) stmt -> IF exp compoundstmt ELSE compoundstmt .
+
+    SEMICOLON       reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+    FUNCTION        reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+    IF              reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+    IDENTIFIER      reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+    RETURN          reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+    VAR             reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+    NUMBER          reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+    STRING          reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+    TRUE            reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+    FALSE           reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+    NOT             reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+    LPAREN          reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+    $end            reduce using rule 14 (stmt -> IF exp compoundstmt ELSE compoundstmt .)
+
+
+state 73
+
+    (10) compoundstmt -> LBRACE stmts RBRACE .
+
+    ELSE            reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    SEMICOLON       reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    FUNCTION        reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    IF              reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    IDENTIFIER      reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    RETURN          reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    VAR             reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    NUMBER          reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    STRING          reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    TRUE            reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    FALSE           reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    NOT             reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    LPAREN          reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+    $end            reduce using rule 10 (compoundstmt -> LBRACE stmts RBRACE .)
+
+
+state 74
+
+    (12) stmts -> stmt SEMICOLON . stmts
+    (11) stmts -> .
+    (12) stmts -> . stmt SEMICOLON stmts
+    (13) stmt -> . IF exp compoundstmt
+    (14) stmt -> . IF exp compoundstmt ELSE compoundstmt
+    (15) stmt -> . IDENTIFIER EQUAL exp
+    (16) stmt -> . RETURN exp
+    (17) stmt -> . VAR IDENTIFIER EQUAL exp
+    (18) stmt -> . exp
+    (19) exp -> . IDENTIFIER
+    (20) exp -> . NUMBER
+    (21) exp -> . STRING
+    (22) exp -> . TRUE
+    (23) exp -> . FALSE
+    (24) exp -> . NOT exp
+    (25) exp -> . LPAREN exp RPAREN
+    (26) exp -> . exp PLUS exp
+    (27) exp -> . exp MINUS exp
+    (28) exp -> . exp TIMES exp
+    (29) exp -> . exp MOD exp
+    (30) exp -> . exp DIVIDE exp
+    (31) exp -> . exp EQUALEQUAL exp
+    (32) exp -> . exp LE exp
+    (33) exp -> . exp LT exp
+    (34) exp -> . exp GE exp
+    (35) exp -> . exp GT exp
+    (36) exp -> . exp ANDAND exp
+    (37) exp -> . exp OROR exp
+    (38) exp -> . IDENTIFIER LPAREN optargs RPAREN
+
+    RBRACE          reduce using rule 11 (stmts -> .)
+    IF              shift and go to state 11
+    IDENTIFIER      shift and go to state 4
+    RETURN          shift and go to state 1
+    VAR             shift and go to state 9
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 6
+    TRUE            shift and go to state 3
+    FALSE           shift and go to state 12
+    NOT             shift and go to state 15
+    LPAREN          shift and go to state 8
+
+    stmts                          shift and go to state 77
+    exp                            shift and go to state 14
+    stmt                           shift and go to state 68
+
+state 75
+
+    (8) params -> IDENTIFIER COMMA params .
+
+    RPAREN          reduce using rule 8 (params -> IDENTIFIER COMMA params .)
+
+
+state 76
+
+    (3) element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .
+
+    FUNCTION        reduce using rule 3 (element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .)
+    IF              reduce using rule 3 (element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .)
+    IDENTIFIER      reduce using rule 3 (element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .)
+    RETURN          reduce using rule 3 (element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .)
+    VAR             reduce using rule 3 (element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .)
+    NUMBER          reduce using rule 3 (element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .)
+    STRING          reduce using rule 3 (element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .)
+    TRUE            reduce using rule 3 (element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .)
+    FALSE           reduce using rule 3 (element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .)
+    NOT             reduce using rule 3 (element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .)
+    LPAREN          reduce using rule 3 (element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .)
+    $end            reduce using rule 3 (element -> FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt .)
+
+
+state 77
+
+    (12) stmts -> stmt SEMICOLON stmts .
+
+    RBRACE          reduce using rule 12 (stmts -> stmt SEMICOLON stmts .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for LPAREN in state 4 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 16 resolved as shift
