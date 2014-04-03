@@ -76,9 +76,11 @@
 
   <form id="code_submission" method="POST" action="/get_json" onsubmit="return false;">
     <textarea id="user_input" class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="20" rows="5">
-            function myfun() { 
-4 + 6;
-return nothing ; }
+                      if true {
+           s =  "This is true.";
+          } else { 
+s = "This is false.";
+          } ;
     </textarea>
     </p>
     <input type="submit" class="btn btn-default" id="form_submit" value="Submit" onclick="return false;">

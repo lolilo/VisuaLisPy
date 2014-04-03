@@ -104,7 +104,7 @@ var createJSNode = function(args){
 
   var parent = args[1];
   var childArray = args.slice(2);
-  if (args[0] == "function" || args[0] == "compound statement" || args[0] == "exp"){
+  if (args[0] == "function" || args[0] == "compound statement" || args[0] == "exp" || args[0] == "if-then-else"){
     parent = args[0];
     if (parent == "compound statement"){
       // compound statement is followed by a list of lists
