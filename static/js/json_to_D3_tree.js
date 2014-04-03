@@ -73,18 +73,18 @@ var createJSD3TreeFormat = function(json){
   // initial elements will always be either statements or functions
 
   s_json = JSON.stringify(json, null, '\t');
-  console.log('json passed for parsing is ' + s_json);
+  // console.log('json passed for parsing is ' + s_json);
 
   for (i=0; i<json.length; i++){
     var block = json[i]; // block to parse
-    console.log('block is now ' + JSON.stringify(block, null, '\t'));
+    // console.log('block is now ' + JSON.stringify(block, null, '\t'));
     
     if (json[i][0] == "stmt"){
-      console.log('editing block start point');
+      // console.log('editing block start point');
       block = json[i][1];
 
       if (block[0] == "exp"){
-        console.log('editing block start point b/c it is exp');
+        // console.log('editing block start point b/c it is exp');
         block = block[1];
       }
     }
@@ -104,7 +104,7 @@ var createJSNode = function(args){
 
   var parent = args[1];
   var childArray = args.slice(2);
-  if (args[0] == "function" || args[0] == "compound statement" || args[0] == "exp" || args[0] == "if-then-else" || args[0] == "if-then"){
+  if (args[0] == "function" || args[0] == "compound statement" || args[0] == "exp" || args[0] == "if-then-else" || args[0] == "if-then" || args[0] == "assign"){
     parent = args[0];
     if (parent == "compound statement"){
       // compound statement is followed by a list of lists
@@ -116,10 +116,21 @@ var createJSNode = function(args){
     if (parent == "if-then"){
       childArray = args.slice(1);
     }
+    if (parent == "if-then-else"){
+      childArray = args.slice(1);
+    }
+    if (parent == "assign"){
+      childArray = args.slice(1);
+    }
   }
   
   s_parent = JSON.stringify(parent, null, '\t');
   console.log('parent is ', s_parent);
+
+
+  if (parent === undefined){
+    parent = args;
+  }
 
 
   console.log("MAKING NODE FOR PARENT " + parent);
