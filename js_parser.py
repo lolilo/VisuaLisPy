@@ -55,7 +55,7 @@ def p_params_one(p):
 
 def p_compound_stmt(p):
   'compoundstmt : LBRACE stmts RBRACE'
-  p[0] = ("BLOCK", p[2]) # BLOCK is followed by a list of lists
+  p[0] = ("compound statement", p[2]) # BLOCK is followed by a list of lists
 
 def p_stmts_empty(p):
   'stmts : '

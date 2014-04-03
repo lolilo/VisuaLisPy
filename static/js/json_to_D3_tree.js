@@ -108,16 +108,14 @@ var createJSNode = function(args){
 
   var parent = args[1];
   var childArray = args.slice(2);
-  if (args[0] == "function" || args[0] == "BLOCK"){
+  if (args[0] == "function" || args[0] == "compound statement"){
     parent = args[0];
-    if (parent == "BLOCK"){
+    if (parent == "compound statement"){
+      // compound statement is followed by a list of lists
       childArray = args[1];
     }
   }
   
-
-  // BLOCK is followed by a list of lists
-
   s_parent = JSON.stringify(parent, null, '\t');
   console.log('parent is ', s_parent);
 
@@ -128,21 +126,8 @@ var createJSNode = function(args){
     "children": []
   };
 
-  // while (typeof(childArray[0]) == typeof([]) && childArray.length==1){
-  //   console.log('childArray is ', JSON.stringify(childArray, null, '\t'));
-  //   childArray = childArray[0];
-  //   console.log('childArray is now', JSON.stringify(childArray, null, '\t'));
-  // }
-
   console.log('child array is', JSON.stringify(childArray, null, '\t'));
-  // var children = childArray.slice(1);
-  // console.log('SLICING ' + JSON.stringify(children, null, '\t'));
   var i = 0; // iterator
-
-  // if (parent=="lambda"){
-  //   var lambda_args = args[1]; // arguments list
-  //   lambda_args.unshift("(args)"); // insert "(args)" node for tree rendering
-  // }
 
   for (i=0; i<childArray.length; i++){
     console.log("creating child node for " + childArray[i]);

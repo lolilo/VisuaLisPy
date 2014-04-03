@@ -20,17 +20,17 @@ $(document).ready(function(){
         for (key in expressionTrace) {
             jsElement = expressionTrace;
             console.log(JSON.stringify(jsElement, null, '\t'));
-            treeData = createJSD3TreeFormat(jsElement);
+            // treeData = createJSD3TreeFormat(jsElement);
 
             // // TODO: this is unncessary work, checking each time
-            // if (jsElement == "stmt" || jsElement == "function") {
-            //     // console.log(expressionTrace);
-            //     treeData = createJSD3TreeFormat(expressionTrace);
-            // }
-            // else {
-            //     // console.log("THIS IS NOT JAVASCRIPT");
-            //     treeData = createSchemeD3TreeFormat(expressionTrace[key]);
-            // }
+            if (jsElement[0][0] == "stmt" || jsElement[0][0] == "function") {
+                // console.log("JAVASCRIPT");
+                treeData = createJSD3TreeFormat(jsElement);
+            }
+            else {
+                // console.log("THIS IS NOT JAVASCRIPT");
+                treeData = createSchemeD3TreeFormat(expressionTrace[key]);
+            }
             console.log('this is tree', JSON.stringify(treeData, null, '\t'));
 
             root = treeData[0];
