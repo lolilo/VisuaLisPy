@@ -14,8 +14,7 @@ def p_js_empty(p):
         p[0] = [ ]
 
 ######################################################################
-# Fill in the rest of the grammar for elements and statements here.
-# This can be done in about 50 lines with 15 grammar rules.
+# grammar rules
 ######################################################################
 
 # function declaration
@@ -193,90 +192,9 @@ def test_parser(input_string):
         parse_tree = jsparser.parse(input_string,lexer=jslexer) 
         return parse_tree
 
-
-
-
-
-
-
-
-
-
-
-
-
-# Simple function with no arguments and a one-statement body.
-jstext1 = "function myfun() { return nothing ; }"
-jstree1 = [('function', 'myfun', [], [('return', ('identifier', 'nothing'))])]
-
-print test_parser(jstext1) == jstree1
-
-# Function with multiple arguments.
-jstext2 = "function nobletruths(dukkha,samudaya,nirodha,gamini) { return buddhism ; }"
-jstree2 = [('function', 'nobletruths', ['dukkha', 'samudaya', 'nirodha', 'gamini'], [('return', ('identifier', 'buddhism'))])]
-print test_parser(jstext2) == jstree2
-
-# Multiple top-level elemeents, each of which is a var, assignment or
-# expression statement. 
-jstext3 = """var view = right;
-var intention = right;
-var speech = right;
-action = right;
-livelihood = right;
-effort_right;
-mindfulness_right;
-concentration_right;"""
-jstree3 = [('stmt', ('var', 'view', ('identifier', 'right'))), ('stmt', ('var', 'intention', ('identifier', 'right'))), ('stmt', ('var', 'speech', ('identifier', 'right'))), ('stmt', ('assign', 'action', ('identifier', 'right'))), ('stmt', ('assign', 'livelihood', ('identifier', 'right'))), ('stmt', ('exp', ('identifier', 'effort_right'))), ('stmt', ('exp', ('identifier', 'mindfulness_right'))), ('stmt', ('exp', ('identifier', 'concentration_right')))]
-print test_parser(jstext3) == jstree3
-
-# if-then and if-then-else and compound statements.
-jstext4 = """
-if cherry {
-  orchard;
-  if uncle_vanya {
-    anton ;
-    chekov ;
-  } else { 
-  } ;
-  nineteen_oh_four ;
-} ;
-"""
-jstree4 = [('stmt', ('if-then', ('identifier', 'cherry'), [('exp', ('identifier', 'orchard')), ('if-then-else', ('identifier', 'uncle_vanya'), [('exp', ('identifier', 'anton')), ('exp', ('identifier', 'chekov'))], []), ('exp', ('identifier', 'nineteen_oh_four'))]))]
-print test_parser(jstext4) == jstree4
-
-# Simple binary expression.
-jstext1 = "x + 1" 
-jstree1 = ('binop', ('identifier', 'x'), '+', ('number', 1.0))
-print test_parser(jstext1) == jstree1
-print test_parser(jstext1)
-# Simple associativity.
-jstext2 = "1 - 2 - 3"   # means (1-2)-3
-jstree2 = ('binop', ('binop', ('number', 1.0), '-', ('number', 2.0)), '-',
-('number', 3.0))
-print test_parser(jstext2) == jstree2
-print test_parser(jstext2)
-# Precedence and associativity.
-jstext3 = "1 + 2 * 3 - 4 / 5 * (6 + 2)" 
-jstree3 = ('binop', ('binop', ('number', 1.0), '+', ('binop', ('number', 2.0), '*', ('number', 3.0))), '-', ('binop', ('binop', ('number', 4.0), '/', ('number', 5.0)), '*', ('binop', ('number', 6.0), '+', ('number', 2.0))))
-print test_parser(jstext3) == jstree3
-print test_parser(jstext3)
-# String and boolean constants, comparisons.
-jstext4 = ' "hello" == "goodbye" || true && false '
-jstree4 = ('binop', ('binop', ('string', 'hello'), '==', ('string', 'goodbye')), '||', ('binop', ('true', 'true'), '&&', ('false', 'false')))
-print test_parser(jstext4) == jstree4
-print test_parser(jstext4)
-# Not, precedence, associativity.
-jstext5 = "! ! tricky || 3 < 5" 
-jstree5 = [('stmt', ('exp', ('binop', ('not', ('not', ('identifier', 'tricky'))), '||', ('binop', ('number', 3.0), '<', ('number', 5.0)))))]
-print test_parser(jstext5) == jstree5
-
-# nested function calls!
-jstext6 = "apply(1, 2 + eval(recursion), sqrt(2))"
 jstree6 = [('stmt', ('exp', ('call', 'apply', [('number', 1.0), ('binop', ('number', 2.0), '+', ('call', 'eval', [('identifier', 'recursion')])), ('call', 'sqrt', [('number', 2.0)])])))]
-print test_parser(jstext6) == jstree6 
-
 json_object = json.dumps(jstree6, indent=5) # magic!
-print json_object
+# print json_object
 
 t = """function fib_no_recurse(n) {
     var i;
@@ -290,9 +208,25 @@ t = """function fib_no_recurse(n) {
         fib[1] = new_fib;
     }
     return fib[1];
-
-    
+}"""
+t1 = """function fib(n) {
+    if (n < 2) {
+        return n;
+    }
+    else {
+        return fib(n - 1) + fib(n - 2);
+    }
 }"""
 c = "function nobletruths(dukkha,samudaya,nirodha,gamini) { return buddhism ; }"
 j_ob = json.dumps(test_parser(c), indent=5)
-print j_ob
+# print j_ob
+jstext3 = """var view = right;
+var intention = right;
+var speech = right;
+action = right;
+livelihood = right;
+effort_right;
+mindfulness_right;
+concentration_right;"""
+jstree3 = [('stmt', ('var', 'view', ('identifier', 'right'))), ('stmt', ('var', 'intention', ('identifier', 'right'))), ('stmt', ('var', 'speech', ('identifier', 'right'))), ('stmt', ('assign', 'action', ('identifier', 'right'))), ('stmt', ('assign', 'livelihood', ('identifier', 'right'))), ('stmt', ('exp', ('identifier', 'effort_right'))), ('stmt', ('exp', ('identifier', 'mindfulness_right'))), ('stmt', ('exp', ('identifier', 'concentration_right')))]
+print test_parser(jstext3) == jstree3
