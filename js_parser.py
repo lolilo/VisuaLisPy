@@ -23,7 +23,7 @@ def p_element_function(p):
   p[0] = ("function", p[2], p[4], p[6])
 
 def p_element_stmt(p):
-  'element : stmt SEMICOLON'
+  'element : stmt SEMICOLON' # this messes with if, else...unnecessary semicolon
   p[0] = ("stmt", p[1])
 
 def p_element_independent_stmt(p):
@@ -182,13 +182,6 @@ def p_error(p):
 # done
 ######################################################################
 
-# # For now, we will assume that there is only one type of expression.
-# def p_exp_identifier(p): 
-#         'exp : IDENTIFIER'
-#         p[0] = ("identifier",p[1]) 
-
-# We have included a few tests. You will likely want to write your own.
-
 jslexer = lex.lex(module=js_tokens) 
 jsparser = yacc.yacc() 
 
@@ -242,6 +235,6 @@ js_ex = """function fib(n){
         return fib(n - 1) + fib(n - 2);
     };
 }"""
-print test_parser(js_ex)
-j_ob = json.dumps(test_parser(js_ex), indent=5)
-print j_ob
+# print test_parser(js_ex)
+# j_ob = json.dumps(test_parser(js_ex), indent=5)
+# print j_ob
