@@ -74,22 +74,29 @@ var createJSD3TreeFormat = function(json){
   // console.log('json is ' + json_input);
 
   for (i; i < json.length; i++){
-    jsElement = json[i][0];
-    console.log('json is ' + json_input);
-    console.log('jsElement is ' + jsElement);
-
-    if (jsElement=="stmt" || jsElement=="function"){
-      jsElement = json[i][1];
-    }
-    if (jsElement[0]=="exp"){
-      jsElement = json[i][1][1];
+    console.log('IS THIS A FUNCTION BLOCK' + json[i][0]);
+    if (json[i][0] == "function"){
+      console.log('IS THIS A FUNCTION BLOCK' + json[i][0]);
+      jsElement = json[i];
     }
 
+    else {
+      jsElement = json[i][0];
+      console.log('json is ' + json_input);
+      console.log('jsElement is ' + jsElement);
+
+      if (jsElement=="stmt"){
+        jsElement = json[i][1];
+      }
+      if (jsElement[0]=="exp"){
+        jsElement = json[i][1][1];
+      }
+    }
     console.log('jsElement is now ' + jsElement);
     json_list = jsElement;
     console.log('json_list is ' + json_list);
     tree.push(createJSNode(json_list));
-    }
+  }
   // return final tree
   return tree;
 };
@@ -97,20 +104,26 @@ var createJSD3TreeFormat = function(json){
 var createJSNode = function(args){
   console.log("ARGS IS " + args);
   console.log(args.length);
-  // if (args.length == 1){
-  //   var terminal_node = {
-  //     "name": args
-  //   };
-  //   return terminal_node;
-  // }
 
   var parent = args[1];
+  var childArray = args;
+
+  s_parent = JSON.stringify(parent, null, '\t');
+  console.log('parent is ', s_parent);
+  while (typeof(parent) == typeof([])){
+    parent = parent[0];
+    // nextChildArray = childArray;
+    // childArray = childArray[1]; // if we iterate again, this will be updated. 
+    console.log('childArray is ', JSON.stringify(childArray, null, '\t'));
+  }
   console.log("MAKING NODE FOR PARENT " + parent);
   var new_node = {
     "name": parent,
     "children": []
   };
-  var children = args.slice(2);
+
+
+  var children = childArray.slice(2);
   console.log('SLICING ' + children);
   var i = 0; // iterator
 

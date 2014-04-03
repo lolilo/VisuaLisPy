@@ -55,14 +55,14 @@ def p_params_one(p):
 
 def p_compound_stmt(p):
   'compoundstmt : LBRACE stmts RBRACE'
-  p[0] = p[2]
+  p[0] = ('compoundstmt', p[2])
 
 def p_stmts_empty(p):
   'stmts : '
   p[0] = []
 
 def p_stmts(p):
-  'stmts : stmt SEMICOLON stmts'
+  'stmts : stmt SEMICOLON stmts' # this introduces list within a list...return stmt
   p[0] = [p[1]] + p[3]
 
 def p_stmt_if(p):
