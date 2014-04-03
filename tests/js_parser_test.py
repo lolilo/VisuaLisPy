@@ -8,12 +8,12 @@ class TestListOperations(unittest.TestCase):
     # Simple function with no arguments and a one-statement body.
     def test_js1(self):
         self.jstext1 = "function myfun() { return nothing ; }"
-        self.jstree1 = [('function', 'myfun', [], [('return', ('identifier', 'nothing'))])]
+        self.jstree1 = [('function', 'myfun', [], ('compound statement', [('RETURN', 'return', ('identifier', 'nothing'))]))]
         self.assertEqual(test_parser(self.jstext1), self.jstree1)
     # Function with multiple arguments.
     def test_js2(self):
         self.jstext2 = "function nobletruths(dukkha,samudaya,nirodha,gamini) { return buddhism ; }"
-        self.jstree2 = [('function', 'nobletruths', ['dukkha', 'samudaya', 'nirodha', 'gamini'], [('return', ('identifier', 'buddhism'))])]
+        self.jstree2 = [('function', 'nobletruths', ('parameters', ['dukkha', 'samudaya', 'nirodha', 'gamini']), ('compound statement', [('RETURN', 'return', ('identifier', 'buddhism'))]))]
         self.assertEqual(test_parser(self.jstext2), self.jstree2)
     # Multiple top-level elemeents, each of which is a var, assignment or
     # expression statement. 
@@ -41,7 +41,7 @@ class TestListOperations(unittest.TestCase):
           nineteen_oh_four ;
         } ;
         """
-        self.jstree4 = [('stmt', ('if-then', ('identifier', 'cherry'), [('exp', ('identifier', 'orchard')), ('if-then-else', ('identifier', 'uncle_vanya'), [('exp', ('identifier', 'anton')), ('exp', ('identifier', 'chekov'))], []), ('exp', ('identifier', 'nineteen_oh_four'))]))]
+        self.jstree4 = [('stmt', ('if-then', ('identifier', 'cherry'), ('compound statement', [('exp', ('identifier', 'orchard')), ('if-then-else', ('identifier', 'uncle_vanya'), ('compound statement', [('exp', ('identifier', 'anton')), ('exp', ('identifier', 'chekov'))]), ('compound statement', [])), ('exp', ('identifier', 'nineteen_oh_four'))])))]
         self.assertEqual(test_parser(self.jstext4), self.jstree4)
     # Simple binary expression.
     def test_js5(self):
