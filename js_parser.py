@@ -18,6 +18,7 @@ def p_js_empty(p):
 ######################################################################
 
 # function declaration
+# elements are either function declarations or statements
 def p_element_function(p):
   'element : FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt'
   p[0] = ("function", p[2], p[4], p[6])

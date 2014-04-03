@@ -13,7 +13,15 @@ $(document).ready(function(){
         // expressionTrace is the list object that contains one object for each block of code
         // for each object in expressionTrace, create a tree
         for (key in expressionTrace) {
-            treeData = createD3TreeFormat(expressionTrace[key]);
+            jsElement = expressionTrace[key][0];
+            if (jsElement == "stmt" || jsElement == "function") {
+                console.log("AHHH");
+                treeData = createJSD3TreeFormat(expressionTrace[key]);
+            }
+            else {
+                // console.log("THIS IS NOT JAVASCRIPT");
+                treeData = createSchemeD3TreeFormat(expressionTrace[key]);
+            }
             console.log('this is tree', JSON.stringify(treeData, null, '\t'));
 
             root = treeData[0];

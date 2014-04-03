@@ -22,7 +22,7 @@ var json =
          ]
     };
 
-var createD3TreeFormat = function(json){
+var createSchemeD3TreeFormat = function(json){
   var tree = [];
   // to start off, need to access the only key in the dictionary json
   for (var key in json){
@@ -66,3 +66,14 @@ var createNode = function(args){
     }
 };
 
+
+var createJSD3TreeFormat = function(json){
+  var tree = [];
+  // to start off, need to access the only key in the dictionary json
+  for (var key in json){
+    json_list = json[key];
+    tree.push(createNode(json_list));
+    }
+  // return final tree
+  return tree;
+};
