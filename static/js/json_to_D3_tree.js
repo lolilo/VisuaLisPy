@@ -66,7 +66,6 @@ var createNode = function(args){
     }
 };
 
-
 var createJSD3TreeFormat = function(json){
   var tree = [];
   var i = 0; // iterator
@@ -90,9 +89,6 @@ var createJSD3TreeFormat = function(json){
       }
     }
 
-
-
-
     console.log('passing block into tree node ' + JSON.stringify(block, null, '\t'));
     tree.push(createJSNode(block));
   }
@@ -108,11 +104,14 @@ var createJSNode = function(args){
 
   var parent = args[1];
   var childArray = args.slice(2);
-  if (args[0] == "function" || args[0] == "compound statement"){
+  if (args[0] == "function" || args[0] == "compound statement" || args[0] == "exp"){
     parent = args[0];
     if (parent == "compound statement"){
       // compound statement is followed by a list of lists
       childArray = args[1];
+    }
+    if (parent == "exp"){
+      childArray = [args[1]];
     }
   }
   

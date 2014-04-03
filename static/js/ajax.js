@@ -14,15 +14,12 @@ $(document).ready(function(){
         // for each object in expressionTrace, create a tree
 
 
-// I need to reorganize my if statement...maybe?
-
-
         for (key in expressionTrace) {
             jsElement = expressionTrace;
             console.log(JSON.stringify(jsElement, null, '\t'));
             // treeData = createJSD3TreeFormat(jsElement);
 
-            // // TODO: this is unncessary work, checking each time
+            // // TODO: this is unncessary work, checking each time...
             if (jsElement[0][0] == "stmt" || jsElement[0][0] == "function") {
                 // console.log("JAVASCRIPT");
                 treeData = createJSD3TreeFormat(jsElement);
@@ -72,7 +69,6 @@ $(document).ready(function(){
 
     // debugging -- autoclick
     formSubmitButton.click();
-
 
     clearButton.on("click", function(event){
         event.preventDefault();
