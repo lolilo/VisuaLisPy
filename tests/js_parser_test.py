@@ -55,5 +55,29 @@ class TestListOperations(unittest.TestCase):
         self.jstree6 = [('stmt', ('exp', ('call', 'apply', [('number', 1.0), ('binop', ('number', 2.0), '+', ('call', 'eval', [('identifier', 'recursion')])), ('call', 'sqrt', [('number', 2.0)])])))]
         self.assertEqual(test_parser(self.jstext6), self.jstree6) 
 
+
+        
+# # Simple associativity.
+# jstext2 = "1 - 2 - 3"   # means (1-2)-3
+# jstree2 = ('binop', ('binop', ('number', 1.0), '-', ('number', 2.0)), '-',
+# ('number', 3.0))
+# print test_parser(jstext2) == jstree2
+# print test_parser(jstext2)
+# # Precedence and associativity.
+# jstext3 = "1 + 2 * 3 - 4 / 5 * (6 + 2)" 
+# jstree3 = ('binop', ('binop', ('number', 1.0), '+', ('binop', ('number', 2.0), '*', ('number', 3.0))), '-', ('binop', ('binop', ('number', 4.0), '/', ('number', 5.0)), '*', ('binop', ('number', 6.0), '+', ('number', 2.0))))
+# print test_parser(jstext3) == jstree3
+# print test_parser(jstext3)
+# # String and boolean constants, comparisons.
+# jstext4 = ' "hello" == "goodbye" || true && false '
+# jstree4 = ('binop', ('binop', ('string', 'hello'), '==', ('string', 'goodbye')), '||', ('binop', ('true', 'true'), '&&', ('false', 'false')))
+# print test_parser(jstext4) == jstree4
+# print test_parser(jstext4)
+# # Not, precedence, associativity.
+# jstext5 = "! ! tricky || 3 < 5" 
+# jstree5 = [('stmt', ('exp', ('binop', ('not', ('not', ('identifier', 'tricky'))), '||', ('binop', ('number', 3.0), '<', ('number', 5.0)))))]
+# print test_parser(jstext5) == jstree5
+
+
 if __name__ == '__main__':
     unittest.main()

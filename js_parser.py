@@ -148,7 +148,7 @@ def p_exp_binop(p):
             | exp GT exp
             | exp ANDAND exp
             | exp OROR exp'''
-    p[0] = ("binop", p[1], p[2], p[3])
+    p[0] = ("binop", p[2], p[1], p[3])
 
 # function calls
 def p_exp_call(p):
@@ -223,8 +223,7 @@ t1 = """function fib(n) {
     }
 }"""
 c = "function nobletruths(dukkha,samudaya,nirodha,gamini) { return buddhism ; }"
-j_ob = json.dumps(test_parser(c), indent=5)
-# print j_ob
+
 jstext3 = """var view = right;
 var intention = right;
 var speech = right;
@@ -234,4 +233,15 @@ effort_right;
 mindfulness_right;
 concentration_right;"""
 jstree3 = [('stmt', ('var', 'view', ('identifier', 'right'))), ('stmt', ('var', 'intention', ('identifier', 'right'))), ('stmt', ('var', 'speech', ('identifier', 'right'))), ('stmt', ('assign', 'action', ('identifier', 'right'))), ('stmt', ('assign', 'livelihood', ('identifier', 'right'))), ('stmt', ('exp', ('identifier', 'effort_right'))), ('stmt', ('exp', ('identifier', 'mindfulness_right'))), ('stmt', ('exp', ('identifier', 'concentration_right')))]
-print test_parser(jstext3) == jstree3
+# print test_parser(jstext3) == jstree3
+js_ex = """function fib(n){
+    if (n < 2){
+        return n;
+    }
+    else {
+        return fib(n - 1) + fib(n - 2);
+    };
+}"""
+print test_parser(js_ex)
+j_ob = json.dumps(test_parser(js_ex), indent=5)
+print j_ob
