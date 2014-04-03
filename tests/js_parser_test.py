@@ -49,8 +49,32 @@ class TestListOperations(unittest.TestCase):
             concentration_right;"""
         self.jstree3 = [('stmt', ('var', 'view', ('identifier', 'right'))), ('stmt', ('var', 'intention', ('identifier', 'right'))), ('stmt', ('var', 'speech', ('identifier', 'right'))), ('stmt', ('assign', 'action', ('identifier', 'right'))), ('stmt', ('assign', 'livelihood', ('identifier', 'right'))), ('stmt', ('exp', ('identifier', 'effort_right'))), ('stmt', ('exp', ('identifier', 'mindfulness_right'))), ('stmt', ('exp', ('identifier', 'concentration_right')))]
         self.assertEqual(test_parser(self.jstext3), self.jstree3)
-
-
+    # if-then and if-then-else and compound statements.
+    def test_js4(self):
+        self.jstext4 = """
+        if cherry {
+          orchard;
+          if uncle_vanya {
+            anton ;
+            chekov ;
+          } else { 
+          } ;
+          nineteen_oh_four ;
+        } ;
+        """
+        self.jstree4 = [('stmt', ('if-then', ('identifier', 'cherry'), [('exp', ('identifier', 'orchard')), ('if-then-else', ('identifier', 'uncle_vanya'), [('exp', ('identifier', 'anton')), ('exp', ('identifier', 'chekov'))], []), ('exp', ('identifier', 'nineteen_oh_four'))]))]
+        self.assertEqual(test_parser(self.jstext4), self.jstree4)
+    # Simple binary expression.
+    def test_js5(self):
+        self.jstext5 = "x + 1" 
+        # can I differentiate from stmt and exp without filtering stmt first? 
+        self.jstree5 = [('stmt', ('exp', ('binop', ('identifier', 'x'), '+', ('number', 1.0))))]
+        self.assertEqual(test_parser(self.jstext5), self.jstree5)
+    # nested function calls!
+    def test_js6(self):
+        self.jstext6 = "apply(1, 2 + eval(recursion), sqrt(2))"
+        self.jstree6 = [('stmt', ('exp', ('call', 'apply', [('number', 1.0), ('binop', ('number', 2.0), '+', ('call', 'eval', [('identifier', 'recursion')])), ('call', 'sqrt', [('number', 2.0)])])))]
+        self.assertEqual(test_parser(self.jstext6), self.jstree6) 
 
 
 if __name__ == '__main__':

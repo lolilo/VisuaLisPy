@@ -30,6 +30,11 @@ def p_element_independent_stmt(p):
   'element : stmt'
   p[0] = ("stmt", p[1])
 
+# def p_element_independent_exp(p):
+#   'element : exp'
+#   # will label as exp later
+#   p[0] = p[1]
+
 def p_optparams(p):
   'optparams : params'
   p[0] = p[1]
