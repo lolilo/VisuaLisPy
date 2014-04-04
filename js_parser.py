@@ -21,7 +21,7 @@ def p_js_empty(p):
 # elements are either function declarations or statements
 def p_element_function(p):
   'element : FUNCTION IDENTIFIER LPAREN optparams RPAREN compoundstmt'
-  p[0] = ("function", p[2], p[4], p[6])
+  p[0] = ("function", ("identifier", p[2], p[4], p[6]))
 
 def p_element_stmt(p):
   'element : stmt SEMICOLON' # this messes with 'if, else'...unnecessary semicolon
@@ -79,7 +79,7 @@ def p_stmt_assignment(p):
 
 def p_stmt_return(p):
   'stmt : RETURN exp'
-  p[0] = ("RETURN","return", p[2])
+  p[0] = ("return", p[2])
 
 def p_stmt_var(p):
   'stmt : VAR IDENTIFIER EQUAL exp'

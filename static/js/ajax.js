@@ -28,7 +28,7 @@ $(document).ready(function(){
                 // console.log("THIS IS NOT JAVASCRIPT");
                 treeData = createSchemeD3TreeFormat(expressionTrace[key]);
             }
-            // console.log('this is tree', JSON.stringify(treeData, null, '\t'));
+            console.log('this is tree', JSON.stringify(treeData, null, '\t'));
 
             root = treeData[0];
             // call update function from render_tree.js

@@ -104,7 +104,7 @@ var createJSNode = function(args){
 
   var parent = args[1];
   var childArray = args.slice(2);
-  if (args[0] == "function" || args[0] == "compound statement" || args[0] == "exp" || args[0] == "if-then-else" || args[0] == "if-then" || args[0] == "assign"){
+  if (args[0] == "function" || args[0] == "compound statement" || args[0] == "exp" || args[0] == "if-then-else" || args[0] == "if-then" || args[0] == "assign" || args[0] == "return"){
     parent = args[0];
     if (parent == "compound statement"){
       // compound statement is followed by a list of lists
@@ -113,13 +113,13 @@ var createJSNode = function(args){
     if (parent == "exp"){
       childArray = [args[1]];
     }
-    if (parent == "if-then"){
+    if (parent == "if-then" || parent == "if-then-else"){
       childArray = args.slice(1);
     }
-    if (parent == "if-then-else"){
+    if (parent == "assign" || parent == "return"){
       childArray = args.slice(1);
     }
-    if (parent == "assign"){
+    if (parent == "function"){
       childArray = args.slice(1);
     }
   }
@@ -131,7 +131,6 @@ var createJSNode = function(args){
   if (parent === undefined){
     parent = args;
   }
-
 
   console.log("MAKING NODE FOR PARENT " + parent);
   var new_node = {
