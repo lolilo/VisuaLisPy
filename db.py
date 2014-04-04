@@ -20,8 +20,13 @@ class Code(Base):
     __tablename__ = "programs"
     id = Column(Integer, primary_key=True)
     name = Column(String(64), nullable=True)
-    description = Column(String(64), nullable=True)
     code = Column(String(64))
+    # language = Column(String(64))
+    description = Column(String(64), nullable=True)
+    
+    # FIXME: broken currently b/c language doesn't exist
+
+    # users will access saved code via url/id
 
     # s.query(Code).filter_by(id=1).one()
     # s.query(Code).filter_by(name='area').one()
