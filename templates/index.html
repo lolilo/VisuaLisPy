@@ -53,21 +53,6 @@
       float: right;
     }
 
-    /*HOW TO OVERWRITE BOOTSTRAP.*/
-
-   /* .form-control{
-      float:left;
-      margin-left: -20px;
-      text-align:left;
-      background-color:#ffa;*/
-
-/*
-    div#examples {
-      padding: 0px;
-      float:left;
-    }
-*/
-
     }
 
 </style>
@@ -87,7 +72,7 @@
 <!-- onsubmit and onclick are default attributes that will run if jQuery has not yet loaded. Since I moved the .js scripts before the form, the form won't load until the scripts load, so these are redundant checks -->
 
   <form id="code_submission" method="POST" action="/get_json" onsubmit="return false;">
-    <textarea id="user_input" class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="20" rows="5">
+    <textarea id="user_input" class="form-control" name="user_input" placeholder="Enter Scheme or JavaScript program here." cols="20" rows="5">
             fib(n - 1) 
     </textarea>
     </p>
@@ -105,11 +90,18 @@
       </button>
 
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+          <a href="get_db_code/area" onclick="return false;">area</a></a>
+        </li>
+
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+          <a href="/get_db_code/factorial" onclick="return false;">factorial</a></a>
+        </li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+          <a href="/get_db_code/fibonacci" onclick="return false;">fibonacci</a></a>
+        </li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">math</a></li>
       </ul>
     </div>
 
@@ -128,18 +120,7 @@
       </ul>
     </div>
 
-
-
   </div>
-
-
-
-
-
-
-
-
-
 
 
 
