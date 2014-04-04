@@ -127,9 +127,12 @@ var createJSNode = function(args){
   s_parent = JSON.stringify(parent, null, '\t');
   console.log('parent is ', s_parent);
 
-
   if (parent === undefined){
     parent = args;
+  }
+
+  if (args[0] == "call"){
+    childArray = childArray[0];
   }
 
   console.log("MAKING NODE FOR PARENT " + parent);
