@@ -3,6 +3,8 @@ var env = {};
 $(document).ready(function(){
     var formSubmitButton = $("#form_submit");
     var clearButton = $("#clear_program");
+    var saveButton = $("#save_program");
+
     var drawTree = function(data){
         var key;
         // get environment data
@@ -78,6 +80,30 @@ $(document).ready(function(){
         // clear text area
         document.getElementById("user_input").value = "";
     });
+
+    saveButton.on("click", function(event){
+        event.preventDefault();
+        $.ajax({
+            url: "/save_to_db",
+            method: "POST",
+            data: $("form#code_submission").serialize(),
+            // gets a program as a string
+        }).done(function(data){
+            successMessage = data;
+            messageArea = document.getElementById("message_display");
+            messageArea.innerHTML = successMessage;
+        }).fail(function(){
+            messageArea = document.getElementById("message_display");
+            messageArea.innerHTML = "Sorry, an error occurred.";
+        });
+
+
+
+        // clear any displayed message
+        messageArea = document.getElementById("message_display");
+        messageArea.innerHTML = "";
+    });
+
 
     $("a").click(function(event){
         var link = $(this).attr('href');

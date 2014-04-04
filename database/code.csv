@@ -1,3 +1,3 @@
-area,(define area (lambda (r) (* 3.141592653 (* r r)))),Scheme,define new function area
-factorial,(define fact (lambda (n) (if (<= n 1) 1 (* n (fact (- n 1)))))),Scheme,define new function factorial
-fibonacci,(define fib (lambda (n) (if (< n 2) n (+ (fib (- n 1)) (fib (- n 2)))))),Scheme,define new function fibonacci
+area|||(define area (lambda (r) (* 3.141592653 (* r r))))|||Scheme|||define new function area
+factorial|||(define fact (lambda (n) (if (<= n 1) 1 (* n (fact (- n 1))))))|||Scheme|||define new function factorial
+fibonacci|||(define fib (lambda (n) (if (< n 2) n (+ (fib (- n 1)) (fib (- n 2))))))|||Scheme|||define new function fibonacci

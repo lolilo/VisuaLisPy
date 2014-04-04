@@ -19,6 +19,7 @@ def index():
 @app.route("/get_json", methods=["POST"])
 def code_submitted():
     # return JSON to ajax call -- code input by user
+    print request.form.get("user_input")
     user_input = request.form.get("user_input").strip()
 
     if not user_input:
@@ -30,7 +31,7 @@ def code_submitted():
     else: # try JavaScript
         json_object = js_parser.format_json(user_input)
     
-    print json_object
+    # print json_object
     return json_object
 
 @app.route("/get_db_code/<code_name>")
@@ -38,19 +39,31 @@ def get_db_code(code_name):
     # return JSON to ajax call -- code from database
     code_object = db.s.query(db.Code).filter_by(name=code_name).one()
     code = code_object.code
-    # json_object = lis.return_json(code)
-    # return json_object
     return code
+
+@app.route("/save_to_db", methods=["POST"])
+def save_to_db():
+    print request.form.get("user_input")
+    user_input = request.form.get("user_input").strip()
+    if not user_input:
+        print 'NO USER INPUT'
+
+    else:
+        success = db.new_code(user_input) # returns None if failure, code id if success
+        if success:
+            return "Share your code with /program/%r." % success
+        else: 
+            return "Sorry, an error occurred."
 
 @app.route("/about")
 def about():
     html = render_template("about.html")
     return html
 
-@app.route("/tree")
-def tree():
-    html = render_template("tree.html")
-    return html
+# @app.route("/tree")
+# def tree():
+#     html = render_template("tree.html")
+#     return html
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -7,7 +7,7 @@ def load_code(session):
 
     for raw_line in f:
         # parse and clean up the line
-        line = raw_line.split(',')
+        line = raw_line.split('|||')
         clean_line = [x.strip().decode("latin-1") for x in line]
         # create object
         # must interact with model.py somehow
@@ -23,7 +23,6 @@ def load_code(session):
     session.commit()
 
 def main(session):
-    # You'll call each of the load_* functions with the session as an argument
     load_code(s)
 
 if __name__ == "__main__":

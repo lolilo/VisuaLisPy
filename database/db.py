@@ -21,22 +21,30 @@ class Code(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(64), nullable=True)
     code = Column(Text())
-    language = Column(String(64))
+    language = Column(String(64), nullable=True)
     description = Column(String(64), nullable=True)
 
-    # users will access saved code via url/id
+    # users will access saved code via url/id ~~ hash(id)?
 
     # s.query(Code).filter_by(id=1).one()
     # s.query(Code).filter_by(name='area').one()
 
 ### End class declarations
 
+# new code 
+def new_code(code):
+    new_code = Code(code=code)
+    s.add(new_code)
+    s.commit()
+    print "New code added to database."
+    return new_code.id
 
-### for seeding database
+### for initalizing database tables
 def create_tables():
     ENGINE = None
     Base.metadata.create_all(ENGINE)
-
+### for seeding database via terminal via python seed.py
+### can also play around directly with python -i db.py ~ python interactive mode
 def connect():
     global ENGINE, SESSION
     exp = os.environ.get("DATABASE_URL", "postgres://programs:programs@localhost/programs")
