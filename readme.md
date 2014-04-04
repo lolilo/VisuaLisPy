@@ -89,21 +89,20 @@ Whereas Scheme's grammar is straightforward enough to map input to output with l
 
 
 Known bugs -- 
-Backend
-~ (n - 1) must have spaces, else reads as '-1'. Must edit tokenizing rules and 
-~ establish precedence for subtraction over negative numbers.
-~ if-then-else statement must end with semicolon (shouldn't be necessary)
+<br /> Backend
+<br /> ~ (n - 1) must have spaces, else reads as '-1'. Must edit tokenizing rules and establish precedence for subtraction over negative numbers.
+<br /> ~ if-then-else statement must end with semicolon (shouldn't be necessary)
 
 Frontend
-~ 
+<br /> ~ 
 
 
 To do -- 
 Backend
-~ parse lists, loops. id followed by square brackets (indexing) will have higher precedence than list data type
+<br /> ~ parse lists, loops. id followed by square brackets (indexing) will have higher precedence than list data type
 Database
-~ migrate database to PostgreSQL
-~ ability for user to save code into database and share via generated link
+<br /> ~ migrate database to PostgreSQL
+<br /> ~ ability for user to save code into database and share via generated link
 
 Frontend
 ~ drop-down menus for examples
