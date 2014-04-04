@@ -6,7 +6,6 @@ import os
 
 exp = os.environ.get("DATABASE_URL", "postgres://programs:programs@localhost/programs")
 engine = create_engine(exp, echo=False)
-
 # engine = create_engine("sqlite:///code.db", echo=False)
 
 s = scoped_session(sessionmaker(
@@ -16,8 +15,6 @@ s = scoped_session(sessionmaker(
 Base = declarative_base()
 Base.query = s.query_property()
 
-
-
 ### Class declarations go here
 class Code(Base):
     __tablename__ = "programs"
@@ -26,8 +23,6 @@ class Code(Base):
     code = Column(Text())
     language = Column(String(64))
     description = Column(String(64), nullable=True)
-    
-    # FIXME: broken currently b/c language doesn't exist
 
     # users will access saved code via url/id
 
@@ -43,14 +38,11 @@ def create_tables():
     Base.metadata.create_all(ENGINE)
 
 def connect():
-    global ENGINE
-    global Session
-
+    global ENGINE, SESSION
     exp = os.environ.get("DATABASE_URL", "postgres://programs:programs@localhost/programs")
     ENGINE = create_engine(exp, echo=False)
-    Session = sessionmaker(bind=ENGINE)
-
-    return Session()
+    SESSION = sessionmaker(bind=ENGINE)
+    return SESSION()
 
 def main():
     """In case we need this for something"""
