@@ -34,13 +34,25 @@
     .ex {
       display: inline;
       float: right;
-      width: 330px;
+      width: 430px;
       text-align: right;
+      /*padding-right: 10px;*/
     }
+/*    .dropdown {
+      display: inline;
+      float: right;
+      width: 430px;
+      text-align: right;
+    }*/
 
     .form-control {
       width: 34px;
     }
+
+    .ex-align{
+      float: right;
+    }
+
     /*HOW TO OVERWRITE BOOTSTRAP.*/
 
    /* .form-control{
@@ -82,16 +94,88 @@
     <input type="submit" class="btn btn-default" id="form_submit" value="Submit" onclick="return false;">
     <button class="btn btn-default" id="clear_program">Clear Program</button>
 
-    <pre class="ex">Examples: <a href="get_db_code/area" onclick="return false;">area</a> | <a href="/get_db_code/factorial" onclick="return false;">factorial</a> | <a href="/get_db_code/fibonacci" onclick="return false;">fibonacci</a></pre>
+
+  <div class = "ex-align">
+  <div class="dropdown">
+    <!-- <a data-toggle="dropdown" href="#">Scheme Examples</a> -->
+   <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        Scheme Examples
+        <span class="caret"></span>
+      </button>
+
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+      </ul>
+    </div>
+
+   <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        JavaScript Examples
+        <span class="caret"></span>
+      </button>
+
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+      </ul>
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--     <pre class="ex">Scheme Examples: <a href="get_db_code/area" onclick="return false;">area</a> | <a href="/get_db_code/factorial" onclick="return false;">factorial</a> | <a href="/get_db_code/fibonacci" onclick="return false;">fibonacci</a></pre>
+    
+    <pre class="ex">JavaScript Examples: <a href="get_db_code/area" onclick="return false;">area</a> | <a href="/get_db_code/factorial" onclick="return false;">factorial</a> | <a href="/get_db_code/fibonacci" onclick="return false;">fibonacci</a></pre>
+ -->
+
+
+    </div>
+
     <br class="clear"/>
   </form> 
 
   <hr/>
 
+      <div class="dropdown">
+      <button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown">
+        Dropdown
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+      </ul>
+    </div>
+
   <div id="message_display"><p/><p/></div>
   <div id="tree"></div>
 
   <script src="/static/js/d3.v3.min.js" charset="utf-8"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
   <!-- json_to_D3_tree is called in ajax.js -->
   <script src="/static/js/json_to_D3_tree.js"></script>
 <!-- 

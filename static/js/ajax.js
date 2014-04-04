@@ -68,7 +68,7 @@ $(document).ready(function(){
     });
 
     // debugging -- autoclick
-    formSubmitButton.click();
+    // formSubmitButton.click();
 
     clearButton.on("click", function(event){
         event.preventDefault();

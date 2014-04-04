@@ -89,5 +89,14 @@ Whereas Scheme's grammar is straightforward enough to map input to output with l
 
 
 Known bugs -- 
-(n - 1) must have spaces, else reads as '-1'. 
-must have unnecessary semicolon after if-then-else statement
+~ (n - 1) must have spaces, else reads as '-1'. Must edit tokenizing rules and 
+~ establish precedence for subtraction over negative numbers.
+~ if-then-else statement must end with semicolon (shouldn't be necessary)
+
+To do -- 
+~ drop-down menus for examples
+~ ability for user to save code into database and share via generated link
+~ parse lists, loops. id followed by square brackets (indexing) will have higher precedence than list data type
+
+add-ons -- 
+compile to C
