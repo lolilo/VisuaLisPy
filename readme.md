@@ -105,8 +105,9 @@ Database
 <br /> ~ ability for user to save code into database and share via generated link
 
 Frontend
-~ drop-down menus for examples
+<br /> ~ drop-down menus for examples
 
 add-ons -- 
-compile to C
-visualize environment
+<br /> ~ compile to C
+<br /> ~ visualize environment
+<br /> ~ integrate codemirror

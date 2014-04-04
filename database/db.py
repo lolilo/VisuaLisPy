@@ -1,35 +1,29 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Text
 from sqlalchemy.orm import sessionmaker, scoped_session
 import os
 
-
-# for seeding database
-ENGINE = None
-Session = None
-
-
-
-
-# exp = os.environ.get("DATABASE_URL", "postgres://localhost/programs")
-# engine = create_engine(exp, echo=False)
+exp = os.environ.get("DATABASE_URL", "postgres://programs:programs@localhost/programs")
+engine = create_engine(exp, echo=False)
 
 # engine = create_engine("sqlite:///code.db", echo=False)
 
-# s = scoped_session(sessionmaker(
-#                                 bind=engine,
-#                                 autocommit = False,
-#                                 autoflush = False))
+s = scoped_session(sessionmaker(
+                                bind=engine,
+                                autocommit = False,
+                                autoflush = False))
 Base = declarative_base()
-# Base.query = s.query_property()
+Base.query = s.query_property()
+
+
 
 ### Class declarations go here
 class Code(Base):
     __tablename__ = "programs"
     id = Column(Integer, primary_key=True)
     name = Column(String(64), nullable=True)
-    code = Column(String(64))
+    code = Column(Text())
     language = Column(String(64))
     description = Column(String(64), nullable=True)
     
@@ -43,12 +37,16 @@ class Code(Base):
 ### End class declarations
 
 
-# for seeding database
+### for seeding database
+def create_tables():
+    ENGINE = None
+    Base.metadata.create_all(ENGINE)
+
 def connect():
     global ENGINE
     global Session
 
-    exp = os.environ.get("DATABASE_URL", "postgres://localhost/programs")
+    exp = os.environ.get("DATABASE_URL", "postgres://programs:programs@localhost/programs")
     ENGINE = create_engine(exp, echo=False)
     Session = sessionmaker(bind=ENGINE)
 

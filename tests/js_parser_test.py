@@ -2,6 +2,7 @@ import unittest
 import sys
 sys.path.append('..')
 from js_parser import *
+# from ..tests import js_parser
 
 class TestListOperations(unittest.TestCase):
 

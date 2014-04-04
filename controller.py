@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request
 import lis
 import js_parser
-import db
+
+# import os, sys
+# db_path = os.path.abspath('/database')
+# sys.path.append(db_path)
+import database.db as db
 
 app = Flask(__name__)
 app.secret_key = "thisisasecret"
