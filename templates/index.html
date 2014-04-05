@@ -34,30 +34,18 @@
     .ex {
       display: inline;
       float: right;
-      width: 330px;
+      width: 430px;
       text-align: right;
+      /*padding-right: 10px;*/
     }
 
     .form-control {
       width: 34px;
     }
-    /*HOW TO OVERWRITE BOOTSTRAP.*/
 
-   /* .form-control{
-      float:left;
-      margin-left: -20px;
-      text-align:left;
-      background-color:#ffa;*/
-
-/*
-    div#examples {
-      padding: 0px;
-      float:left;
+    .ex-align{
+      float: right;
     }
-*/
-
-    }
-
 </style>
 {% endblock %}
 
@@ -75,13 +63,71 @@
 <!-- onsubmit and onclick are default attributes that will run if jQuery has not yet loaded. Since I moved the .js scripts before the form, the form won't load until the scripts load, so these are redundant checks -->
 
   <form id="code_submission" method="POST" action="/get_json" onsubmit="return false;">
-    <textarea id="user_input" class="form-control" name="user_input" placeholder="Enter Scheme program here." cols="20" rows="5">(define area (lambda (r) (* 3.141592653 (* r r))))
-    </textarea>
+    <textarea id="user_input" class="form-control" name="user_input" placeholder="Enter Scheme or JavaScript program here." cols="20" rows="5">{{code}}</textarea>
     </p>
-    <input type="submit" class="btn btn-default" id="form_submit" value="Submit" onclick="return false;">
-    <button class="btn btn-default" id="clear_program">Clear Program</button>
+    <input type="submit" class="btn btn-default" id="form_submit" value="Render Abstract Syntax Tree" onclick="return false;">
+    <button class="btn btn-default" id="clear_program">Clear</button>
+    <button class="btn btn-default" id="save_program">Save</button>
 
-    <pre class="ex">Examples: <a href="get_db_code/area" onclick="return false;">area</a> | <a href="/get_db_code/factorial" onclick="return false;">factorial</a> | <a href="/get_db_code/fibonacci" onclick="return false;">fibonacci</a></pre>
+  <div class = "ex-align">
+  <div class="dropdown">
+    <!-- <a data-toggle="dropdown" href="#">Scheme Examples</a> -->
+   <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        Scheme Examples
+        <span class="caret"></span>
+      </button>
+
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="/get_db_code/1" onclick="return false;">area</a>
+        </li>
+
+        <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="/get_db_code/2" onclick="return false;">factorial</a>
+        </li>
+        <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="/get_db_code/3" onclick="return false;">fibonacci</a>
+        </li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="/get_db_code/4">math</a></li>
+      </ul>
+    </div>
+
+   <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        JavaScript Examples
+        <span class="caret"></span>
+      </button>
+
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="/get_db_code/5">area</a>
+        </li>
+        <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="/get_db_code/6">factorial</a>
+        </li>
+        <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="/get_db_code/8">fibonacci</a>
+        </li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="/get_db_code/7">math</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+
+<!--     <pre class="ex">Scheme Examples: <a href="get_db_code/area" onclick="return false;">area</a> | <a href="/get_db_code/factorial" onclick="return false;">factorial</a> | <a href="/get_db_code/fibonacci" onclick="return false;">fibonacci</a></pre>
+    
+    <pre class="ex">JavaScript Examples: <a href="get_db_code/area" onclick="return false;">area</a> | <a href="/get_db_code/factorial" onclick="return false;">factorial</a> | <a href="/get_db_code/fibonacci" onclick="return false;">fibonacci</a></pre>
+ -->
+
+
+    </div>
+
     <br class="clear"/>
   </form> 
 
@@ -91,6 +137,7 @@
   <div id="tree"></div>
 
   <script src="/static/js/d3.v3.min.js" charset="utf-8"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
   <!-- json_to_D3_tree is called in ajax.js -->
   <script src="/static/js/json_to_D3_tree.js"></script>
 <!-- 
@@ -98,12 +145,5 @@
    -->
   <script src="/static/js/collapsible_tree.js"></script>
   <script src="/static/js/edit_tree_post_d3_rendering.js"></script>
-
-
-  <script> 
-    // $(function(){
-    //   $("#tree").load("/tree");
-    // });
-  </script> 
 
 {% endblock %}

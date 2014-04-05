@@ -3,17 +3,35 @@ var env = {};
 $(document).ready(function(){
     var formSubmitButton = $("#form_submit");
     var clearButton = $("#clear_program");
+    var saveButton = $("#save_program");
+
     var drawTree = function(data){
         var key;
         // get environment data
+        // console.log(JSON.stringify(data, null, '\t'));
         env = data["trace"][0]["global_env"];
         // console.log(env);
         var expressionTrace = data["trace"][1]["expression_trace"];
-        // expressionTrace is the list object that contains one object for each line of code
+        // expressionTrace is the list object that contains one object for each block of code
         // for each object in expressionTrace, create a tree
+
+
         for (key in expressionTrace) {
-            treeData = createTree(expressionTrace[key]);
-            // console.log('this is tree', JSON.stringify(treeData));
+            jsElement = expressionTrace;
+            console.log(JSON.stringify(jsElement, null, '\t'));
+            // treeData = createJSD3TreeFormat(jsElement);
+
+            // // TODO: this is unncessary work, checking each time...
+            if (jsElement[0][0] == "stmt" || jsElement[0][0] == "function") {
+                // console.log("JAVASCRIPT");
+                treeData = createJSD3TreeFormat(jsElement);
+            }
+            else {
+                // console.log("THIS IS NOT JAVASCRIPT");
+                treeData = createSchemeD3TreeFormat(expressionTrace[key]);
+            }
+            console.log('this is tree', JSON.stringify(treeData, null, '\t'));
+
             root = treeData[0];
             // call update function from render_tree.js
             messageArea = document.getElementById("message_display");
@@ -45,11 +63,14 @@ $(document).ready(function(){
             // data is not yet defined when ajax tries to set the callback 
             // and we attempt to run drawTree
         ).fail(function(){
-            failMessage = "Sorry, the given Scheme program is invalid or may contain an expression currently unsupported by VisuaLisPy. :(";
+            failMessage = "Sorry, the given program is invalid or may contain an expression currently unsupported by VisuaLisPy. :(";
             messageArea = document.getElementById("message_display");
             messageArea.innerHTML = failMessage;
         });
     });
+
+    // debugging -- autoclick
+    // formSubmitButton.click();
 
     clearButton.on("click", function(event){
         event.preventDefault();
@@ -59,6 +80,24 @@ $(document).ready(function(){
         // clear text area
         document.getElementById("user_input").value = "";
     });
+
+    saveButton.on("click", function(event){
+        event.preventDefault();
+        $.ajax({
+            url: "/save_to_db",
+            method: "POST",
+            data: $("form#code_submission").serialize(),
+            // gets a program as a string
+        }).done(function(data){
+            successMessage = data;
+            messageArea = document.getElementById("message_display");
+            messageArea.innerHTML = successMessage;
+        }).fail(function(){
+            messageArea = document.getElementById("message_display");
+            messageArea.innerHTML = "Sorry, an error occurred.";
+        });
+    });
+
 
     $("a").click(function(event){
         var link = $(this).attr('href');
@@ -79,6 +118,9 @@ $(document).ready(function(){
             }).done(function(data){
                 code = data;
                 document.getElementById("user_input").value = code;
+                // clear any displayed message
+                messageArea = document.getElementById("message_display");
+                messageArea.innerHTML = "";
             }).fail(function(){
                 console.log("fail. :(");
             });
