@@ -45,14 +45,41 @@ This should hopefully get the web app running locally on your machine. Database/
 Scheme Interpreter
 =========
 
-Working through [Peter Norvig's Lispy](http://norvig.com/lispy.html) was my starting-off point in understanding language interpretation. Once I had obtained a working knowledge, I edited Lispy to trace the interpreter's steps in parsing an input Scheme string. This trace is executed and return as a JSON object via the function [format_json](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L240).
+Working through [Peter Norvig's Lispy](http://norvig.com/lispy.html) was my starting-off point in understanding language interpretation. Once I had obtained a working knowledge, I edited Lispy to trace the interpreter's steps in parsing an input Scheme string. This trace is executed and returned as a JSON object via the function [format_json](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L240).
 
-Lexing
-------------------
-The first step 
 
-Parsing/Syntactic Analysis
+Lexical Analysis
 ------------------
+The first step in parsing is lexical analysis, in which we break up an input string into a sequence of meaningful words -- otherwise known as tokens. This is done via the function [tokenize](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L163). As Scheme's syntax is relatively straightfoward (lack of whitespace, new lines), tokenizing an expression is simply a matter of splitting up a string on whitespace. For example, setting the variable n to 6 * 2,
+
+    >>> program = "(set! n (* 6 2))"
+    
+    >>> tokenize(program)
+    ['(', 'set!', 'n', '(', '*', '6', '2', ')', ')']
+
+
+Syntactic Analysis
+------------------
+After tokenizing, we can then call the [read_from](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L168) function on our list of tokens. This function will scan our program and return a list of expression tokens if the program is valid. If it comes across an invalid character, it will raise a syntax error. 
+
+    >>> read_from(['(', 'set!', 'n', '(', '*', '6', '2', ')', ')'])
+    ['set!', 'twox', ['*', 'x', 2]]
+   
+Interpretation
+------------------
+
+JavaScript Parser
+=========
+
+Whereas Scheme's grammar is straightforward enough to map input to output with little modification, JavaScript is more complex. I used regular expressions to outline JavaScript tokenizing rules and [PLY (Python Lex-Yacc)](http://www.dabeaz.com/ply/) to generate a lexer and parser. 
+
+
+
+
+
+Abstract Syntax Tree Visualization
+=========
+
 For the user input of defining a fibonnaci function, 
 
      (define fib (lambda (n) (if (< n 2) n (+ (fib (- n 1)) (fib (- n 2))))))
@@ -137,18 +164,6 @@ the interpreter will output a JSON object in the following format.
           ]
      }
 
-
-JavaScript Parser
-=========
-
-Whereas Scheme's grammar is straightforward enough to map input to output with little modification, JavaScript is more complex. I used regular expressions to outline JavaScript tokenizing rules and [PLY (Python Lex-Yacc)](http://www.dabeaz.com/ply/) to generate a lexer and parser. 
-
-
-
-
-
-Abstract Syntax Tree Visualization
-=========
 
 The frontend takes in JSON and renders the abstract syntax tree with the aid of the D3.js JavaScript library. Nodes representing procedures are colored green. 
 
