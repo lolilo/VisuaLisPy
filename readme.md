@@ -104,8 +104,7 @@ Final Thoughts
 I plan to program a code generator to target C, which will involve type-casting and other presently unforeseen challenges, I'm sure. 
 
 
-To-do List
-------------------
+###To-do List
 
 #####Known bugs
 Backend
