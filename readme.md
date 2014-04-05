@@ -1,6 +1,9 @@
 lispy_web
 =========
 
+
+Parsing/Syntactic Analysis
+------------------
 For the user input of defining a fibonnaci function, 
 
      (define fib (lambda (n) (if (< n 2) n (+ (fib (- n 1)) (fib (- n 2))))))
@@ -92,6 +95,18 @@ Whereas Scheme's grammar is straightforward enough to map input to output with l
 ![codeShare](https://raw.githubusercontent.com/lolilo/lispy_web/js_parse/images/codeShare.png)
 
 
+Extras
+------------------
+Furthering my project, I have compiled Scheme to a subset of JavaScript. This was a relatively straight-forward process of translating the AST to fit the template of JavaScript's language structure. 
+
+Final Thoughts
+------------------
+I plan to program a code generator to target C, which will involve type-casting and other presently unforeseen challenges, I'm sure. 
+
+
+To-do List
+------------------
+
 Known bugs -- 
 <br /> Backend
 <br /> ~ (n - 1) must have spaces, else reads as '-1'. Must edit tokenizing rules and establish precedence for subtraction over negative numbers.
@@ -101,8 +116,8 @@ Frontend
 <br /> ~ 
 
 
-To do -- 
-Backend
+Additional features -- 
+<br /> Backend
 <br /> ~ parse lists, loops. id followed by square brackets (indexing) will have higher precedence than list data type
 Database
 <br /> ~ migrate database to PostgreSQL
@@ -110,8 +125,6 @@ Database
 
 Frontend
 <br /> ~ drop-down menus for examples
-
-add-ons -- 
-<br /> ~ compile to C
 <br /> ~ visualize environment
 <br /> ~ integrate codemirror
+
