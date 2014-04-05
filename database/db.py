@@ -41,7 +41,7 @@ def new_code(code):
 
 ### for initalizing database tables
 def create_tables():
-    ENGINE = None
+    # ENGINE exists once we call connect()
     Base.metadata.create_all(ENGINE)
 ### for seeding database via terminal via python seed.py
 ### can also play around directly with python -i db.py ~ python interactive mode
