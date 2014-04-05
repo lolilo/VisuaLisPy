@@ -1,10 +1,10 @@
 VisuaLisPy
 =========
 
--Scheme Interpreter
--JavaScript Parser
--Abstract Syntax Tree Visualization
--Final Thoughts
+     -Scheme Interpreter
+     -JavaScript Parser
+     -Abstract Syntax Tree Visualization
+     -Final Thoughts
 
 
 
