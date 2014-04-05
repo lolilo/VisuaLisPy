@@ -16,7 +16,7 @@ I hold a certain aversion to black boxes, always wanting to open them up and tak
 In line with my love for open education, I hope VisuaLisPy will be helpful for those who want to better understand computer language.
 
 Backend: Python, Python Lex-Yacc, Regex, Flask, SQLAlchemy, PostgreSQL, Scheme, C
-Frontend: JavaScript, jQuery, Ajax, JSON, D3.js, HTML, CSS, Bootstrap
+<br />Frontend: JavaScript, jQuery, Ajax, JSON, D3.js, HTML, CSS, Bootstrap
 
 Scheme Interpreter
 =========
