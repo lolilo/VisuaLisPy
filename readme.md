@@ -1,23 +1,13 @@
 VisuaLisPy
 =========
 Contents
- - File Architecture
- - Introduction
- - Getting Started
+ - [Introduction](https://github.com/lolilo/lispy_web#introduction)
+ - [File Architecture](https://github.com/lolilo/lispy_web#file-architecture)
+ - [Getting Started](https://github.com/lolilo/lispy_web#getting-started)
  - [Scheme Interpreter](https://github.com/lolilo/lispy_web#scheme-interpreter)
  - [JavaScript Parser](https://github.com/lolilo/lispy_web#javascript-parser)
- - Abstract Syntax Tree Visualization
- - Final Thoughts
-
-File Architecture
-------------------
- - database: PostgreSQL, SQLite
- - images: frontend screenshots
- - js_parser: JavaScript parser written in Python
- - scheme_interpreter: Scheme interpreter written in Python
- - static: CSS styles and JavaScript files
- - templates: HTML templates
- - tests: TDD files for JavaScript parser
+ - [Abstract Syntax Tree Visualization](https://github.com/lolilo/lispy_web#abstract-syntax-tree-visualization)
+ - [Final Thoughts](https://github.com/lolilo/lispy_web#final-thoughts)
 
 Introduction
 ------------------
@@ -29,7 +19,15 @@ In line with my love for open education, I hope VisuaLisPy will be helpful for t
 Backend: Python, Python Lex-Yacc, Regex, Flask, SQLAlchemy, PostgreSQL, Scheme, C
 <br />Frontend: JavaScript, jQuery, Ajax, JSON, D3.js, HTML, CSS, Bootstrap
 
-
+File Architecture
+------------------
+ - database: PostgreSQL, SQLite
+ - images: frontend screenshots
+ - js_parser: JavaScript parser written in Python
+ - scheme_interpreter: Scheme interpreter written in Python
+ - static: CSS styles and JavaScript files
+ - templates: HTML templates
+ - tests: TDD files for JavaScript parser
 
 Getting Started
 ------------------
