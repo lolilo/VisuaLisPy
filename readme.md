@@ -1,12 +1,21 @@
 VisuaLisPy
 =========
+ - Architecture
+ - Getting Started
+ - Scheme Interpreter
+ - JavaScript Parser
+ - Abstract Syntax Tree Visualization
+ - Final Thoughts
 
-     -Scheme Interpreter
-     -JavaScript Parser
-     -Abstract Syntax Tree Visualization
-     -Final Thoughts
-
-
+Architecture
+=========
+ - database: PostgreSQL, SQLite
+ - images: frontend screenshots
+ - js_parser: JavaScript parser written in Python
+ - scheme_interpreter: Scheme interpreter written in Python
+ - static: CSS styles and JavaScript files
+ - templates: HTML templates
+ - tests: TDD files for JavaScript parser
 
 Introduction
 =========
@@ -18,8 +27,29 @@ In line with my love for open education, I hope VisuaLisPy will be helpful for t
 Backend: Python, Python Lex-Yacc, Regex, Flask, SQLAlchemy, PostgreSQL, Scheme, C
 <br />Frontend: JavaScript, jQuery, Ajax, JSON, D3.js, HTML, CSS, Bootstrap
 
+
+
+Getting Started
+=========
+From the commandline, after cloning and installing the requirements with
+
+     pip install -r requirements.txt
+
+run
+
+     python controller.py
+
+This should hopefully get the web app running locally on your machine. Database/examples may require extra setup.
+
+
 Scheme Interpreter
 =========
+
+Working through [Peter Norvig's Lispy](http://norvig.com/lispy.html) was my starting-off point in understanding language interpretation. Once I had obtained a working knowledge, I edited Lispy to trace the interpreter's steps in parsing an input Scheme string. This trace is executed and return as a JSON object via the function [format_json](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L240).
+
+Lexing
+------------------
+The first step 
 
 Parsing/Syntactic Analysis
 ------------------
