@@ -96,12 +96,6 @@ $(document).ready(function(){
             messageArea = document.getElementById("message_display");
             messageArea.innerHTML = "Sorry, an error occurred.";
         });
-
-
-
-        // clear any displayed message
-        messageArea = document.getElementById("message_display");
-        messageArea.innerHTML = "";
     });
 
 
@@ -124,6 +118,9 @@ $(document).ready(function(){
             }).done(function(data){
                 code = data;
                 document.getElementById("user_input").value = code;
+                // clear any displayed message
+                messageArea = document.getElementById("message_display");
+                messageArea.innerHTML = "";
             }).fail(function(){
                 console.log("fail. :(");
             });

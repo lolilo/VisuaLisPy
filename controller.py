@@ -34,10 +34,10 @@ def code_submitted():
     # print json_object
     return json_object
 
-@app.route("/get_db_code/<code_name>")
-def get_db_code(code_name):
+@app.route("/get_db_code/<code_id>")
+def get_db_code(code_id):
     # return JSON to ajax call -- code from database
-    code_object = db.s.query(db.Code).filter_by(name=code_name).one()
+    code_object = db.s.query(db.Code).filter_by(id=code_id).one()
     code = code_object.code
     return code
 
@@ -51,9 +51,17 @@ def save_to_db():
     else:
         success = db.new_code(user_input) # returns None if failure, code id if success
         if success:
-            return "Share your code with /program/%r." % success
+            return "Share your code with http://visualispy.com/program/%r." % success
         else: 
             return "Sorry, an error occurred."
+
+@app.route("/program/<code_id>")
+def display_db_code(code_id):
+    # return JSON to ajax call -- code from database
+    code_object = db.s.query(db.Code).filter_by(id=code_id).one()
+    code = code_object.code
+    html = render_template("index.html", code=code)
+    return html
 
 @app.route("/about")
 def about():
