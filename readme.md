@@ -92,6 +92,8 @@ For a parser, PLY intakes parsing methods whose identifiers begin with "p\_\" fo
 Abstract Syntax Tree Visualization
 ------------------
 
+Users input a program in the provided text field. [Clicking](https://github.com/lolilo/lispy_web/blob/master/static/js/ajax.js#L51) the "Render Abstract Syntax Tree" button will activate an Ajax POST request to retrieve a JSON object from the backend. 
+
 For the user input of defining a Fibonnaci function in Scheme, 
 
      (define fib (lambda (n) (if (< n 2) n (+ (fib (- n 1)) (fib (- n 2))))))
@@ -179,7 +181,11 @@ the Scheme interpreter will output a JSON object in the following format via the
 
 Similarly, the JavaScript parser's [format_json method](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_parser.py#L244) outputs the program trace as a JSON object. 
 
-The frontend takes in JSON and renders the abstract syntax tree with the aid of the D3.js JavaScript library. For Scheme programs, nodes representing procedures are colored green. 
+A successful Ajax request will result in calling the [drawTree](https://github.com/lolilo/lispy_web/blob/master/static/js/ajax.js#L8) method. 
+
+
+The abstract syntax tree [renders](https://github.com/lolilo/lispy_web/blob/master/static/js/ajax.js#L45) with the aid of the D3.js JavaScript library in our [collapsible_tree.js](https://github.com/lolilo/lispy_web/blob/master/static/js/collapsible_tree.js#L22) file. 
+For Scheme programs, nodes representing procedures are colored green with the [editTree](https://github.com/lolilo/lispy_web/blob/master/static/js/collapsible_tree.js#L85) method, defined in [edit_tree_post_rendering.js](https://github.com/lolilo/lispy_web/blob/master/static/js/edit_tree_post_d3_rendering.js#L3)
 
 Database
 ------------------
