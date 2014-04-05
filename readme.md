@@ -176,7 +176,7 @@ The frontend takes in JSON and renders the abstract syntax tree with the aid of 
 Database
 ------------------
 
-The database of examples and user-submitted code started off in SQLite and later, to support potential deployment, migrated to PostgreSQL. I interacted with the database mostly through SQLAlchemy. The database was first seeded with example code. Through the web app, users are able to save their input code to VisuaLisPy's database and share this code via a given URL. 
+The database of examples and user-submitted code started off in SQLite and later, to support potential deployment, migrated to PostgreSQL. I interacted with the database mostly through SQLAlchemy. The database was first seeded with example code. Through the web app, users are able to save their own input code to VisuaLisPy's database and share their input via a given URL. 
 
 ![codeShare](https://raw.githubusercontent.com/lolilo/lispy_web/js_parse/images/codeShare.png)
 
