@@ -4,7 +4,7 @@ Contents
  - File Architecture
  - Introduction
  - Getting Started
- - Scheme Interpreter
+ - [Scheme Interpreter](https://github.com/lolilo/lispy_web/blob/master/readme.md#scheme-interpreter)
  - JavaScript Parser
  - Abstract Syntax Tree Visualization
  - Final Thoughts
