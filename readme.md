@@ -1,13 +1,14 @@
 VisuaLisPy
 =========
- - Architecture
+Contents
+ - File Architecture
  - Getting Started
  - Scheme Interpreter
  - JavaScript Parser
  - Abstract Syntax Tree Visualization
  - Final Thoughts
 
-File Architecture
+[File Architecture](https://github.com/lolilo/lispy_web/edit/master/readme.md#file-architecture)
 =========
  - database: PostgreSQL, SQLite
  - images: frontend screenshots
@@ -48,7 +49,7 @@ Scheme Interpreter
 Working through [Peter Norvig's Lispy](http://norvig.com/lispy.html) was my starting-off point in understanding language interpretation. Once I had obtained a working knowledge, I edited Lispy to trace the interpreter's steps in parsing an input Scheme string. This trace is executed and returned as a JSON object via the function [format_json](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L240).
 
 
-Lexical Analysis
+###Lexical Analysis
 ------------------
 The first step in parsing is lexical analysis, in which we break up an input string into a sequence of meaningful words -- otherwise known as tokens. This is done via the function [tokenize](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L163). As Scheme's syntax is relatively straightfoward (lack of whitespace, new lines), tokenizing an expression is simply a matter of splitting up a string on whitespace. For example, setting the variable n to 6 * 2,
 
@@ -174,11 +175,12 @@ the interpreter will output a JSON object in the following format.
 
 The frontend takes in JSON and renders the abstract syntax tree with the aid of the D3.js JavaScript library. Nodes representing procedures are colored green. 
 
+Database
+=========
 
-Users are able to save their input code to VisuaLisPy's database and share this code via a given URL. 
+The database of examples and user-submitted code started off in SQLite and later, to support potential deployment, migrated to PostgreSQL. I interacted with the database mostly through SQLAlchemy. The database was first seeded with example code. Through the web app, users are able to save their input code to VisuaLisPy's database and share this code via a given URL. 
 
 ![codeShare](https://raw.githubusercontent.com/lolilo/lispy_web/js_parse/images/codeShare.png)
-
 
 Final Thoughts
 ------------------
