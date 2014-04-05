@@ -1,15 +1,16 @@
 VisuaLisPy
 =========
 Contents
- - File Architecture
- - Getting Started
- - Scheme Interpreter
- - JavaScript Parser
- - Abstract Syntax Tree Visualization
- - Final Thoughts
+ - [File Architecture](https://github.com/lolilo/lispy_web/edit/master/readme.md#file-architecture)
+ - [Introduction](https://github.com/lolilo/lispy_web/edit/master/readme.md#introduction)
+ - [Getting Started](https://github.com/lolilo/lispy_web/edit/master/readme.md#Getting-Started)
+ - Scheme Interpreter(https://github.com/lolilo/lispy_web/edit/master/readme.md#introduction)
+ - JavaScript Parser(https://github.com/lolilo/lispy_web/edit/master/readme.md#introduction)
+ - Abstract Syntax Tree Visualization(https://github.com/lolilo/lispy_web/edit/master/readme.md#introduction)
+ - Final Thoughts(https://github.com/lolilo/lispy_web/edit/master/readme.md#introduction)
 
-[File Architecture](https://github.com/lolilo/lispy_web/edit/master/readme.md#file-architecture)
-=========
+File Architecture
+------------------
  - database: PostgreSQL, SQLite
  - images: frontend screenshots
  - js_parser: JavaScript parser written in Python
@@ -19,7 +20,7 @@ Contents
  - tests: TDD files for JavaScript parser
 
 Introduction
-=========
+------------------
 
 I hold a certain aversion to black boxes, always wanting to open them up and take a peek inside. Since I began programming, I wanted to know how a computer understands these languages. Thus, I chose to build a compiler for the sake of learning some inner workings of language processing. However, I had my reservations. Hackbright instructor Liz said something quite accurate of me, “You really like the abstract, but you get frustrated if you can’t represent it visually.” How could I present my project in a visual format? And so, I set off to build VisuaLisPy -- a web-based language interpretation visualizer. I wrote an interpreter for Scheme (a dialect of Lisp) using Python. The interpreter file was modified to trace an input program's interpretation and output this trace data in JSON format. The JSON is then passed to the frontend and rendered visually as an abstract syntax tree in-browser with the aid of D3.js JavaScript library. Furthering my project, I added in a JavaScript parser and am currently working on code generators to compile Scheme into subsets of JavaScript and C. 
 
@@ -31,7 +32,7 @@ Backend: Python, Python Lex-Yacc, Regex, Flask, SQLAlchemy, PostgreSQL, Scheme, 
 
 
 Getting Started
-=========
+------------------
 From the commandline, after cloning and installing the requirements with
 
      pip install -r requirements.txt
@@ -44,12 +45,12 @@ This should hopefully get the web app running locally on your machine. Database/
 
 
 Scheme Interpreter
-=========
+------------------
 
 Working through [Peter Norvig's Lispy](http://norvig.com/lispy.html) was my starting-off point in understanding language interpretation. Once I had obtained a working knowledge, I edited Lispy to trace the interpreter's steps in parsing an input Scheme string. This trace is executed and returned as a JSON object via the function [format_json](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L240).
 
 
-###Lexical Analysis
+####Lexical Analysis
 ------------------
 The first step in parsing is lexical analysis, in which we break up an input string into a sequence of meaningful words -- otherwise known as tokens. This is done via the function [tokenize](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L163). As Scheme's syntax is relatively straightfoward (lack of whitespace, new lines), tokenizing an expression is simply a matter of splitting up a string on whitespace. For example, setting the variable n to 6 * 2,
 
@@ -59,7 +60,7 @@ The first step in parsing is lexical analysis, in which we break up an input str
     ['(', 'set!', 'n', '(', '*', '6', '2', ')', ')']
 
 
-Syntactic Analysis
+####Syntactic Analysis
 ------------------
 After tokenizing, we can then call the [read_from](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L168) function on our list of tokens. This function will scan our program and return a list of expression tokens if the program is valid. If it comes across an invalid character, it will raise a syntax error. 
 
@@ -68,7 +69,7 @@ After tokenizing, we can then call the [read_from](https://github.com/lolilo/lis
 
 Applying lexical analysis followed by syntactic analysis make up the [parse method](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L159). From here, we can now format the output as a JSON object for abstract syntax tree visualization.
    
-Interpretation
+####Interpretation
 ------------------
 Interpretation involves taking an input expression list and iterating through to evaluate each item using built-in Python functions as well as my own defined arithmetic methods defined within the [environmental scope](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L24) of each expression. The global environment is [updated](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L119) approrpiately for user-defined variables. 
 
@@ -77,7 +78,7 @@ Complete interpretation involves applying the [parse method followed by the eval
 Though I intially had plans to include visualization of interpretation and scoping in my web application, time contraints and a stronger desire to parse a more challenging language had me drop this from my list of priorities. 
 
 JavaScript Parser
-=========
+------------------
 
 Whereas Scheme's grammar is straightforward enough to map input to output with little modification, JavaScript is more complex. I used regular expressions to outline JavaScript tokenizing rules and [PLY (Python Lex-Yacc)](http://www.dabeaz.com/ply/) to generate a lexer and parser. 
 
@@ -86,7 +87,7 @@ Whereas Scheme's grammar is straightforward enough to map input to output with l
 
 
 Abstract Syntax Tree Visualization
-=========
+------------------
 
 For the user input of defining a fibonnaci function, 
 
@@ -176,7 +177,7 @@ the interpreter will output a JSON object in the following format.
 The frontend takes in JSON and renders the abstract syntax tree with the aid of the D3.js JavaScript library. Nodes representing procedures are colored green. 
 
 Database
-=========
+------------------
 
 The database of examples and user-submitted code started off in SQLite and later, to support potential deployment, migrated to PostgreSQL. I interacted with the database mostly through SQLAlchemy. The database was first seeded with example code. Through the web app, users are able to save their input code to VisuaLisPy's database and share this code via a given URL. 
 
