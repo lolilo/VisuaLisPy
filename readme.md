@@ -1,13 +1,13 @@
 VisuaLisPy
 =========
 Contents
- - [File Architecture](https://github.com/lolilo/lispy_web/edit/master/readme.md#file-architecture)
- - [Introduction](https://github.com/lolilo/lispy_web/edit/master/readme.md#introduction)
- - [Getting Started](https://github.com/lolilo/lispy_web/edit/master/readme.md#Getting-Started)
- - Scheme Interpreter(https://github.com/lolilo/lispy_web/edit/master/readme.md#introduction)
- - JavaScript Parser(https://github.com/lolilo/lispy_web/edit/master/readme.md#introduction)
- - Abstract Syntax Tree Visualization(https://github.com/lolilo/lispy_web/edit/master/readme.md#introduction)
- - Final Thoughts(https://github.com/lolilo/lispy_web/edit/master/readme.md#introduction)
+ - File Architecture
+ - Introduction
+ - Getting Started
+ - Scheme Interpreter
+ - JavaScript Parser
+ - Abstract Syntax Tree Visualization
+ - Final Thoughts
 
 File Architecture
 ------------------
@@ -81,7 +81,6 @@ JavaScript Parser
 ------------------
 
 Whereas Scheme's grammar is straightforward enough to map input to output with little modification, JavaScript is more complex. I used regular expressions to outline JavaScript tokenizing rules and [PLY (Python Lex-Yacc)](http://www.dabeaz.com/ply/) to generate a lexer and parser. 
-
 
 
 
