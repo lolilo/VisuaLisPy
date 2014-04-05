@@ -1,10 +1,6 @@
 from flask import Flask, render_template, request
-import lis
-import js_parser
-
-# import os, sys
-# db_path = os.path.abspath('/database')
-# sys.path.append(db_path)
+import scheme_interpreter.lis as lis
+import js_parser.js_parser as js_parser
 import database.db as db
 
 app = Flask(__name__)
@@ -24,6 +20,7 @@ def code_submitted():
 
     if not user_input:
         print 'NO USER INPUT'
+        return None
 
     elif user_input[0] == '(': # if Scheme program
         json_object = lis.format_json(user_input)

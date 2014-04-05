@@ -3,7 +3,6 @@ Flask-SQLAlchemy==0.16
 Flask-WTF==0.8
 Jinja2==2.7.1
 ply==3.4
-psycopg2==2.5.2
 SQLAlchemy==0.8.2
 WTForms==1.0.2
 Werkzeug==0.9.4
