@@ -7,7 +7,7 @@ VisuaLisPy
  - Abstract Syntax Tree Visualization
  - Final Thoughts
 
-Architecture
+File Architecture
 =========
  - database: PostgreSQL, SQLite
  - images: frontend screenshots
@@ -64,9 +64,16 @@ After tokenizing, we can then call the [read_from](https://github.com/lolilo/lis
 
     >>> read_from(['(', 'set!', 'n', '(', '*', '6', '2', ')', ')'])
     ['set!', 'twox', ['*', 'x', 2]]
+
+Applying lexical analysis followed by syntactic analysis make up the [parse method](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L159). From here, we can now format the output as a JSON object for abstract syntax tree visualization.
    
 Interpretation
 ------------------
+Interpretation involves taking an input expression list and iterating through to evaluate each item using built-in Python functions as well as my own defined arithmetic methods defined within the [environmental scope](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L24) of each expression. The global environment is [updated](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L119) approrpiately for user-defined variables. 
+
+Complete interpretation involves applying the [parse method followed by the eval method](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L259). We assign the output value to the variable val. 
+
+Though I intially had plans to include visualization of interpretation and scoping in my web application, time contraints and a stronger desire to parse a more challenging language had me drop this from my list of priorities. 
 
 JavaScript Parser
 =========
