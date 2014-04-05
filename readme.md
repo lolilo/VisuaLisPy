@@ -31,7 +31,7 @@ File Architecture
 
 Getting Started
 ------------------
-From the commandline, after cloning and installing the requirements with
+From the commandline, after cloning this repository and installing the requirements with
 
      pip install -r requirements.txt
 
@@ -78,9 +78,10 @@ Though I intially had plans to include visualization of interpretation and scopi
 JavaScript Parser
 ------------------
 
-Whereas Scheme's grammar is straightforward enough to map input to output with little modification, JavaScript is more complex. I used regular expressions to outline JavaScript tokenizing rules and [PLY (Python Lex-Yacc)](http://www.dabeaz.com/ply/) to generate a lexer and parser. 
+Whereas Scheme's grammar is straightforward enough to map input to output with little modification, JavaScript is more complex. I used [PLY (Python Lex-Yacc)](http://www.dabeaz.com/ply/) to generate a lexer and parser. To generate a lexer, PLY takes a set of methods outlining a target language's tokenizing rules. Each token is defined in a method whose identifier begins with "t\_\" followed by the name of a token in a given [list of tokens](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L3). 
+The method uses a [regular expression](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L43) to locate tokens in an input string, and optional transforms are applied to this token where necessary, such as altering the datatype from string to float for [numbers](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L75) or stripping quotation marks off of [strings](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L80). If no further modification is necessary before returning a particular token, the tokenizing rules may be written in shorthand, as demonstrated in lines [90-114](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L90). 
 
-
+####Interpretation
 
 
 Abstract Syntax Tree Visualization
