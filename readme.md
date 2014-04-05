@@ -77,21 +77,26 @@ Though I intially had plans to include visualization of interpretation and scopi
 
 JavaScript Parser
 ------------------
+Whereas Scheme's grammar is straightforward enough to map input to output with little modification (everything is basically already in the form of a list!), JavaScript is more complex. To better understand "real" parsing, I watched some lectures of [Udacity's CS262 course](https://www.udacity.com/course/cs262), where I learned to utilize [PLY (Python Lex-Yacc)](http://www.dabeaz.com/ply/) to generate my lexer and parser.
 
-Whereas Scheme's grammar is straightforward enough to map input to output with little modification, JavaScript is more complex. I used [PLY (Python Lex-Yacc)](http://www.dabeaz.com/ply/) to generate a lexer and parser. To generate a lexer, PLY takes a set of methods outlining a target language's tokenizing rules. Each token is defined in a method whose identifier begins with "t\_\" followed by the name of a token in a given [list of tokens](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L3). 
-The method uses a [regular expression](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L43) to locate tokens in an input string, and optional transforms are applied to this token where necessary, such as altering the datatype from string to float for [numbers](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L75) or stripping quotation marks off of [strings](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L80). If no further modification is necessary before returning a particular token, the tokenizing rules may be written in shorthand, as demonstrated in lines [90-114](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L90). 
+####Lexical Analysis
+------------------
+To generate a lexer, PLY takes a set of methods outlining a target language's tokenizing rules. Each token is defined in a method whose identifier begins with "t\_\" followed by the name of a token in a given [list of tokens](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L3). 
+The method uses a [regular expression](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L43) to locate tokens in an input string, and optional transforms are applied to this token where necessary, such as altering the datatype from string to float for [numbers](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L75) or stripping quotation marks off of [strings](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L80). If no further modification is necessary before returning a particular token, the tokenizing rules may be written in shorthand, as demonstrated in lines [90-114](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L90). The lexer is generated with the called with [lex.lex(module=js_tokens)](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_parser.py#L186).
 
-####Interpretation
+####Syntactic Analysis
+------------------
+For a parser, PLY intakes parsing methods whose identifiers begin with "p\_\" followed by a name representing the particular target parsed item. We establish [precedence rules](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_parser.py#L93) to ensure certain methods are prioritized -- for example, multiplication is applied before addition in the expression 8 + 9 * 3.
 
 
 Abstract Syntax Tree Visualization
 ------------------
 
-For the user input of defining a fibonnaci function, 
+For the user input of defining a Fibonnaci function in Scheme, 
 
      (define fib (lambda (n) (if (< n 2) n (+ (fib (- n 1)) (fib (- n 2))))))
 
-the interpreter will output a JSON object in the following format.
+the Scheme interpreter will output a JSON object in the following format via the [format_json](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L240) method.
 
      {
           "code": [
@@ -172,7 +177,9 @@ the interpreter will output a JSON object in the following format.
      }
 
 
-The frontend takes in JSON and renders the abstract syntax tree with the aid of the D3.js JavaScript library. Nodes representing procedures are colored green. 
+Similarly, the JavaScript parser's [format_json method](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_parser.py#L244) outputs the program trace as a JSON object. 
+
+The frontend takes in JSON and renders the abstract syntax tree with the aid of the D3.js JavaScript library. For Scheme programs, nodes representing procedures are colored green. 
 
 Database
 ------------------
