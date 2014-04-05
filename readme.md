@@ -107,8 +107,8 @@ I plan to program a code generator to target C, which will involve type-casting 
 To-do List
 ------------------
 
-#Known bugs -- 
-<br /> Backend
+#####Known bugs
+Backend
 <br /> ~ (n - 1) must have spaces, else reads as '-1'. Must edit tokenizing rules and establish precedence for subtraction over negative numbers.
 <br /> ~ if-then-else statement must end with semicolon (shouldn't be necessary)
 
@@ -116,14 +116,14 @@ Frontend
 <br /> ~ 
 
 
-#####Additional features -- 
-<br /> Backend
+#####Additional features
+Backend
 <br /> ~ parse lists, loops. id followed by square brackets (indexing) will have higher precedence than list data type
 Database
 <br /> ~ migrate database to PostgreSQL
 <br /> ~ ability for user to save code into database and share via generated link
 
-#Frontend
+Frontend
 <br /> ~ drop-down menus for examples
 <br /> ~ visualize environment
 <br /> ~ integrate codemirror
