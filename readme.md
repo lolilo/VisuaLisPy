@@ -1,6 +1,25 @@
 VisuaLisPy
 =========
 
+-Scheme Interpreter
+-JavaScript Parser
+-Abstract Syntax Tree Visualization
+-Final Thoughts
+
+
+
+Introduction
+=========
+
+I hold a certain aversion to black boxes, always wanting to open them up and take a peek inside. Since I began programming, I wanted to know how a computer understands these languages. Thus, I chose to build a compiler for the sake of learning some inner workings of language processing. However, I had my reservations. Hackbright instructor Liz said something quite accurate of me, “You really like the abstract, but you get frustrated if you can’t represent it visually.” How could I present my project in a visual format? And so, I set off to build VisuaLisPy -- a web-based language interpretation visualizer. I wrote an interpreter for Scheme (a dialect of Lisp) using Python. The interpreter file was modified to trace an input program's interpretation and output this trace data in JSON format. The JSON is then passed to the frontend and rendered visually as an abstract syntax tree in-browser with the aid of D3.js JavaScript library. Furthering my project, I added in a JavaScript parser and am currently working on code generators to compile Scheme into subsets of JavaScript and C. 
+
+In line with my love for open education, I hope VisuaLisPy will be helpful for those who want to better understand computer language.
+
+Backend: Python, Python Lex-Yacc, Regex, Flask, SQLAlchemy, PostgreSQL, Scheme, C
+Frontend: JavaScript, jQuery, Ajax, JSON, D3.js, HTML, CSS, Bootstrap
+
+Scheme Interpreter
+=========
 
 Parsing/Syntactic Analysis
 ------------------
@@ -88,20 +107,30 @@ the interpreter will output a JSON object in the following format.
           ]
      }
 
+
+JavaScript Parser
+=========
+
 Whereas Scheme's grammar is straightforward enough to map input to output with little modification, JavaScript is more complex. I used regular expressions to outline JavaScript tokenizing rules and [PLY (Python Lex-Yacc)](http://www.dabeaz.com/ply/) to generate a lexer and parser. 
 
 
 
+
+
+Abstract Syntax Tree Visualization
+=========
+
+The frontend takes in JSON and renders the abstract syntax tree with the aid of the D3.js JavaScript library. Nodes representing procedures are colored green. 
+
+
+Users are able to save their input code to VisuaLisPy's database and share this code via a given URL. 
+
 ![codeShare](https://raw.githubusercontent.com/lolilo/lispy_web/js_parse/images/codeShare.png)
 
 
-Extras
-------------------
-Furthering my project, I have compiled Scheme to a subset of JavaScript. This was a relatively straight-forward process of translating the AST to fit the template of JavaScript's language structure. 
-
 Final Thoughts
 ------------------
-I plan to program a code generator to target C, which will involve type-casting and other presently unforeseen challenges, I'm sure. 
+Furthering my project, I wrote a simple code generator to compile Scheme into a subset of JavaScript. This was a relatively straight-forward process of translating the AST to fit the template of JavaScript's language structure. I plan to program a code generator to target C, which will involve type-casting and other presently unforeseen challenges, I'm sure. 
 
 
 ###To-do List
