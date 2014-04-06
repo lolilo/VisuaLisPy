@@ -19,11 +19,12 @@ In line with my love for open education, I hope VisuaLisPy will be helpful for t
 Furthering the original intent of this endeavor (satisfying my curiosity of what lies beyond high-level languages), I added in a JavaScript parser and am currently working on code generators to compile Scheme into subsets of JavaScript and C. I very much consider this an ongoing project that I fondly call "n00b's first compiler" -- everybody starts somewhere. 
 
 Backend: Python, Python Lex-Yacc, Regex, Flask, SQLAlchemy, PostgreSQL, Scheme, C
-<br />Frontend: JavaScript, jQuery, Ajax, JSON, D3.js, HTML, CSS, Bootstrap
+<br /> Frontend: JavaScript, jQuery, Ajax, JSON, D3.js, HTML, CSS, Bootstrap
+<br /> Deployed on Heroku: [http://visualispy.herokuapp.com/](http://visualispy.herokuapp.com/)
 
 File Architecture
 ------------------
- - database: PostgreSQL, SQLite
+ - database: PostgreSQL (deployment), SQLite(local development and testing)
  - images: frontend screenshots
  - js_parser: JavaScript parser written in Python
  - scheme_interpreter: Scheme interpreter written in Python
@@ -193,7 +194,7 @@ Database
 
 The database of examples and user-submitted code started off in SQLite and later, to support potential deployment, migrated to PostgreSQL. I interacted with the database mostly through SQLAlchemy. The database was first seeded with example code. Through the web app, users are able to save their own input code to VisuaLisPy's database and share their input via a given URL. 
 
-![codeShare](https://raw.githubusercontent.com/lolilo/lispy_web/js_parse/images/codeShare.png)
+![codeShare](https://raw.githubusercontent.com/lolilo/lispy_web/js_parse/images/shareCode.png)
 
 Final Thoughts
 ------------------
