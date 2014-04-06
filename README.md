@@ -72,7 +72,7 @@ Applying lexical analysis followed by syntactic analysis make up the [parse meth
    
 ####Interpretation
 ------------------
-Interpretation involves taking an input expression list and iterating through to evaluate each item using built-in Python functions as well as my own defined arithmetic methods defined within the [environmental scope](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L24) of each expression. The global environment is [updated](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L119) approrpiately for user-defined variables. 
+Interpretation involves taking an input expression list and iterating through to evaluate each item using built-in Python functions as well as my own defined arithmetic methods defined within the [environmental scope](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L24) of each expression. The global environment is [updated](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L119) appropriately for user-defined variables. 
 
 Complete interpretation involves applying the [parse method followed by the eval method](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L259). We assign the output value to the variable val. 
 
@@ -210,9 +210,9 @@ Furthering my project, I wrote a simple code generator to compile Scheme into a 
 
 ###Lessons Learned 
  * Many particulars in parsing raw input with regex, keeping in mind precedence, prioritization, maximal munch.
- * Syntactic ambiguity in code must be resolved somehow. Computers can't deal with ambiguity. "Time flies like an arrow; fruit flies like a banana."
+ * Computers can't deal with ambiguity, so syntactic ambiguity in code must be resolved somehow. "Time flies like an arrow; fruit flies like a banana."
  * Integrating with somebody else's code (D3.js), without documentation, may prove challenging.
- * Compilers aren't so magical anymore. 
+ * Compilers aren't so magical anymore. They are translators from one language to another, basically.
  * Deployment is another beast entirely.
 
 The more I learned, the more I realized how much more I want to learn.
