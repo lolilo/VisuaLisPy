@@ -217,7 +217,7 @@ Frontend
 #####Additional features
 Backend
 <br /> ~ parse lists, loops. id followed by square brackets (indexing) will have higher precedence than list data type
-Database
+<br /> Database
 <br /> ~ ~~migrate database to PostgreSQL~~
 <br /> ~ ~~ability for user to save code into database and share via generated link~~
 
