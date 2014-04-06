@@ -215,23 +215,17 @@ The more I learned, the more I realized how much more I want to learn.
 ###To-do List
 
 #####Known bugs
-Backend
+JavaScript parser
 <br /> ~ (n - 1) must have spaces, else reads as '-1'. Must edit tokenizing rules and establish precedence for subtraction over negative numbers.
 <br /> ~ if-then-else statement must end with semicolon (shouldn't be necessary)
-
-Frontend
-<br /> ~ 
 
 
 #####Additional features
 Backend
-<br /> ~ parse lists, loops. id followed by square brackets (indexing) will have higher precedence than list data type
-<br /> Database
-<br /> ~ ~~migrate database to PostgreSQL~~
-<br /> ~ ~~ability for user to save code into database and share via generated link~~
+<br /> ~ parse JavaScript lists and loops. id followed by square brackets (indexing) will have higher precedence than list data type
+
 
 Frontend
-<br /> ~ ~~drop-down menus for examples~~
 <br /> ~ visualize environment
 <br /> ~ integrate CodeMirror
 
