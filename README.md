@@ -208,6 +208,13 @@ Final Thoughts
 ------------------
 Furthering my project, I wrote a simple code generator to compile Scheme into a subset of JavaScript. This was a relatively straight-forward process of translating the AST to fit the template of JavaScript's language structure. I plan to program a code generator to target C, which will involve type-casting and other presently unforeseen challenges, I'm sure. Perhaps I will one day make it to assembly... 
 
+###Lessons Learned 
+ * Many particulars in parsing raw input with regex, keeping in mind precedence, prioritization, maximal munch.
+ * Syntactic ambiguity in code must be resolved somehow. Computers can't deal with ambiguity. "Time flies like an arrow; fruit flies like a banana."
+ * Integrating with somebody else's code (D3.js), without documentation, may prove challenging.
+ * Compilers aren't so magical anymore. 
+ * Deployment is another beast entirely.
+
 The more I learned, the more I realized how much more I want to learn.
 <br />
 ---
