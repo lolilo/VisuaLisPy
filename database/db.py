@@ -4,9 +4,9 @@ from sqlalchemy import Column, Integer, String, Text
 from sqlalchemy.orm import sessionmaker, scoped_session
 import os
 
-# exp = os.environ.get("DATABASE_URL", "postgres://programs:programs@localhost/programs")
-# engine = create_engine(exp, echo=False)
-engine = create_engine("sqlite:///database/code.db", echo=False)
+exp = os.environ.get("DATABASE_URL", "postgres://programs:programs@localhost/programs")
+engine = create_engine(exp, echo=False)
+# engine = create_engine("sqlite:///database/code.db", echo=False)
 
 s = scoped_session(sessionmaker(
                                 bind=engine,
