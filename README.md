@@ -24,7 +24,7 @@ Backend: Python, Python Lex-Yacc, Regex, Flask, SQLAlchemy, PostgreSQL, Scheme, 
 
 File Architecture
 ------------------
- - database: PostgreSQL (deployment), SQLite(local development and testing)
+ - database: PostgreSQL (deployment), SQLite (local development and testing)
  - images: frontend screenshots
  - js_parser: JavaScript parser written in Python
  - scheme_interpreter: Scheme interpreter written in Python
