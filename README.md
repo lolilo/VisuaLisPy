@@ -6,7 +6,7 @@ Contents
  - [Getting Started](https://github.com/lolilo/lispy_web#getting-started)
  - [Scheme Interpreter](https://github.com/lolilo/lispy_web#scheme-interpreter)
  - [JavaScript Parser](https://github.com/lolilo/lispy_web#javascript-parser)
- - [Abstract Syntax Tree Visualization](https://github.com/lolilo/lispy_web#abstract-syntax-tree-visualization)
+ - [Abstract Syntax Tree Visualization](https://github.com/lolilo/lispy_web#abstract-syntax-tree-ast-visualization)
  - [Final Thoughts](https://github.com/lolilo/lispy_web#final-thoughts)
 
 Introduction
