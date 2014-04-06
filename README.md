@@ -68,7 +68,7 @@ After tokenizing, we can then call the [read_from](https://github.com/lolilo/lis
     >>> read_from(['(', 'set!', 'n', '(', '*', '6', '2', ')', ')'])
     ['set!', 'n', ['*', 'x', 2]]
 
-Applying lexical analysis followed by syntactic analysis make up the [parse method](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L159), which returns a parse tree as a list.
+Applying lexical analysis followed by syntactic analysis make up the [parse method](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L159), which returns an abstract syntax tree as a list.
    
 ####Interpretation
 ------------------
@@ -213,7 +213,7 @@ Furthering my project, I wrote a simple code generator to compile Scheme into a 
 ###Lessons Learned 
  * Many particulars in parsing raw input with regex, keeping in mind precedence, prioritization, maximal munch.
  * Computers can't deal with ambiguity, so syntactic ambiguity in code must be resolved somehow. "Time flies like an arrow; fruit flies like a banana."
- * Integrating with somebody else's code (D3.js), without documentation, may prove challenging.
+ * Integrating with somebody else's code (D3.js), without documentation, may prove challenging. Along this line, I should document my own code as I am writing it and not simply all at the end. What is obvious to me at one point may no longer be obvious several weeks from now.
  * Compilers aren't so magical anymore. They are translators from one language to another, basically.
  * Deployment is another beast entirely.
 
