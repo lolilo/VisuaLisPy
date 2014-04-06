@@ -189,12 +189,20 @@ For Scheme programs, nodes representing procedures are colored green with the [e
 
 Users can see visualization of the AST and collapse children nodes by clicking on parent nodes.
 
+A clear illustration of the parsing difference between Scheme and JavaScript is the mathematical expression
+(- (+ 1 (* 2 3)) (* (/ 4 5) (+ 6 2))) in Scheme,
+1 + 2 * 3 - 4 / 5 * (6 + 2) in JavaScript.
+Though the syntax of JavaScript does not explicitly outline an order of operations, precedence rules included in the parse code produces the same AST for both languages. 
+
+![SchemeMath](https://raw.githubusercontent.com/lolilo/VisuaLisPy/master/images/Scheme_math.png)
+![JavaScriptMath](https://raw.githubusercontent.com/lolilo/VisuaLisPy/master/images/JavaScript_math.png)
+
 Database
 ------------------
 
 The database of examples and user-submitted code started off in SQLite and later, to support potential deployment, migrated to PostgreSQL. I interacted with the database mostly through SQLAlchemy. The database was first seeded with example code. Through the web app, users are able to save their own input code to VisuaLisPy's database and share their input via a given URL. 
 
-![codeShare](https://raw.githubusercontent.com/lolilo/lispy_web/js_parse/images/shareCode.png)
+![codeShare](https://raw.githubusercontent.com/lolilo/VisuaLisPy/master/images/shareCode.png)
 
 Final Thoughts
 ------------------
