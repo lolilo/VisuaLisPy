@@ -33,7 +33,7 @@ File Architecture
 
 Getting Started
 ------------------
-From the commandline, after cloning this repository and installing the requirements with
+From the commandline, after cloning this repository, setting up a [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/), and installing the requirements with
 
      pip install -r requirements.txt
 
