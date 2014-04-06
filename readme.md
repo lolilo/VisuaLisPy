@@ -218,11 +218,11 @@ Frontend
 Backend
 <br /> ~ parse lists, loops. id followed by square brackets (indexing) will have higher precedence than list data type
 Database
-<br /> ~ migrate database to PostgreSQL
-<br /> ~ ability for user to save code into database and share via generated link
+<br /> ~ ~~migrate database to PostgreSQL~~
+<br /> ~ ~~ability for user to save code into database and share via generated link~~
 
 Frontend
-<br /> ~ drop-down menus for examples
+<br /> ~ ~~drop-down menus for examples~~
 <br /> ~ visualize environment
-<br /> ~ integrate codemirror
+<br /> ~ integrate CodeMirror
 
