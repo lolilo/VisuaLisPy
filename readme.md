@@ -197,6 +197,8 @@ Final Thoughts
 ------------------
 Furthering my project, I wrote a simple code generator to compile Scheme into a subset of JavaScript. This was a relatively straight-forward process of translating the AST to fit the template of JavaScript's language structure. I plan to program a code generator to target C, which will involve type-casting and other presently unforeseen challenges, I'm sure. 
 
+The more I learned, the more I realized how much more I want to learn...
+---
 
 ###To-do List
 
