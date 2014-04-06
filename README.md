@@ -65,7 +65,7 @@ The first step in parsing is lexical analysis, in which we break up an input str
 After tokenizing, we can then call the [read_from](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L168) function on our list of tokens. This function will scan our program and return a list of expression tokens if the program is valid. If it comes across an invalid character, it will raise a syntax error. 
 
     >>> read_from(['(', 'set!', 'n', '(', '*', '6', '2', ')', ')'])
-    ['set!', 'twox', ['*', 'x', 2]]
+    ['set!', 'n', ['*', 'x', 2]]
 
 Applying lexical analysis followed by syntactic analysis make up the [parse method](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L159). From here, we can now format the output as a JSON object for abstract syntax tree visualization.
    
@@ -88,7 +88,7 @@ The method uses a [regular expression](https://github.com/lolilo/lispy_web/blob/
 
 ####Syntactic Analysis
 ------------------
-For a parser, PLY intakes parsing methods whose identifiers begin with "p\_" followed by a name representing the particular target parsed item. We establish [precedence rules](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_parser.py#L93) to ensure certain methods are prioritized -- for example, multiplication is applied before addition in the expression 8 + 9 * 3.
+To generate a parser, PLY intakes parsing methods whose identifiers begin with "p\_" followed by a name representing the particular target parsed item. We establish [precedence rules](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_parser.py#L93) to ensure certain methods are prioritized -- for example, multiplication is applied before addition in the expression 8 + 9 * 3.
 
 
 Abstract Syntax Tree (AST) Visualization
@@ -186,7 +186,7 @@ Similarly, the JavaScript parser's [format_json method](https://github.com/lolil
 After a successful Ajax request, we call the [drawTree](https://github.com/lolilo/lispy_web/blob/master/static/js/ajax.js#L8) method which first differentiates whether the user input was [JavaScript](https://github.com/lolilo/lispy_web/blob/master/static/js/ajax.js#L25) or [Scheme](https://github.com/lolilo/lispy_web/blob/master/static/js/ajax.js#L29), then [reformats](https://github.com/lolilo/lispy_web/blob/master/static/js/json_to_D3_tree.js) the received JSON to align with D3.js's tree data structure. The AST [renders](https://github.com/lolilo/lispy_web/blob/master/static/js/ajax.js#L45) with the aid of the D3.js JavaScript library utilized by our [collapsible_tree.js](https://github.com/lolilo/lispy_web/blob/master/static/js/collapsible_tree.js#L22) file. 
 For Scheme programs, nodes representing procedures are colored green with the [editTree](https://github.com/lolilo/lispy_web/blob/master/static/js/collapsible_tree.js#L85) method, defined in [edit_tree_post_rendering.js](https://github.com/lolilo/lispy_web/blob/master/static/js/edit_tree_post_d3_rendering.js#L3)
 
-Users can see visualization of the AST and collapse nodes as desired. 
+Users can see visualization of the AST and collapse children nodes by clicking on parent nodes.
 
 Database
 ------------------
