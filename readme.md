@@ -81,12 +81,12 @@ Whereas Scheme's grammar is straightforward enough to map input to output with l
 
 ####Lexical Analysis
 ------------------
-To generate a lexer, PLY takes a set of methods outlining a target language's tokenizing rules. Each token is defined in a method whose identifier begins with "t\_\" followed by the name of a token in a given [list of tokens](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L3). 
+To generate a lexer, PLY takes a set of methods outlining a target language's tokenizing rules. Each token is defined in a method whose identifier begins with "t\_" followed by the name of a token in a given [list of tokens](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L3). 
 The method uses a [regular expression](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L43) to locate tokens in an input string, and optional transforms are applied to this token where necessary, such as altering the datatype from string to float for [numbers](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L75) or stripping quotation marks off of [strings](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L80). If no further modification is necessary before returning a particular token, the tokenizing rules may be written in shorthand, as demonstrated in lines [90-114](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_tokens.py#L90). The lexer is generated with the called with [lex.lex(module=js_tokens)](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_parser.py#L186).
 
 ####Syntactic Analysis
 ------------------
-For a parser, PLY intakes parsing methods whose identifiers begin with "p\_\" followed by a name representing the particular target parsed item. We establish [precedence rules](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_parser.py#L93) to ensure certain methods are prioritized -- for example, multiplication is applied before addition in the expression 8 + 9 * 3.
+For a parser, PLY intakes parsing methods whose identifiers begin with "p\_" followed by a name representing the particular target parsed item. We establish [precedence rules](https://github.com/lolilo/lispy_web/blob/master/js_parser/js_parser.py#L93) to ensure certain methods are prioritized -- for example, multiplication is applied before addition in the expression 8 + 9 * 3.
 
 
 Abstract Syntax Tree (AST) Visualization
