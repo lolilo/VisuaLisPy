@@ -195,9 +195,9 @@ The database of examples and user-submitted code started off in SQLite and later
 
 Final Thoughts
 ------------------
-Furthering my project, I wrote a simple code generator to compile Scheme into a subset of JavaScript. This was a relatively straight-forward process of translating the AST to fit the template of JavaScript's language structure. I plan to program a code generator to target C, which will involve type-casting and other presently unforeseen challenges, I'm sure. 
+Furthering my project, I wrote a simple code generator to compile Scheme into a subset of JavaScript. This was a relatively straight-forward process of translating the AST to fit the template of JavaScript's language structure. I plan to program a code generator to target C, which will involve type-casting and other presently unforeseen challenges, I'm sure. Perhaps I will one day make it to assembly... 
 
-The more I learned, the more I realized how much more I want to learn...
+The more I learned, the more I realized how much more I want to learn.
 <br />
 ---
 
