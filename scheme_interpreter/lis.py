@@ -46,7 +46,7 @@ def add_globals(env):
             # expressions.  They are a shorthand to create anonymous functions; the
             # expression ``lambda arguments: expression`` yields a function object.
 
-            'cons' : lambda x, y : [x] + y, # what the shit is this
+            'cons' : lambda x, y : [x] + y,
             'car' : lambda x : x[0],
             'cdr' : lambda x : x[1:],
             'append' : op.add, # this works for Scheme, I guess? 
@@ -196,7 +196,7 @@ def read_from(tokens):
             expression_trace.append(new_node)
 
         # print 'returning expression tokens %r' % expression_tokens
-        # Holy shit, these are lists within lists. Awesome. 
+        # These are lists within lists. Awesome. 
         # It's the binary tree! :O 
         return expression_tokens
 
@@ -252,7 +252,6 @@ def format_json(user_input):
     # remove white space from each line
     for i in range(len(user_input_lines)):
         user_input_lines[i] = user_input_lines[i].strip()
-    # print 'the lines!', user_input_lines
 
     # evaluate each line of code
     for line in user_input_lines:

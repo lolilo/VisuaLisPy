@@ -191,56 +191,6 @@ def test_parser(input_string):
         parse_tree = jsparser.parse(input_string,lexer=jslexer) 
         return parse_tree
 
-jstree6 = [('stmt', ('exp', ('call', 'apply', [('number', 1.0), ('binop', ('number', 2.0), '+', ('call', 'eval', [('identifier', 'recursion')])), ('call', 'sqrt', [('number', 2.0)])])))]
-json_object = json.dumps(jstree6, indent=5) # magic!
-# print json_object
-
-t = """function fib_no_recurse(n) {
-    var i;
-    var fib = [];
-    fib[0] = 0;
-    fib[1] = 1;
-    
-    for(i=2; i<=n; i++){
-        new_fib = fib[0] + fib[1];
-        fib[0] = fib[1];
-        fib[1] = new_fib;
-    }
-    return fib[1];
-}"""
-t1 = """function fib(n) {
-    if (n < 2) {
-        return n;
-    }
-    else {
-        return fib(n - 1) + fib(n - 2);
-    }
-}"""
-c = "function nobletruths(dukkha,samudaya,nirodha,gamini) { return buddhism ; }"
-
-jstext3 = """var view = right;
-var intention = right;
-var speech = right;
-action = right;
-livelihood = right;
-effort_right;
-mindfulness_right;
-concentration_right;"""
-jstree3 = [('stmt', ('var', 'view', ('identifier', 'right'))), ('stmt', ('var', 'intention', ('identifier', 'right'))), ('stmt', ('var', 'speech', ('identifier', 'right'))), ('stmt', ('assign', 'action', ('identifier', 'right'))), ('stmt', ('assign', 'livelihood', ('identifier', 'right'))), ('stmt', ('exp', ('identifier', 'effort_right'))), ('stmt', ('exp', ('identifier', 'mindfulness_right'))), ('stmt', ('exp', ('identifier', 'concentration_right')))]
-# print test_parser(jstext3) == jstree3
-js_ex = """function fib(n){
-    if (n < 2){
-        return n;
-    }
-    else {
-        return fib(n - 1) + fib(n - 2);
-    };
-}"""
-# print test_parser(js_ex)
-j_ob = json.dumps(test_parser(jstext3), indent=5)
-# print j_ob
-
-
 def format_json(user_input):
   # prepare JSON output object
   json_output = {
@@ -252,5 +202,4 @@ def format_json(user_input):
   
   json_output["trace"].append(dict(global_env="currently not available"))
   json_output["trace"].append(dict(expression_trace=test_parser(user_input)))
-
   return json.dumps(json_output, indent=5)
