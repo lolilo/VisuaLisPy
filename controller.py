@@ -48,11 +48,11 @@ def save_to_db():
     else:
         success = db.new_code(user_input) # returns None if failure, code id if success
         if success:
-            return "Share your code with http://visualispy.com/program/%r." % success
+            return "Share your code with http://visualispy.herokuapp.com/%r." % success
         else: 
             return "Sorry, an error occurred."
 
-@app.route("/program/<code_id>")
+@app.route("/<code_id>")
 def display_db_code(code_id):
     # return JSON to ajax call -- code from database
     code_object = db.s.query(db.Code).filter_by(id=code_id).one()
