@@ -227,9 +227,9 @@ Furthering my project, I wrote a simple code generator to compile Scheme into a 
 
 The more I learned, the more I realized how much more I want to learn.
 <br />
----
 
 ###To-do list for web application
+------------------
 
 #####Known bugs
 JavaScript parser
