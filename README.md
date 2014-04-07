@@ -36,7 +36,7 @@ File Architecture
 
 Getting Started
 ------------------
-Clone this repository to your local machine. From VisuaLisPy working directory, set up a [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/), and install requirements with
+Clone this repository to your local machine. From the VisuaLisPy working directory, set up a [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/) and install requirements with
 
      VisuaLisPy$ pip install -r requirements.txt
 
