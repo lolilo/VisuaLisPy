@@ -22,7 +22,7 @@ Furthering the original intent of this endeavor (satisfying my curiosity of what
 
 Backend: Python, Python Lex-Yacc, Regex, Flask, SQLAlchemy, PostgreSQL, Scheme, C
 <br /> Frontend: JavaScript, jQuery, Ajax, JSON, D3.js, HTML, CSS, Bootstrap
-<br /> Deployed on Heroku: [http://visualispy.herokuapp.com/](http://visualispy.herokuapp.com/) (I have found database requests for example code to be buggy at times.)
+<br /> Deployed on Heroku: [http://visualispy.herokuapp.com/](http://visualispy.herokuapp.com/) (Database may take some time to "wake up" on Heroku's server.)
 
 File Architecture
 ------------------
