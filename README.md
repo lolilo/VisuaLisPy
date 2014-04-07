@@ -48,12 +48,14 @@ This should hopefully get the web app running locally on your machine. Database/
 Scheme Interpreter
 ------------------
 
-Working through [Peter Norvig's Lispy](http://norvig.com/lispy.html) was my starting-off point in understanding language interpretation. Once I had obtained a working knowledge, I edited Lispy to trace the interpreter's steps in parsing an input Scheme string. This trace is executed and returned as a JSON object via the function [format_json](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L240).
+Coding through [Peter Norvig's Lispy](http://norvig.com/lispy.html) was my starting-off point in understanding language interpretation. Once I had obtained a working knowledge, I edited Lispy to trace the interpreter's steps in parsing an input Scheme string. 
 
 
 ####Lexical Analysis
 ------------------
-The first step in parsing is lexical analysis, in which we break up an input string into a sequence of meaningful words -- otherwise known as tokens. This is done via the function [tokenize](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L163). As Scheme's syntax is relatively straightfoward (expressions clearly separated with parentheses on a single line), tokenizing an expression is simply a matter of splitting up a string on whitespace. For example, setting the variable n to 6 * 2,
+The first step in parsing is lexical analysis, in which we break up an input string into a sequence of meaningful words -- otherwise known as tokens. In a language like English, the words/tokens are basically separated by spaces, though punctuation characters should probably also be considered and also tokenized.
+
+We tokenize our raw Scheme input with the function [tokenize](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L163). As Scheme's syntax is relatively straightfoward (expressions clearly separated with parentheses on a single line, in contrast to JavaScript, which we will later cover), tokenizing an expression is simply a matter of splitting up a string on whitespace. For example, setting the variable n to 6 * 2,
 
     >>> program = "(set! n (* 6 2))"
     
@@ -214,8 +216,8 @@ Furthering my project, I wrote a simple code generator to compile Scheme into a 
  * Many particulars in parsing raw input with regex, keeping in mind precedence, prioritization, maximal munch.
  * Computers can't deal with ambiguity, so syntactic ambiguity in code must be resolved somehow. "Time flies like an arrow; fruit flies like a banana."
  * Integrating with somebody else's code (D3.js), without documentation, may prove challenging. Along this line, I should document my own code as I am writing it and not simply all at the end. What is obvious to me at one point may no longer be obvious several weeks from now.
- * Compilers aren't so magical anymore. They are translators from one language to another, basically.
- * Deployment is another beast entirely.
+ * Compilers and the existence of programming languages aren't so magical anymore. Compilers are translators from one language to another, basically, and I concretely see how one could go about creating an original language. tl;dr, computer languages are made-up, and you too can make one up yourself. 
+ * Deployment is another beast entirely. So that's why DevOps/release management is its own department. 
 
 The more I learned, the more I realized how much more I want to learn.
 <br />
@@ -227,6 +229,9 @@ The more I learned, the more I realized how much more I want to learn.
 JavaScript parser
 <br /> ~ (n - 1) must have spaces, else reads as '-1'. Will edit tokenizing rules and establish precedence for subtraction over negative numbers.
 <br /> ~ if-then-else statement must end with semicolon (shouldn't be necessary).
+
+Other
+<br /> ~ For raw user input, differentiating between Scheme and JavaScript simply by checking to see whether the program begins with a '(' is not a robust method. No. 
 
 #####Additional features
 Backend
