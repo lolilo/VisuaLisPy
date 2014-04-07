@@ -198,6 +198,7 @@ Users can see visualization of the AST and collapse children nodes by clicking o
 A clear illustration of the parsing difference between Scheme and JavaScript is the mathematical expression
  * (- (+ 1 (* 2 3)) (* (/ 4 5) (+ 6 2))) in Scheme,
  * 1 + 2 * 3 - 4 / 5 * (6 + 2) in JavaScript.
+
 Though the syntax of JavaScript does not explicitly outline an order of operations, precedence rules included in the parse code produces the same AST for both languages. 
 
 ![SchemeMath](https://raw.githubusercontent.com/lolilo/VisuaLisPy/master/images/Scheme_math.png)
