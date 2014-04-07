@@ -4,9 +4,9 @@ from sqlalchemy import Column, Integer, String, Text
 from sqlalchemy.orm import sessionmaker, scoped_session
 import os
 
-exp = os.environ.get("DATABASE_URL", "postgres://programs:programs@localhost/programs")
-engine = create_engine(exp, echo=False)
-# engine = create_engine("sqlite:///database/code.db", echo=False)
+# exp = os.environ.get("DATABASE_URL", "postgres://programs:programs@localhost/programs")
+# engine = create_engine(exp, echo=False)
+engine = create_engine("sqlite:///database/code.db", echo=False)
 
 s = scoped_session(sessionmaker(
                                 bind=engine,
@@ -47,8 +47,9 @@ def create_tables():
 ### can also play around directly with python -i db.py ~ python interactive mode
 def connect():
     global ENGINE, SESSION
-    exp = os.environ.get("DATABASE_URL", "postgres://programs:programs@localhost/programs")
-    ENGINE = create_engine(exp, echo=False)
+    # exp = os.environ.get("DATABASE_URL", "postgres://programs:programs@localhost/programs")
+    # ENGINE = create_engine(exp, echo=False)
+    ENGINE = create_engine("sqlite:///database/code.db", echo=True)
     SESSION = sessionmaker(bind=ENGINE)
     return SESSION()
 

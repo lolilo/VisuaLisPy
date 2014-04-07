@@ -1,3 +1,4 @@
+gunicorn==18.0
 Flask==0.10.1
 Flask-SQLAlchemy==0.16
 Flask-WTF==0.8
@@ -9,4 +10,5 @@ Werkzeug==0.9.4
 argparse==1.2.1
 itsdangerous==0.24
 ply==3.4
+psycopg2==2.5.2
 wsgiref==0.1.2
