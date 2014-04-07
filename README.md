@@ -196,8 +196,8 @@ For Scheme programs, nodes representing procedures are colored green with the [e
 Users can see visualization of the AST and collapse children nodes by clicking on parent nodes.
 
 A clear illustration of the parsing difference between Scheme and JavaScript is the mathematical expression
-(- (+ 1 (* 2 3)) (* (/ 4 5) (+ 6 2))) in Scheme,
-1 + 2 * 3 - 4 / 5 * (6 + 2) in JavaScript.
+ * (- (+ 1 (* 2 3)) (* (/ 4 5) (+ 6 2))) in Scheme,
+ * 1 + 2 * 3 - 4 / 5 * (6 + 2) in JavaScript.
 Though the syntax of JavaScript does not explicitly outline an order of operations, precedence rules included in the parse code produces the same AST for both languages. 
 
 ![SchemeMath](https://raw.githubusercontent.com/lolilo/VisuaLisPy/master/images/Scheme_math.png)
@@ -232,21 +232,21 @@ The more I learned, the more I realized how much more I want to learn.
 
 #####Known bugs
 JavaScript parser
-<br /> ~ (n - 1) must have spaces, else reads as '-1'. Will edit tokenizing rules and establish precedence for subtraction over negative numbers.
-<br /> ~ if-then-else statement must end with semicolon (shouldn't be necessary).
+ * (n - 1) must have spaces, else reads as '-1'. Will edit tokenizing rules and establish precedence for subtraction over negative numbers.
+ * if-then-else statement must end with semicolon (shouldn't be necessary).
 
 Frontend
-<br /> Display more helpful error messages to users if input is incorrect (missing semicolons!).
+ * Display more helpful error messages to users if input is incorrect (missing semicolons!).
 
 Other
-<br /> ~ For raw user input, differentiating between Scheme and JavaScript simply by checking to see whether the program begins with a '(' is not a robust method. No. 
+ *  For raw user input, differentiating between Scheme and JavaScript simply by checking to see whether the program begins with a '(' is not a robust method. No. 
 
 #####Additional features
 Backend
-<br /> ~ parse JavaScript lists and loops. id followed by square brackets (indexing) will have higher precedence than list data type.
+ *  parse JavaScript lists and loops. id followed by square brackets (indexing) will have higher precedence than list data type.
 
 
 Frontend
-<br /> ~ visualize environment/program interpretation. 
-<br /> ~ integrate CodeMirror and step through code blocks to visualize separate trees for multi-block intput program.
+ * visualize environment/program interpretation. 
+ * integrate CodeMirror and step through code blocks to visualize separate trees for multi-block intput program.
 
