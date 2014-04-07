@@ -53,7 +53,7 @@ Coding through [Peter Norvig's Lispy](http://norvig.com/lispy.html) was my start
 
 ####Lexical Analysis
 ------------------
-The first step in parsing is lexical analysis, in which we break up an input string into a sequence of meaningful words -- otherwise known as tokens. In a language like English, the words/tokens are basically separated by spaces, though punctuation characters should probably also be considered and also tokenized.
+The first step in parsing is lexical analysis, in which we break up an input string into a sequence of meaningful words -- otherwise known as tokens. In a language like English, the words/tokens are basically separated by spaces, though punctuation characters should probably also be considered and tokenized.
 
 We tokenize our raw Scheme input with the function [tokenize](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L163). As Scheme's syntax is relatively straightforward (expressions clearly separated with parentheses on a single line, in contrast to JavaScript, which we will later cover), tokenizing an expression is simply a matter of splitting up a string on whitespace. For example, setting the variable n to 6 * 2,
 
