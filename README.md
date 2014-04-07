@@ -55,7 +55,7 @@ Coding through [Peter Norvig's Lispy](http://norvig.com/lispy.html) was my start
 ------------------
 The first step in parsing is lexical analysis, in which we break up an input string into a sequence of meaningful words -- otherwise known as tokens. In a language like English, the words/tokens are basically separated by spaces, though punctuation characters should probably also be considered and also tokenized.
 
-We tokenize our raw Scheme input with the function [tokenize](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L163). As Scheme's syntax is relatively straightfoward (expressions clearly separated with parentheses on a single line, in contrast to JavaScript, which we will later cover), tokenizing an expression is simply a matter of splitting up a string on whitespace. For example, setting the variable n to 6 * 2,
+We tokenize our raw Scheme input with the function [tokenize](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L163). As Scheme's syntax is relatively straightforward (expressions clearly separated with parentheses on a single line, in contrast to JavaScript, which we will later cover), tokenizing an expression is simply a matter of splitting up a string on whitespace. For example, setting the variable n to 6 * 2,
 
     >>> program = "(set! n (* 6 2))"
     
@@ -70,7 +70,7 @@ After tokenizing, we can then call the [read_from](https://github.com/lolilo/lis
     >>> read_from(['(', 'set!', 'n', '(', '*', '6', '2', ')', ')'])
     ['set!', 'n', ['*', 'x', 2]]
 
-Applying lexical analysis followed by syntactic analysis make up the [parse method](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L159), which returns an abstract syntax tree as a list.
+Applying lexical analysis followed by syntactic analysis make up the [parse method](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L159), which takes in a raw input string and returns an abstract syntax tree as a list.
    
 ####Interpretation
 ------------------
@@ -78,7 +78,7 @@ Interpretation involves taking an input expression list and iterating through to
 
 Complete interpretation involves applying the [parse method followed by the eval method](https://github.com/lolilo/lispy_web/blob/master/scheme_interpreter/lis.py#L259). We assign the output value to the variable val. 
 
-Though I intially had plans to include visualization of interpretation and scoping in my web application, time contraints and a stronger desire to parse a more challenging language had me drop this from my list of priorities. 
+Though I initially had plans to include visualization of interpretation and scoping in my web application, time constraints and a stronger desire to parse a more challenging language had me drop this from my list of priorities. 
 
 JavaScript Parser
 ------------------
@@ -101,7 +101,7 @@ Abstract Syntax Tree (AST) Visualization
 
 Users input a program in the provided text field. [Clicking](https://github.com/lolilo/lispy_web/blob/master/static/js/ajax.js#L51) the "Render Abstract Syntax Tree" button will activate an Ajax POST request to retrieve a JSON object from the backend. 
 
-For the user input of defining a Fibonnaci function in Scheme, 
+For the user input of defining a Fibonacci function in Scheme, 
 
      (define fib (lambda (n) (if (< n 2) n (+ (fib (- n 1)) (fib (- n 2))))))
 
@@ -210,14 +210,16 @@ The database of examples and user-submitted code started off in SQLite and later
 
 Final Thoughts
 ------------------
+###Future Goals
 Furthering my project, I wrote a simple code generator to compile Scheme into a subset of JavaScript. This was a relatively straight-forward process of translating the AST to fit the template of JavaScript's language structure. I plan to program a code generator to target C, which will involve type-casting and other presently unforeseen challenges, I'm sure. Perhaps I will one day make it to assembly... 
 
 ###Lessons Learned 
  * Many particulars in parsing raw input with regex, keeping in mind precedence, prioritization, maximal munch.
- * Computers can't deal with ambiguity, so syntactic ambiguity in code must be resolved somehow. "Time flies like an arrow; fruit flies like a banana."
+ * Computers can't deal with ambiguity, so syntactic ambiguity in code must be resolved somehow. An illustrative example of ambiguity in English is, "Time flies like an arrow; fruit flies like a banana."
+ * In order to optimize parsing, Udacity's CS262 course touched upon memoization -- a technique I would like to revisit and learn more about. 
  * Integrating with somebody else's code (D3.js), without documentation, may prove challenging. Along this line, I should document my own code as I am writing it and not simply all at the end. What is obvious to me at one point may no longer be obvious several weeks from now.
- * Compilers and the existence of programming languages aren't so magical anymore. Compilers are translators from one language to another, basically, and I concretely see how one could go about creating an original language. tl;dr, computer languages are made-up, and you too can make one up yourself. 
  * Deployment is another beast entirely. So that's why DevOps/release management is its own department. 
+ * Compilers and the existence of programming languages aren't so magical anymore. Compilers are translators from one language to another, basically, and I concretely see how one could go about creating an original language. tl;dr, computer languages are made-up, and you too can make one up yourself. 
 
 The more I learned, the more I realized how much more I want to learn.
 <br />
