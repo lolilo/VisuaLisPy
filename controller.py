@@ -2,9 +2,11 @@ from flask import Flask, render_template, request
 import scheme_interpreter.lis as lis
 import js_parser.js_parser as js_parser
 import database.db as db
+import os
 
 app = Flask(__name__)
 app.secret_key = "thisisasecret"
+app.config["DEBUG"] = os.environ.get("DEBUG", False)
 
 @app.route("/")
 def index():
