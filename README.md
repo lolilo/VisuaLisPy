@@ -221,20 +221,19 @@ The more I learned, the more I realized how much more I want to learn.
 <br />
 ---
 
-###To-do List
+###To-do list for web application
 
 #####Known bugs
 JavaScript parser
-<br /> ~ (n - 1) must have spaces, else reads as '-1'. Must edit tokenizing rules and establish precedence for subtraction over negative numbers.
-<br /> ~ if-then-else statement must end with semicolon (shouldn't be necessary)
-
+<br /> ~ (n - 1) must have spaces, else reads as '-1'. Will edit tokenizing rules and establish precedence for subtraction over negative numbers.
+<br /> ~ if-then-else statement must end with semicolon (shouldn't be necessary).
 
 #####Additional features
 Backend
-<br /> ~ parse JavaScript lists and loops. id followed by square brackets (indexing) will have higher precedence than list data type
+<br /> ~ parse JavaScript lists and loops. id followed by square brackets (indexing) will have higher precedence than list data type.
 
 
 Frontend
-<br /> ~ visualize environment
-<br /> ~ integrate CodeMirror
+<br /> ~ visualize environment/program interpretation. 
+<br /> ~ integrate CodeMirror and step through code blocks to visualize separate trees for multi-block intput program.
 
