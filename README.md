@@ -235,6 +235,9 @@ JavaScript parser
 <br /> ~ (n - 1) must have spaces, else reads as '-1'. Will edit tokenizing rules and establish precedence for subtraction over negative numbers.
 <br /> ~ if-then-else statement must end with semicolon (shouldn't be necessary).
 
+Frontend
+<br /> Display more helpful error messages to users if input is incorrect (missing semicolons!).
+
 Other
 <br /> ~ For raw user input, differentiating between Scheme and JavaScript simply by checking to see whether the program begins with a '(' is not a robust method. No. 
 
