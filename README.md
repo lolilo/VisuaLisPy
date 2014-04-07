@@ -36,15 +36,15 @@ File Architecture
 
 Getting Started
 ------------------
-From the commandline, after cloning this repository, setting up a [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/), and installing the requirements with
+Clone this repository to your local machine. From VisuaLisPy working directory, set up a [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/), and install requirements with
 
-     pip install -r requirements.txt
+     VisuaLisPy$ pip install -r requirements.txt
 
-run
+Then, run
 
-     python controller.py
+     VisuaLisPy$ python controller.py
 
-This should hopefully get the web app running locally on your machine. Database/examples may require extra setup.
+This should hopefully get the web app running locally on your machine.
 
 
 Scheme Interpreter
