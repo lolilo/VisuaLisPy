@@ -44,7 +44,7 @@ Then, run
 
      VisuaLisPy$ python controller.py
 
-This should hopefully get the web app running locally on your machine.
+This should hopefully get the web app running.
 
 
 Scheme Interpreter
