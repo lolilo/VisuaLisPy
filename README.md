@@ -247,6 +247,7 @@ Backend
 
 
 Frontend
+ * for mathematical expressions, display answers as nodes retract
  * visualize environment/program interpretation. 
  * integrate CodeMirror and step through code blocks to visualize separate trees for multi-block intput program.
 
