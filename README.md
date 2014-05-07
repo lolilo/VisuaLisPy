@@ -230,7 +230,7 @@ The more I learned, the more I realized how much more I want to learn.
 ###To-do list for web application
 ------------------
 
-#####Known bugs
+#####Known bugs and limitations
 JavaScript parser
  * (n - 1) must have spaces, else reads as '-1'. Will edit tokenizing rules and establish precedence for subtraction over negative numbers.
  * if-then-else statement must end with semicolon (shouldn't be necessary).
@@ -240,6 +240,8 @@ Frontend
 
 Other
  *  For raw user input, differentiating between Scheme and JavaScript simply by checking to see whether the program begins with a '(' is not a robust method. No. 
+ * Currently, there are no security features. User may be able to drop tables from my database or otherwise hack into the backend. 
+ * Heroku tends to lag when the application is accessed for the first time after a period of no access. I may be able to remedy this by setting up a program to ping the app every so often to keep it constantly up and ready.
 
 #####Additional features
 Backend
