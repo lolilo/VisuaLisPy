@@ -2,6 +2,8 @@ VisuaLisPy
 =========
 A browser-based abstract syntax tree visualizer.
 
+![intro_image](https://raw.githubusercontent.com/lolilo/VisuaLisPy/master/images/Intro.png)
+
 Deployed on Heroku: [http://visualispy.herokuapp.com/](http://visualispy.herokuapp.com/) (Database may take some time to "wake up" on Heroku's server.)
 
 Backend: Python, Python Lex-Yacc, Regex, Flask, SQLAlchemy, PostgreSQL, Scheme, C
