@@ -1,7 +1,11 @@
 VisuaLisPy
 =========
+A browser-based abstract syntax tree visualizer.
 
 Deployed on Heroku: [http://visualispy.herokuapp.com/](http://visualispy.herokuapp.com/) (Database may take some time to "wake up" on Heroku's server.)
+
+Backend: Python, Python Lex-Yacc, Regex, Flask, SQLAlchemy, PostgreSQL, Scheme, C
+<br /> Frontend: JavaScript, jQuery, Ajax, JSON, D3.js, HTML, CSS, Bootstrap
 
 Contents
  - [Introduction](https://github.com/lolilo/lispy_web#introduction)
@@ -23,8 +27,6 @@ In line with my love for open education, I hope VisuaLisPy will be helpful for t
 
 Furthering the original intent of this endeavor (satisfying my curiosity of what lies underneath high-level languages), I added in a JavaScript parser and am currently working on code generators to compile Scheme into subsets of JavaScript and C. Though I could not complete these compilers within the allotted timeframe of four weeks, I very much consider this an ongoing project that I fondly call "n00b's first compiler(s)" -- everybody starts somewhere. 
 
-Backend: Python, Python Lex-Yacc, Regex, Flask, SQLAlchemy, PostgreSQL, Scheme, C
-<br /> Frontend: JavaScript, jQuery, Ajax, JSON, D3.js, HTML, CSS, Bootstrap
 
 File Architecture
 ------------------
