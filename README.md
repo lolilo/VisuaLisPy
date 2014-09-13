@@ -11,9 +11,6 @@ D3.js, HTML, CSS.
 
 Deployed on Heroku: [http://visualispy.herokuapp.com/](http://visualispy.herokuapp.com/) (Database may take some time to "wake up" on Heroku's server.)
 
-Backend: Python, Python Lex-Yacc, Regex, Flask, SQLAlchemy, PostgreSQL, Scheme
-<br /> Frontend: JavaScript, jQuery, Ajax, JSON, D3.js, HTML, CSS, Bootstrap
-
 Contents
  - [Introduction](https://github.com/lolilo/lispy_web#introduction)
  - [File Architecture](https://github.com/lolilo/lispy_web#file-architecture)
