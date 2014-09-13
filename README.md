@@ -4,10 +4,10 @@ A browser-based abstract syntax tree visualizer.
 
 ![intro_image](https://raw.githubusercontent.com/lolilo/VisuaLisPy/master/images/Intro.png)
 
-• Built a Scheme-to-JavaScript compiler and a JavaScript parser using Python.
-• Constructed browser-based abstract syntax tree visualizer using JavaScript/jQuery/Ajax/JSON, 
+ * Built a Scheme-to-JavaScript compiler and a JavaScript parser using Python.
+ * Constructed browser-based abstract syntax tree visualizer using JavaScript/jQuery/Ajax/JSON, 
 D3.js, HTML, CSS. 
-• Set up PostgreSQL database using SQLAlchemy containing example input for visualizer.
+ * Set up PostgreSQL database using SQLAlchemy containing example input for visualizer.
 
 Deployed on Heroku: [http://visualispy.herokuapp.com/](http://visualispy.herokuapp.com/) (Database may take some time to "wake up" on Heroku's server.)
 
