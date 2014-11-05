@@ -1,19 +1,13 @@
 <!-- http://bl.ocks.org/anotherjavadude/1312406 -->
 <!-- http://javadude.wordpress.com/2011/10/27/d3-js-tree-most-simple-sample/ -->
-
-
 <!-- http://christopheviau.com/d3list/gallery.html#visualizationType=tree -->
-
-
 <!-- http://www.d3noob.org/2014/01/tree-diagrams-in-d3js_11.html -->
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-
     <title>Collapsible Tree Example</title>
-
     <style>
 
  .node circle {
@@ -31,27 +25,19 @@
  }
  
     </style>
-
   </head>
-
   <body>
 
 <!-- load the d3.js library --> <!-- 
-
 load it in main index.html. Doesn't work if you only load it here. Weird. 
-
-
 <script src="http://d3js.org/d3.v3.min.js"></script>
- 
  -->
-
 
 <script>
 
 var treeData = [
   {
     "name": "define",
-    // "parent": "null",
     "children": [
       {
         "name": "area",
@@ -87,29 +73,6 @@ var treeData = [
   }
 ];
 
-
-  // {
-  //  "define": [
-  //       "define", 
-  //       "area", 
-  //       [
-  //            "lambda", 
-  //            [
-  //                 "r"
-  //            ], 
-  //            [
-  //                 "*", 
-  //                 3.141592653, 
-  //                 [
-  //                      "*", 
-  //                      "r", 
-  //                      "r"
-  //                 ]
-  //            ]
-  //       ]
-  //  ]
-  // }
-
 // ************** Generate the tree diagram  *****************
 var margin = {top: 20, right: 0, bottom: 20, left: 100},
  width = 3000 - margin.right - margin.left,
@@ -139,9 +102,6 @@ function update(source) {
   var nodes = tree.nodes(root).reverse(),
    links = tree.links(nodes);
 
-   // console.log(nodes);
-   // console.log(root);
-
   // Normalize for fixed-depth.
   nodes.forEach(function(d) { d.y = d.depth * 180; });
 
@@ -158,11 +118,6 @@ function update(source) {
   nodeEnter.append("circle")
    .attr("r", 10)
    .style("fill", "#fff");
-
-  // for (var i in nodeEnter){
-  //   console.log(nodeEnter[i]);
-  // }
-  // console.log(nodeEnter);
 
   nodeEnter.append("text")
    .attr("x", function(d) { 
@@ -185,6 +140,5 @@ function update(source) {
 }
 
 </script>
- 
   </body>
 </html>
