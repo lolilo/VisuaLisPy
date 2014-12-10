@@ -10,7 +10,6 @@ app.config["DEBUG"] = os.environ.get("DEBUG", False)
 
 @app.route("/")
 def index():
-    # asks user to input Scheme code
     html = render_template("index.html")
     return html
 
@@ -30,7 +29,6 @@ def code_submitted():
     else: # try JavaScript
         json_object = js_parser.format_json(user_input)
     
-    # print json_object
     return json_object
 
 @app.route("/get_db_code/<code_id>")
@@ -55,8 +53,7 @@ def save_to_db():
             return "Sorry, an error occurred."
 
 @app.route("/code/<int:code_id>")
-# this was breaking earlier b/c of WHERE programs.id = 'favicon.ico'
-# browser request
+
 def display_db_code(code_id):
     # return JSON to ajax call -- code from database
     code_object = db.s.query(db.Code).filter_by(id=code_id).one()
@@ -68,11 +65,6 @@ def display_db_code(code_id):
 def about():
     html = render_template("about.html")
     return html
-
-# @app.route("/tree")
-# def tree():
-#     html = render_template("tree.html")
-#     return html
 
 if __name__ == "__main__":
     app.run(debug=True)
