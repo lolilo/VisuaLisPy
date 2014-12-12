@@ -46,7 +46,7 @@ def save_to_db():
         print 'NO USER INPUT'
 
     else:
-        success = db.new_code(user_input) # returns None if failure, code id if success
+        success = db.new_code(user_input)
         if success:
             return "Share your code with http://visualispy.herokuapp.com/code/%r." % success
         else: 
