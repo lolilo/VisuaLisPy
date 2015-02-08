@@ -1,5 +1,5 @@
 *.pyc
 venv/
-env/
 parser.out
 parsetab.py
+db.sqlite3
